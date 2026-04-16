@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Assisted Clinical Research — Module Index & CPD Record</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── Shared token system (mirrors all module pages) ── */
+:root{
+  --ink:#1a1a18;--ink2:#3d3d39;--ink3:#6b6b65;
+  --cream:#f7f5f0;--cream2:#ede9e0;--cream3:#e0dbd0;
+  --purple:#4a3f8f;--purple-l:#ede9fb;--purple-m:#c5bef0;
+  --green:#1a6b4a;--green-l:#e3f4ec;
+  --amber:#8a5a10;--amber-l:#fdf0dc;
+  --blue:#1a4d80;--blue-l:#e3eef8;
+  --red:#8a2020;--red-l:#fde8e8;
+  --teal:#1a6b6b;--teal-l:#e3f4f4;
+  --rose:#7b3f6e;--rose-l:#f5eaf2;
+  --gold:#7a5500;--gold-l:#fdf3d4;
+  --rule:rgba(26,26,24,.11);
+  --shadow:0 2px 16px rgba(26,26,24,.07);
+}
+
+/* ── Reset & base ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:14px;line-height:1.6}
+h1,h2,h3,h4{font-family:'Libre Baskerville',serif;line-height:1.3}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ── Shared site header / nav ── */
+.site-header{background:var(--ink);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
+.logo{font-family:'Libre Baskerville',serif;font-size:14px;color:var(--cream);font-weight:400;letter-spacing:.01em}
+.logo:hover{color:#fff;text-decoration:none}
+.site-nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav-pill{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;color:rgba(247,245,240,.75);background:rgba(247,245,240,.1);transition:background .15s,color .15s;letter-spacing:.04em;text-transform:uppercase}
+.nav-pill:hover{background:rgba(247,245,240,.2);color:#fff;text-decoration:none}
+.nav-pill.active{color:#fff;background:rgba(247,245,240,.22)}
+.nav-pill.ai{color:#9FE1CB}.nav-pill.p1{color:#c5bef0}.nav-pill.p1q{color:#f0b8e0}
+.nav-pill.p2{color:#f5d080}.nav-pill.aw{color:#9ab8e0}.nav-pill.pp{color:#9FE1CB}
+.nav-pill.home{color:#e8e6e0;background:rgba(247,245,240,.18)}
+
+/* ── Hero ── */
+.index-hero{background:var(--ink);color:var(--cream);padding:56px 40px 48px;text-align:center;border-bottom:4px solid rgba(247,245,240,.08)}
+.index-hero .kicker{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,245,240,.45);margin-bottom:14px}
+.index-hero h1{font-size:clamp(22px,4vw,36px);font-weight:700;color:#fff;margin-bottom:16px;line-height:1.2}
+.index-hero .subtitle{font-size:15px;color:rgba(247,245,240,.65);max-width:680px;margin:0 auto 28px;line-height:1.7}
+.hero-badges{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.badge{font-size:11px;font-weight:600;padding:5px 14px;border-radius:20px;letter-spacing:.04em;border:1px solid rgba(247,245,240,.2);color:rgba(247,245,240,.7)}
+.badge.cpd{background:rgba(159,225,203,.15);border-color:rgba(159,225,203,.4);color:#9FE1CB}
+.badge.mode{background:rgba(197,190,240,.1);border-color:rgba(197,190,240,.3);color:#c5bef0}
+
+/* ── Shared rule ── */
+hr.rule{border:none;border-top:1px solid var(--rule);margin:32px 0}
+
+/* ── Layout ── */
+.page-wrap{max-width:1040px;margin:0 auto;padding:40px 24px 80px}
+
+/* ── CPD info strip ── */
+.cpd-strip{background:#fff;border:1px solid var(--cream3);border-radius:10px;padding:20px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:36px;box-shadow:var(--shadow)}
+.cpd-cell{text-align:center}
+.cpd-cell .val{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:var(--ink);line-height:1}
+.cpd-cell .lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-top:4px}
+.cpd-cell .sub{font-size:11px;color:var(--ink3);margin-top:2px}
+
+/* ── Section heading ── */
+.sec-heading{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.sec-heading h2{font-size:17px;color:var(--ink)}
+.sec-heading .tag{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:12px;background:var(--cream2);color:var(--ink3)}
+
+/* ── Module cards grid ── */
+.module-grid{display:grid;gap:18px;margin-bottom:40px}
+
+.mod-card{background:#fff;border:1px solid var(--cream3);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .18s,transform .18s;display:flex;flex-direction:column}
+.mod-card:hover{box-shadow:0 6px 28px rgba(26,26,24,.12);transform:translateY(-2px)}
+
+.mod-card-top{display:flex;align-items:stretch}
+.mod-accent{width:6px;flex-shrink:0}
+.mod-main{padding:18px 20px;flex:1}
+.mod-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.mod-num{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.mod-label{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:10px}
+.mod-title{font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3}
+.mod-desc{font-size:13px;color:var(--ink2);line-height:1.65;margin-bottom:12px}
+
+.mod-sections{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px}
+.mod-sec-tag{font-size:10.5px;padding:2px 8px;border-radius:8px;background:var(--cream2);color:var(--ink2);font-weight:500}
+
+.mod-footer{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:var(--cream);border-top:1px solid var(--rule)}
+.mod-stats{display:flex;gap:14px}
+.mod-stat{font-size:11px;color:var(--ink3)}
+.mod-stat strong{color:var(--ink2);font-weight:600}
+.mod-link{font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px;background:var(--ink);color:var(--cream);transition:background .15s}
+.mod-link:hover{background:var(--ink2);text-decoration:none;color:#fff}
+
+/* Colour theming per module */
+.acc-intro    {background:var(--ink)}
+.acc-ai       {background:var(--teal)}
+.acc-p1       {background:var(--purple)}
+.acc-qual     {background:var(--rose)}
+.acc-p2       {background:var(--gold)}
+.acc-p2b      {background:var(--rose)}
+.acc-aw       {background:var(--blue)}
+.acc-pp       {background:var(--green)}
+
+.lbl-intro    {background:rgba(26,26,24,.08);color:var(--ink2)}
+.lbl-ai       {background:var(--teal-l);color:var(--teal)}
+.lbl-p1       {background:var(--purple-l);color:var(--purple)}
+.lbl-qual     {background:var(--rose-l);color:var(--rose)}
+.lbl-p2       {background:var(--gold-l);color:var(--gold)}
+.lbl-p2b      {background:var(--rose-l);color:var(--rose)}
+.lbl-aw       {background:var(--blue-l);color:var(--blue)}
+.lbl-pp       {background:var(--green-l);color:var(--green)}
+
+/* ── CPD requirements table ── */
+.cpd-table-wrap{background:#fff;border:1px solid var(--cream3);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:36px}
+.cpd-table-head{background:var(--ink);color:var(--cream);padding:14px 20px}
+.cpd-table-head h3{font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif}
+.cpd-table-head p{font-size:12px;color:rgba(247,245,240,.6);margin-top:2px}
+table.cpd-tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+table.cpd-tbl th{padding:9px 14px;text-align:left;background:var(--cream2);color:var(--ink3);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--cream3)}
+table.cpd-tbl td{padding:9px 14px;border-bottom:1px solid var(--rule);color:var(--ink2);vertical-align:top}
+table.cpd-tbl tr:last-child td{border-bottom:none}
+table.cpd-tbl tr:nth-child(even) td{background:var(--cream)}
+table.cpd-tbl td:first-child{font-weight:600;color:var(--ink)}
+.hrs-cell{font-weight:700;color:var(--ink);font-size:13px;white-space:nowrap}
+
+/* ── Learning outcomes section ── */
+.lo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:36px}
+.lo-card{background:#fff;border:1px solid var(--cream3);border-radius:8px;padding:16px 18px;box-shadow:var(--shadow)}
+.lo-num{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+.lo-text{font-size:13px;color:var(--ink2);line-height:1.6}
+.lo-domain{margin-top:8px;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:8px;display:inline-block}
+
+/* ── PI & endorsement block ── */
+.endorsement{background:#fff;border:1px solid var(--cream3);border-radius:10px;padding:24px 28px;box-shadow:var(--shadow);margin-bottom:36px}
+.endorsement h3{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:14px;font-family:'Libre Baskerville',serif}
+.pi-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pi-block .pi-name{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.pi-block .pi-role{font-size:12px;color:var(--ink3);margin-bottom:8px}
+.pi-block .pi-detail{font-size:12px;color:var(--ink2);line-height:1.7}
+.sig-line{margin-top:20px;padding-top:12px;border-top:1px solid var(--rule);display:flex;gap:32px}
+.sig-box{flex:1;padding-top:32px;border-top:1px solid var(--ink3);font-size:11px;color:var(--ink3);letter-spacing:.05em;text-transform:uppercase}
+
+/* ── Assessment note ── */
+.assessment-note{background:var(--amber-l);border-left:4px solid var(--amber);border-radius:0 8px 8px 0;padding:14px 18px;font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:36px}
+.assessment-note strong{color:var(--ink)}
+
+/* ── Footer ── */
+.index-footer{background:var(--ink);color:rgba(247,245,240,.55);padding:28px 40px;text-align:center;font-size:12px;line-height:1.8}
+.index-footer a{color:rgba(247,245,240,.7)}
+.index-footer strong{color:rgba(247,245,240,.85)}
+
+/* ── Print styles ── */
+@media print{
+  .site-header,.mod-link{display:none}
+  .mod-card{break-inside:avoid;box-shadow:none;border:1px solid #ccc}
+  .index-hero{background:#1a1a18!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .cpd-table-head{background:#1a1a18!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:11px}
+  @page{margin:20mm}
+}
+
+@media(max-width:640px){
+  .pi-grid{grid-template-columns:1fr}
+  .mod-footer{flex-direction:column;gap:10px;align-items:flex-start}
+}
+
+.mod-locked{font-size:11px;font-weight:600;color:var(--ink3);padding:6px 14px;border-radius:6px;background:var(--cream2);letter-spacing:.02em;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="welcome.html">Clinical Research with AI</a>
+  <nav class="site-nav">
+    <a class="nav-pill home active">Module Index</a>
+    <a class="nav-pill ai" >AI Tools</a>
+    <a class="nav-pill p1" >Part 1A</a>
+    <a class="nav-pill p1q" >Part 1B</a>
+    <a class="nav-pill p2" >Part 2A</a>
+    <a class="nav-pill p1q" >Part 2B</a>
+    <a class="nav-pill aw" >Academic Writing</a>
+    <a class="nav-pill pp" >Publication Process</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════ -->
+<div class="index-hero">
+  <p class="kicker">Universiti Putra Malaysia · Department of Family Medicine</p>
+  <h1>AI-Assisted Clinical Research<br>From Proposal to Publication</h1>
+  <p class="subtitle">A self-directed continuing professional development module for postgraduate health sciences researchers and clinicians. Covers the full research lifecycle — from research idea to published paper — with structured AI integration at every stage.</p>
+  <div class="hero-badges">
+    <span class="badge cpd">CPD Module · MMC Category 1</span>
+    <span class="badge mode">Self-Directed Learning</span>
+    <span class="badge">8 Interactive Pages</span>
+    <span class="badge">10 CPD Hours</span>
+    <span class="badge">Evidence-Based</span>
+  </div>
+</div>
+
+<!-- ══ MAIN CONTENT ═══════════════════════════════════════════════════ -->
+<div class="page-wrap">
+
+  <!-- CPD summary strip -->
+  <div class="cpd-strip">
+    <div class="cpd-cell">
+      <div class="val">10</div>
+      <div class="lbl">CPD Hours</div>
+      <div class="sub">Total module</div>
+    </div>
+    <div class="cpd-cell">
+      <div class="val">8</div>
+      <div class="lbl">Learning Pages</div>
+      <div class="sub">Interactive HTML</div>
+    </div>
+    <div class="cpd-cell">
+      <div class="val">200+</div>
+      <div class="lbl">Concept Cards</div>
+      <div class="sub">Expandable topics</div>
+    </div>
+    <div class="cpd-cell">
+      <div class="val">100+</div>
+      <div class="lbl">AI Prompts</div>
+      <div class="sub">Ready to use</div>
+    </div>
+    <div class="cpd-cell">
+      <div class="val">Cat. 1</div>
+      <div class="lbl">MMC CPD Category</div>
+      <div class="sub">Structured learning</div>
+    </div>
+    <div class="cpd-cell">
+      <div class="val">Self-Paced</div>
+      <div class="lbl">Delivery Mode</div>
+      <div class="sub">No fixed schedule</div>
+    </div>
+  </div>
+
+  <!-- ── MODULE PAGES ── -->
+  <div class="sec-heading">
+    <h2>Module Pages</h2>
+    <span class="tag">Click any card to open the page</span>
+  </div>
+
+  <div class="module-grid">
+
+    <!-- 0 · Introduction -->
+    <div class="mod-card">
+      <div class="mod-card-top">
+        <div class="mod-accent acc-intro"></div>
+        <div class="mod-main">
+          <div class="mod-meta">
+            <span class="mod-num">Introduction</span>
+            <span class="mod-label lbl-intro">Foundation</span>
+          </div>
+          <div class="mod-title">AI-Assisted Clinical Research — From Proposal to Publication</div>
+          <div class="mod-desc">Module overview and orientation. Covers the two-part research lifecycle, the AI Fluency Framework (Describe, Discern, Delegate, Diligence), the 4Ds competency model, research integrity principles, and the role of AI transparency in modern health sciences research.</div>
+          <div class="mod-sections">
+            <span class="mod-sec-tag">Two-part lifecycle</span>
+            <span class="mod-sec-tag">AI Fluency Framework</span>
+            <span class="mod-sec-tag">4Ds competency</span>
+            <span class="mod-sec-tag">Research integrity</span>
+            <span class="mod-sec-tag">Ethics &amp; AI transparency</span>
+          </div>
+        </div>
+      </div>
+      <div class="mod-footer">
+        <div class="mod-stats">
+          <span class="mod-stat"><strong>2</strong> sections</span>
+          <span class="mod-stat"><strong>~30 min</strong> reading</span>
+          <span class="mod-stat"><strong>0.5</strong> CPD hr</span>
+        </div>
+        <a class="mod-link" href="intro.html">Open page →</a>
+      </div>
+    </div>
+
+    <!-- 1 · AI Tools -->
+    <div class="mod-card">
+      <div class="mod-card-top">
+        <div class="mod-accent acc-ai"></div>
+        <div class="mod-main">
+          <div class="mod-meta">
+            <span class="mod-num">Foundational Tab</span>
+            <span class="mod-label lbl-ai">AI Literacy</span>
+          </div>
+          <div class="mod-title">AI Tools for Research</div>
+          <div class="mod-desc">Before-you-begin orientation to responsible AI use. Covers what LLMs are, how they work, five process failure modes and six technical failure modes, three modalities of human-AI interaction, tool directory (LLMs + specialised research tools + free/paid tiers), four-step AI strategy, safety &amp; disclosure, and a reusable prompt library for research, writing, and analysis tasks.</div>
+          <div class="mod-sections">
+            <span class="mod-sec-tag">LLM literacy</span>
+            <span class="mod-sec-tag">Failure modes</span>
+            <span class="mod-sec-tag">Tool directory</span>
+            <span class="mod-sec-tag">Four-step strategy</span>
+            <span class="mod-sec-tag">Safety &amp; disclosure</span>
+            <span class="mod-sec-tag">Prompt library</span>
+          </div>
+        </div>
+      </div>
+      <div class="mod-footer">
+        <div class="mod-stats">
+          <span class="mod-stat"><strong>13</strong> sections</span>
+          <span class="mod-stat"><strong>~90 min</strong> reading</span>
+          <span class="mod-stat"><strong>1.5</strong> CPD hrs</span>
+        </div>
+        <span class="mod-locked">🔒 Registered participants only</span>
+      </div>
+    </div>
+
+    <!-- 2 · Part 1A -->
+    <div class="mod-card">
+      <div class="mod-card-top">
+        <div class="mod-accent acc-p1"></div>
+        <div class="mod-main">
+          <div class="mod-meta">
+            <span class="mod-num">Part 1A — Quantitative</span>
+            <span class="mod-label lbl-p1">Proposal Preparation</span>
+          </div>
+          <div class="mod-title">Research Proposal Preparation (Quantitative)</div>
+          <div class="mod-desc">Comprehensive 18-step guide from research idea to submission-ready quantitative proposal. Covers the 16-section proposal outline (Sections A–Q), grant call intelligence, AI-assisted literature review with multiple tools (7-step process), conceptual framework, PICO/PECOTS research question formulation, bias &amp; validity, sampling, sample size, data analysis plan, ethics, and research vs audit distinctions. Includes LLM risk-of-bias assessment evidence and 69+ expandable concept cards.</div>
+          <div class="mod-sections">
+            <span class="mod-sec-tag">18 proposal steps</span>
+            <span class="mod-sec-tag">Grant call AI strategy</span>
+            <span class="mod-sec-tag">Literature review</span>
+            <span class="mod-sec-tag">PICO/PECOTS</span>
+            <span class="mod-sec-tag">Bias &amp; validity</span>
+            <span class="mod-sec-tag">Sample size</span>
+            <span class="mod-sec-tag">Ethics</span>
+          </div>
+        </div>
+      </div>
+      <div class="mod-footer">
+        <div class="mod-stats">
+          <span class="mod-stat"><strong>22</strong> sections</span>
+          <span class="mod-stat"><strong>~2.5 hrs</strong> reading</span>
+          <span class="mod-stat"><strong>2.5</strong> CPD hrs</span>
+        </div>
+        <span class="mod-locked">🔒 Registered participants only</span>
+      </div>
+    </div>
+
+    <!-- 3 · Part 1B -->
+    <div class="mod-card">
+      <div class="mod-card-top">
+        <div class="mod-accent acc-qual"></div>
+        <div class="mod-main">
+          <div class="mod-meta">
+            <span class="mod-num">Part 1B — Qualitative</span>
+            <span class="mod-label lbl-qual">Proposal Preparation</span>
+          </div>
+          <div class="mod-title">Qualitative Research Proposal Preparation</div>
+          <div class="mod-desc">Parallel qualitative proposal guide covering philosophical foundations (ontology, epistemology, methodology), five qualitative designs (phenomenology, grounded theory, IPA, thematic analysis, case study), SPIDER framework for research questions, purposive sampling strategies, saturation, data collection methods, qualitative data analysis, and trustworthiness criteria including COREQ and member checking.</div>
+          <div class="mod-sections">
+            <span class="mod-sec-tag">Philosophical foundations</span>
+            <span class="mod-sec-tag">Five qualitative designs</span>
+            <span class="mod-sec-tag">SPIDER framework</span>
+            <span class="mod-sec-tag">Purposive sampling</span>
+            <span class="mod-sec-tag">Saturation</span>
+            <span class="mod-sec-tag">Trustworthiness</span>
+          </div>
+        </div>
+      </div>
+      <div class="mod-footer">
+        <div class="mod-stats">
+          <span class="mod-stat"><strong>10</strong> sections</span>
+          <span class="mod-stat"><strong>~60 min</strong> reading</span>
+          <span class="mod-stat"><strong>1.0</strong> CPD hr</span>
+        </div>
+        <span class="mod-locked">🔒 Registered participants only</span>
+      </div>
+    </div>
+
+    <!-- 4 · Part 2A -->
+    <div class="mod-card">
+      <div class="mod-card-top">
+        <div class="mod-accent acc-p2"></div>
+        <div class="mod-main">
+          <div class="mod-meta">
+            <span class="mod-num">Part 2A — Quantitative</span>
+            <span class="mod-label lbl-p2">Data to Publication</span>
+          </div>
+          <div class="mod-title">Data to Publication (Quantitative)</div>
+          <div class="mod-desc">From completed dataset to submitted manuscript. Covers AI scientific anchor setup, variables &amp; measurement, missing data strategies, statistical analysis &amp; interpretation (descriptive, inferential, regression, Cox, survival), data visualisation, IMRAD manuscript drafting (Results, Discussion, Conclusion, Introduction, Methods), cover letter, AI disclosure, the integrity gate, and replicability standards. Aligned to CONSORT, STROBE, and PRISMA reporting.</div>
+          <div class="mod-sections">
+            <span class="mod-sec-tag">Scientific anchor</span>
+            <span class="mod-sec-tag">Statistical analysis</span>
+            <span class="mod-sec-tag">Data visualisation</span>
+            <span class="mod-sec-tag">IMRAD drafting</span>
+            <span class="mod-sec-tag">Integrity gate</span>
+            <span class="mod-sec-tag">CONSORT/STROBE</span>
+          </div>
+        </div>
+      </div>
+      <div class="mod-footer">
+        <div class="mod-stats">
+          <span class="mod-stat"><strong>17</strong> sections</span>
+          <span class="mod-stat"><strong>~90 min</strong> reading</span>
+          <span class="mod-stat"><strong>1.5</strong> CPD hrs</span>
+        </div>
+        <span class="mod-locked">🔒 Registered participants only</span>
+      </div>
+    </div>
+
+    <!-- 5 · Part 2B -->
+    <div class="mod-card">
+      <div class="mod-card-top">
+        <div class="mod-accent acc-p2b"></div>
+        <div class="mod-main">
+          <div class="mod-meta">
+            <span class="mod-num">Part 2B — Qualitative</span>
+            <span class="mod-label lbl-p2b">Data to Publication</span>
+          </div>
+          <div class="mod-title">Qualitative Data to Publication</div>
+          <div class="mod-desc">Parallel qualitative journey from transcripts to published paper. Covers qualitative AI anchor, transcript management &amp; anonymisation, saturation assessment, thematic analysis (coding → theme development → negative case analysis), data display, qualitative manuscript conventions (Findings, Discussion, Conclusion), COREQ reporting, transferability, and thick description. Includes integrity gate for pre-submission audit.</div>
+          <div class="mod-sections">
+            <span class="mod-sec-tag">Transcript management</span>
+            <span class="mod-sec-tag">Thematic analysis</span>
+            <span class="mod-sec-tag">Negative case analysis</span>
+            <span class="mod-sec-tag">COREQ reporting</span>
+            <span class="mod-sec-tag">Transferability</span>
+            <span class="mod-sec-tag">Integrity gate</span>
+          </div>
+        </div>
+      </div>
+      <div class="mod-footer">
+        <div class="mod-stats">
+          <span class="mod-stat"><strong>19</strong> sections</span>
+          <span class="mod-stat"><strong>~75 min</strong> reading</span>
+          <span class="mod-stat"><strong>1.25</strong> CPD hrs</span>
+        </div>
+        <span class="mod-locked">🔒 Registered participants only</span>
+      </div>
+    </div>
+
+    <!-- 6 · Academic Writing -->
+    <div class="mod-card">
+      <div class="mod-card-top">
+        <div class="mod-accent acc-aw"></div>
+        <div class="mod-main">
+          <div class="mod-meta">
+            <span class="mod-num">Supplementary</span>
+            <span class="mod-label lbl-aw">Academic Writing</span>
+          </div>
+          <div class="mod-title">Academic &amp; Scientific Writing</div>
+          <div class="mod-desc">Dedicated writing craft module covering the principles of scientific writing, language and mechanics (clarity, accuracy, conciseness), IMRAD section-by-section guidance, title &amp; abstract construction, verb tense, hedging language, numbers &amp; statistics reporting, plagiarism &amp; text recycling, ICMJE authorship criteria, journal selection, and responsible AI use in writing including de-biasing AI-generated text.</div>
+          <div class="mod-sections">
+            <span class="mod-sec-tag">Scientific writing principles</span>
+            <span class="mod-sec-tag">Language &amp; mechanics</span>
+            <span class="mod-sec-tag">IMRAD guidance</span>
+            <span class="mod-sec-tag">ICMJE authorship</span>
+            <span class="mod-sec-tag">AI de-biasing</span>
+            <span class="mod-sec-tag">Journal selection</span>
+          </div>
+        </div>
+      </div>
+      <div class="mod-footer">
+        <div class="mod-stats">
+          <span class="mod-stat"><strong>16</strong> sections</span>
+          <span class="mod-stat"><strong>~75 min</strong> reading</span>
+          <span class="mod-stat"><strong>1.25</strong> CPD hrs</span>
+        </div>
+        <span class="mod-locked">🔒 Registered participants only</span>
+      </div>
+    </div>
+
+    <!-- 7 · Publication Process -->
+    <div class="mod-card">
+      <div class="mod-card-top">
+        <div class="mod-accent acc-pp"></div>
+        <div class="mod-main">
+          <div class="mod-meta">
+            <span class="mod-num">Supplementary</span>
+            <span class="mod-label lbl-pp">Publication Process</span>
+          </div>
+          <div class="mod-title">The Publication Process</div>
+          <div class="mod-desc">End-to-end guide to navigating peer review and publication. Covers rules of successful publication, journal selection (quartiles, indexing, scope fit, predatory journal avoidance), EQUATOR reporting guidelines, open access &amp; APCs, CRediT contributorship, the cover letter, editorial desk review, peer review process, handling rejection, responding to reviewer comments using AI, resubmission, post-acceptance steps, and journal metrics (IF, CiteScore, h-index).</div>
+          <div class="mod-sections">
+            <span class="mod-sec-tag">Journal selection</span>
+            <span class="mod-sec-tag">EQUATOR guidelines</span>
+            <span class="mod-sec-tag">Open access &amp; APC</span>
+            <span class="mod-sec-tag">Peer review</span>
+            <span class="mod-sec-tag">Rebuttal letters</span>
+            <span class="mod-sec-tag">Journal metrics</span>
+          </div>
+        </div>
+      </div>
+      <div class="mod-footer">
+        <div class="mod-stats">
+          <span class="mod-stat"><strong>19</strong> sections</span>
+          <span class="mod-stat"><strong>~75 min</strong> reading</span>
+          <span class="mod-stat"><strong>1.25</strong> CPD hrs</span>
+        </div>
+        <span class="mod-locked">🔒 Registered participants only</span>
+      </div>
+    </div>
+
+  </div><!-- /module-grid -->
+
+  <hr class="rule">
+
+  <!-- ── CPD HOURS TABLE ── -->
+  <div class="sec-heading">
+    <h2>CPD Hours Breakdown</h2>
+    <span class="tag">For MMC Application</span>
+  </div>
+
+  <div class="cpd-table-wrap">
+    <div class="cpd-table-head">
+      <h3>Malaysian Medical Council (MMC) CPD Point Application</h3>
+      <p>Self-directed structured learning · Category 1 · Each CPD hour = 1 CPD point</p>
+    </div>
+    <table class="cpd-tbl">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Module Page</th>
+          <th>Topic Area</th>
+          <th>Est. Hours</th>
+          <th>CPD Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>—</td>
+          <td>Introduction</td>
+          <td>Module overview, AI fluency framework, research integrity</td>
+          <td class="hrs-cell">0.5 hr</td>
+          <td class="hrs-cell">0.5</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>AI Tools &amp; Prompting</td>
+          <td>AI literacy, responsible use, tool selection, prompt strategies</td>
+          <td class="hrs-cell">1.5 hrs</td>
+          <td class="hrs-cell">1.5</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Part 1A — Quantitative Research Proposal</td>
+          <td>Research proposal preparation — quantitative approach</td>
+          <td class="hrs-cell">2.5 hrs</td>
+          <td class="hrs-cell">2.5</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Part 1B — Qualitative Research Proposal</td>
+          <td>Research proposal preparation — qualitative approach</td>
+          <td class="hrs-cell">1.0 hr</td>
+          <td class="hrs-cell">1.0</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Part 2A — Quantitative Data to Publication</td>
+          <td>Data analysis, manuscript preparation — quantitative approach</td>
+          <td class="hrs-cell">1.5 hrs</td>
+          <td class="hrs-cell">1.5</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Part 2B — Qualitative Data to Publication</td>
+          <td>Data analysis, manuscript preparation — qualitative approach</td>
+          <td class="hrs-cell">1.25 hrs</td>
+          <td class="hrs-cell">1.25</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Academic &amp; Scientific Writing</td>
+          <td>Scientific writing principles, language, structure, and authorship</td>
+          <td class="hrs-cell">1.25 hrs</td>
+          <td class="hrs-cell">1.25</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>The Publication Process</td>
+          <td>Journal selection, peer review, and post-acceptance process</td>
+          <td class="hrs-cell">1.0 hr</td>
+          <td class="hrs-cell">1.0</td>
+        </tr>
+        <tr style="background:var(--cream2)">
+          <td colspan="3" style="font-weight:700;text-align:right;padding-right:16px;">Total</td>
+          <td class="hrs-cell" style="color:var(--ink)">10.5 hrs</td>
+          <td class="hrs-cell" style="font-size:15px;color:var(--purple)">10.5 pts</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── LEARNING OUTCOMES ── -->
+  <div class="sec-heading">
+    <h2>Learning Outcomes</h2>
+    <span class="tag">MMC CPD Domains</span>
+  </div>
+
+  <div class="lo-grid">
+    <div class="lo-card">
+      <div class="lo-num">Outcome 1 · Medical Knowledge</div>
+      <div class="lo-text">Explain the role of large language models in clinical research and identify their two distinct failure families (process risk and output risk), applying appropriate safeguards at each stage of the research workflow.</div>
+      <span class="lo-domain" style="background:var(--blue-l);color:var(--blue)">Medical Knowledge</span>
+    </div>
+    <div class="lo-card">
+      <div class="lo-num">Outcome 2 · Research Skills</div>
+      <div class="lo-text">Construct a submission-ready quantitative or qualitative research proposal using the 16-section outline (Sections A–Q), integrating AI tools appropriately for literature review, gap analysis, and methodology design.</div>
+      <span class="lo-domain" style="background:var(--purple-l);color:var(--purple)">Research Skills</span>
+    </div>
+    <div class="lo-card">
+      <div class="lo-num">Outcome 3 · Research Skills</div>
+      <div class="lo-text">Apply the correct statistical analysis, data visualisation approach, and manuscript section conventions to produce a structured IMRAD manuscript from a completed quantitative or qualitative dataset.</div>
+      <span class="lo-domain" style="background:var(--purple-l);color:var(--purple)">Research Skills</span>
+    </div>
+    <div class="lo-card">
+      <div class="lo-num">Outcome 4 · Professionalism</div>
+      <div class="lo-text">Demonstrate responsible AI use in research and publication — including AI disclosure, linguistic de-biasing, integrity gate checks, and adherence to ICMJE authorship criteria and COPE publication ethics standards.</div>
+      <span class="lo-domain" style="background:var(--green-l);color:var(--green)">Professionalism</span>
+    </div>
+    <div class="lo-card">
+      <div class="lo-num">Outcome 5 · Communication</div>
+      <div class="lo-text">Produce publication-ready scientific prose applying clarity, accuracy, and conciseness principles; select an appropriate target journal using EQUATOR reporting guidelines; and navigate the full peer-review and resubmission cycle.</div>
+      <span class="lo-domain" style="background:var(--teal-l);color:var(--teal)">Communication</span>
+    </div>
+    <div class="lo-card">
+      <div class="lo-num">Outcome 6 · Research Skills</div>
+      <div class="lo-text">Critically appraise AI-generated research outputs at each stage — evaluating signalling-question accuracy in risk-of-bias assessment, verifying statistical calculations, and auditing reference lists for hallucinated citations.</div>
+      <span class="lo-domain" style="background:var(--purple-l);color:var(--purple)">Research Skills</span>
+    </div>
+  </div>
+
+  <!-- ── ASSESSMENT ── -->
+  <div class="sec-heading">
+    <h2>Assessment &amp; Verification</h2>
+    <span class="tag">Assignment-based</span>
+  </div>
+  <div class="assessment-note">
+    <strong>Completion is verified by the module providers.</strong> Each module page contains interactive expandable concept cards, AI prompt exercises, and reference materials. Learners are expected to engage with all 8 pages and apply the learning to their own current or planned research through submitted assignments. <strong>A completion certificate will be issued by the module providers upon review of submitted assignments and confirmation of satisfactory completion.</strong> The certificate, signed by the module facilitator, may be used for CPD portfolio documentation and MMC CPD point claims.
+  </div>
+
+  <!-- ── FACILITATOR ── -->
+  <div class="sec-heading">
+    <h2>Module Facilitator</h2>
+    <span class="tag">For CPD Application</span>
+  </div>
+  <div class="endorsement">
+    <h3>Module Facilitator &amp; Principal Investigator</h3>
+    <div class="pi-block">
+      <div class="pi-name">Prof. Dr. Boon-How Chew</div>
+      <div class="pi-role">MD (USM) · MMed (Family Med, UM) · PhD (Utrecht)</div>
+      <div class="pi-detail">
+        Department of Family Medicine<br>
+        Faculty of Medicine and Health Sciences<br>
+        Universiti Putra Malaysia (UPM), Serdang, Selangor<br><br>
+        <strong>Target audience:</strong> Postgraduate health sciences students (Master's and PhD), medical officers, and clinician-researchers pursuing academic publishing in Malaysia and Southeast Asia.<br><br>
+        <strong>Primary sources:</strong><br>
+        Chew BH. <em>An Illustrated Version of Research Methodology.</em> ISBN 978-967-960-450-4. UPM; 2019.<br>
+        Chew BH. <em>Manual for Scientific Article Writing with AI Tools.</em> UPM; February 2026.<br>
+        Chew BH. <em>Prevalence Study Best Practices.</em> UPM; 2025.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════════════ -->
+<footer class="index-footer">
+  <p><strong>AI-Assisted Clinical Research: From Proposal to Publication</strong></p>
+  <p>Module Index &amp; CPD Application Document</p>
+  <p style="margin-top:8px">Principal Investigator: <strong>Prof. Dr. Boon-How Chew</strong> · Department of Family Medicine · Faculty of Medicine and Health Sciences · Universiti Putra Malaysia</p>
+  <p style="margin-top:8px;font-size:11px;color:rgba(247,245,240,.35)">Static HTML module · No tracking · No data collection · Content based on Chew BH (UPM, 2019–2026)</p>
+</footer>
+
+</body>
+</html>

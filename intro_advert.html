@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction — AI-Assisted Clinical Research</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+:root{--ink:#1a1a18;--ink2:#3d3d39;--ink3:#6b6b65;--cream:#f7f5f0;--cream2:#ede9e0;--cream3:#e0dbd0;--purple:#4a3f8f;--purple-l:#ede9fb;--green:#1a6b4a;--green-l:#e3f4ec;--amber:#8a5a10;--amber-l:#fdf0dc;--blue:#1a4d80;--blue-l:#e3eef8;--red:#8a2020;--red-l:#fde8e8;--teal:#0e6b6b;--teal-l:#e0f4f4;--gold:#7a5a00;--gold-l:#fdf6dc;--gold-m:#e8c84a;--gold-d:#5c4400;--rule:rgba(26,26,24,0.12);--shadow:0 2px 16px rgba(26,26,24,0.08)
+/* Qualitative accent — rose/indigo, matching Part 1B */
+--rose:#7b3f6e;--rose-l:#f5eaf2;--rose-m:#d8a8cb;--rose-d:#5c2d52;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.65}
+.site-header{background:var(--ink);color:var(--cream);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.08)}
+.site-header .logo{font-family:'Libre Baskerville',serif;font-size:13px;color:var(--cream);text-decoration:none;opacity:.9}
+
+.site-nav{display:flex;gap:6px;align-items:center;flex-wrap:nowrap;overflow-x:auto}
+.nav-pill{font-size:11.5px;font-weight:500;padding:4px 11px;border-radius:20px;text-decoration:none;color:rgba(247,245,240,0.65);transition:all .15s;white-space:nowrap;flex-shrink:0}
+.nav-pill:hover{color:var(--cream);background:rgba(255,255,255,0.12)}
+.nav-pill.ai{background:rgba(14,107,107,0.35);color:#b8f5f5}
+.nav-pill.ai:hover{background:rgba(14,107,107,0.55)}
+.nav-pill.ai:not([href]){background:rgba(14,107,107,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(14,107,107,0.5)}
+.nav-pill.p1{background:rgba(74,63,143,0.35);color:#d4ceff}
+.nav-pill.p1:hover{background:rgba(74,63,143,0.55)}
+.nav-pill.p1:not([href]){background:rgba(74,63,143,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(74,63,143,0.5)}
+.nav-pill.p1q{background:rgba(123,63,110,0.40);color:#f0cce8}
+.nav-pill.p1q:hover{background:rgba(123,63,110,0.60)}
+.nav-pill.p1q:not([href]){background:rgba(123,63,110,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(123,63,110,0.5)}
+.nav-pill.p2{background:rgba(122,90,0,0.45);color:#fff3b8}
+.nav-pill.p2:hover{background:rgba(122,90,0,0.65)}
+.nav-pill.p2:not([href]){background:rgba(122,90,0,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(122,90,0,0.5)}
+.nav-pill.aw{background:rgba(26,64,96,0.55);color:#c8e2f5}
+.nav-pill.aw:hover{background:rgba(26,64,96,0.75)}
+.nav-pill.aw:not([href]){background:rgba(26,64,96,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(26,64,96,0.5)}
+.nav-pill.pp{background:rgba(26,92,56,0.50);color:#b8e8cc}
+.nav-pill.pp:hover{background:rgba(26,92,56,0.70)}
+.nav-pill.pp:not([href]){background:rgba(26,92,56,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(26,92,56,0.5)}
+.hero{padding:5rem 2rem 3.5rem;max-width:860px;margin:0 auto;text-align:center}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:1rem}
+.hero h1{font-family:'Libre Baskerville',serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:1.25rem}
+.hero h1 em{font-style:italic;color:var(--purple)}
+.hero-sub{font-size:16px;color:var(--ink2);max-width:600px;margin:0 auto 2rem;line-height:1.7}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:2.5rem}
+.tag{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid var(--rule);color:var(--ink2);background:white}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:6px;font-size:14px;font-weight:500;text-decoration:none;transition:all .15s;cursor:pointer;border:none}
+.btn-primary{background:#4a3f8f;color:white}
+.btn-primary:hover{background:#3a3075;transform:translateY(-1px);box-shadow:0 4px 12px rgba(74,63,143,.35)}
+.btn-secondary{background:var(--green);color:white}
+.btn-secondary:hover{background:#145a3d;transform:translateY(-1px);box-shadow:0 4px 12px rgba(26,107,74,.3)}
+.btn-p2{background:#8a6200;color:white}
+.btn-p2:hover{background:#5c4200;transform:translateY(-1px);box-shadow:0 4px 12px rgba(138,98,0,.35)}
+.btn-qual{background:#8b3a7a;color:white}
+.btn-qual:hover{background:#6d2d5f;transform:translateY(-1px);box-shadow:0 4px 12px rgba(139,58,122,.35)}
+.btn-qual2{background:#a04478;color:white}
+.btn-qual2:hover{background:#7d3460;transform:translateY(-1px);box-shadow:0 4px 12px rgba(160,68,120,.35)}
+
+.rule{border:none;border-top:1px solid var(--rule);margin:0}
+.section{padding:3rem 2rem;max-width:960px;margin:0 auto}
+.section-sm{padding:2rem 2rem;max-width:960px;margin:0 auto}
+.section-label{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:1.25rem}
+.section-title{font-family:'Libre Baskerville',serif;font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:.75rem;line-height:1.3}
+.section-desc{font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:2rem;max-width:680px}
+.journey-wrapper{display:flex;flex-direction:column;gap:0}
+.journey-phase{border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:white;box-shadow:var(--shadow)}
+.phase-header{display:flex;align-items:center;gap:16px;padding:1.25rem 1.5rem}
+.phase-num{font-family:'Libre Baskerville',serif;font-size:2.5rem;font-weight:700;line-height:1;min-width:44px}
+.phase-header-text h2{font-size:16px;font-weight:600;margin-bottom:2px}
+.phase-header-text p{font-size:12px;opacity:.75}
+.phase-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--rule);border-top:1px solid var(--rule)}
+.phase-step{background:white;padding:1rem 1.25rem}
+.phase-step:hover{background:var(--cream)}
+.step-num{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;margin-bottom:6px}
+.phase-step h3{font-size:13px;font-weight:600;margin-bottom:4px;color:var(--ink)}
+.phase-step p{font-size:12px;color:var(--ink2);line-height:1.55;margin-bottom:5px}
+.step-tools{font-size:11px;color:var(--ink3);font-style:italic}
+.phase-p1 .phase-header{background:var(--purple-l)}
+.phase-p1 .phase-num{color:var(--purple)}
+.phase-p1 .phase-header-text h2{color:var(--purple)}
+.phase-p1 .step-num{background:var(--purple-l);color:var(--purple)}
+.phase-p2 .phase-header{background:var(--gold-l)}
+.phase-p2 .phase-num{color:var(--gold)}
+.phase-p2 .phase-header-text h2{color:var(--gold)}
+.phase-p2 .step-num{background:var(--gold-l);color:var(--gold)}
+.bridge{display:flex;align-items:center;gap:12px;padding:1.25rem 0;color:var(--ink3);font-size:12px}
+.bridge-line{flex:1;height:1px;background:var(--rule)}
+.bridge-text{font-weight:500;padding:5px 14px;border-radius:20px;border:1px solid var(--rule);background:white;white-space:nowrap}
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.d-card{padding:1.25rem;border-radius:8px;border:1px solid var(--rule);background:white}
+.d-letter{font-family:'Libre Baskerville',serif;font-size:2.5rem;font-weight:700;line-height:1;margin-bottom:8px}
+.d-card h3{font-size:14px;font-weight:600;margin-bottom:5px}
+.d-card p{font-size:12px;color:var(--ink2);line-height:1.6}
+.d-card .d-source{font-size:10.5px;color:var(--ink3);margin-top:8px;font-style:italic}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:640px){.about-grid{grid-template-columns:1fr}}
+.about-card{padding:1.5rem;border-radius:8px;border:1px solid var(--rule);background:white}
+.about-card h3{font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;margin-bottom:10px}
+.about-card p,.about-card li{font-size:13px;color:var(--ink2);line-height:1.65;margin-bottom:4px}
+.about-card ul{padding-left:1.1rem}
+.book-quote{background:var(--ink);color:var(--cream);padding:3rem 2rem}
+.book-quote-inner{max-width:720px;margin:0 auto;text-align:center}
+.book-quote blockquote{font-family:'Libre Baskerville',serif;font-size:clamp(1rem,2.5vw,1.25rem);font-style:italic;line-height:1.7;color:rgba(247,245,240,.9);margin-bottom:1rem}
+.book-quote cite{font-size:12px;color:rgba(247,245,240,.5);letter-spacing:.04em}
+.refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.ref-item{padding:10px 14px;background:white;border:1px solid var(--rule);border-radius:6px;font-size:12px;color:var(--ink2);line-height:1.55}
+.ref-item .ref-num{font-weight:600;color:var(--ink);margin-right:4px}
+.ref-item a{color:var(--blue);word-break:break-all}
+.site-footer{background:var(--ink);color:rgba(247,245,240,.55);padding:2rem;text-align:center;font-size:12px;line-height:1.7}
+.site-footer a{color:rgba(247,245,240,.7)}
+.site-footer strong{color:rgba(247,245,240,.85)}
+.mod-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:580px){.mod-row{grid-template-columns:1fr}}
+.mod-card{padding:1.25rem;border-radius:8px;border:1px solid var(--rule)}
+.mod-card h3{font-size:13px;font-weight:600;margin-bottom:6px}
+.mod-card p{font-size:12px;color:var(--ink2);line-height:1.6}
+.mod-tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;margin-bottom:8px;letter-spacing:.05em;text-transform:uppercase}
+.checklist{display:flex;flex-wrap:wrap;gap:8px}
+.check-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink2);background:white;border:1px solid var(--rule);border-radius:20px;padding:4px 12px}
+.check-dot{width:7px;height:7px;border-radius:50%}
+/* YouTube grid */
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:1rem}
+.yt-card{background:white;border:1px solid var(--rule);border-radius:8px;padding:1rem;display:flex;gap:10px;align-items:flex-start}
+.yt-icon{width:32px;height:32px;background:#FF0000;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.yt-icon svg{width:16px;height:16px;fill:white}
+.yt-card h4{font-size:12px;font-weight:600;color:var(--ink);margin-bottom:3px;line-height:1.4}
+.yt-card p{font-size:11px;color:var(--ink3);line-height:1.5}
+.yt-card a{font-size:11px;color:var(--blue);display:block;margin-top:4px;word-break:break-all}
+.phase-p1b{border:2px solid var(--rose-m);background:var(--rose-l)}
+.phase-p1b .phase-header{background:linear-gradient(135deg,var(--rose)0%,var(--rose-d)100%)}
+.phase-p2b{border:2px solid var(--gold-m);background:var(--gold-l)}
+.phase-p2b .phase-header{background:linear-gradient(135deg,var(--gold)0%,var(--gold-d)100%)}
+
+/* Qualitative step card — more visible rose tint */
+.phase-step-qual{background:#f0d6ea;border-left:4px solid #7b3f6e;padding:1rem 1.25rem}
+.phase-step-qual:hover{background:#e8c4de}
+.phase-step-qual h3{font-size:13px;font-weight:600;margin-bottom:4px}
+.phase-step-qual h3 a{color:#5c2d52;text-decoration:none}
+.phase-step-qual h3 a:hover{text-decoration:underline}
+.phase-step-qual p{font-size:12px;color:var(--ink2);line-height:1.55;margin-bottom:5px}
+.step-num-qual{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;margin-bottom:6px;background:#7b3f6e;color:white;letter-spacing:.04em}
+.phase-p1 .phase-step{background:#fdf8ee}
+.phase-p1 .phase-step:hover{background:#f9f0d4}
+.phase-p1 .step-num{background:#f9f0d4;color:var(--amber)}
+.phase-p2 .phase-step{background:#fffbf0}
+.phase-p2 .phase-step:hover{background:#fdf3d4}
+.phase-p2 .step-num{background:#fdf3d4;color:var(--gold)}
+
+/* Implementation section — ensure cards fill grid evenly */
+.impl-section .about-grid{align-items:start}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="welcome.html">Clinical Research with AI</a>
+  <nav class="site-nav">
+    <a class="nav-pill ai" >AI Tools &amp; Prompting</a>
+    <a class="nav-pill p1" >Part 1A — Quantitative</a>
+    <a class="nav-pill p1q" >Part 1B — Qualitative</a>
+    <a class="nav-pill p2" >Part 2A — Quanti data</a>
+    <a class="nav-pill p1q" >Part 2B — Quali data</a>
+    <a class="nav-pill aw" >Academic Writing</a>
+    <a class="nav-pill pp" >Publication Process</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="hero-eyebrow">Self-study module · Postgraduate research</p>
+  <h1>AI-Assisted Clinical Research<br><em>From Proposal to Publication</em></h1>
+  <p class="hero-sub">A comprehensive, educationally grounded companion for postgraduate researchers in clinical medicine, health sciences and veterinary sciences — pairing the science of clinical epidemiology with practical AI tool guidance at every step.</p>
+  <div class="hero-meta">
+    <span class="tag">Clinical epidemiology</span>
+    <span class="tag">Research methods</span>
+    <span class="tag">Biostatistics</span>
+    <span class="tag">AI tools</span>
+    <span class="tag">Academic writing</span>
+    <span class="tag">Self-paced</span>
+    <span class="tag">Clinical · Health · Veterinary</span>
+  </div>
+  <div class="hero-cta">
+    <span style="display:inline-block;padding:8px 18px;border-radius:6px;background:var(--cream2);color:var(--ink3);font-size:13px;font-weight:600;white-space:nowrap;">🔒 Start Part 1A — Quantitative proposal →</span>
+    <span style="display:inline-block;padding:8px 18px;border-radius:6px;background:var(--cream2);color:var(--ink3);font-size:13px;font-weight:600;white-space:nowrap;">🔒 Start Part 1B — Qualitative proposal →</span>
+  </div>
+  <div class="hero-cta" style="margin-top:10px;">
+    <span style="display:inline-block;padding:8px 18px;border-radius:6px;background:var(--cream2);color:var(--ink3);font-size:13px;font-weight:600;white-space:nowrap;">🔒 Part 2A — Quanti data to publication →</span>
+    <span style="display:inline-block;padding:8px 18px;border-radius:6px;background:var(--cream2);color:var(--ink3);font-size:13px;font-weight:600;white-space:nowrap;">🔒 Part 2B — Quali data to publication →</span>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="section">
+  <p class="section-label">Foundations</p>
+  <h2 class="section-title">Grounded in clinical epidemiology</h2>
+  <p class="section-desc">This module is built on <em>Understanding and Conducting Clinical Research — A Clinical Epidemiology Approach by a Clinician for Clinicians</em> (Chew BH, UPM, 2019; ISBN 978-967-960-450-4) and the AI tool manuals by the same author. It also integrates the Framework for AI Fluency (Dakan &amp; Feller, 2025) as adopted by the Anthropic Academy.</p>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>What clinical epidemiology provides</h3>
+      <p>Clinical epidemiology is the science of making clinical measurement relevant, valid, and precise. It equips researchers with principles of study design, strategies to prevent bias and confounding, sample size reasoning, effect estimate interpretation, and reporting standards.</p>
+      <p style="font-size:12px;color:var(--ink3);margin-top:8px;font-style:italic;">Chew BH. An Illustrated Version. UPM; 2019. DOI: <a href="https://doi.org/10.7759/cureus.4112" target="_blank" style="color:var(--blue)">10.7759/cureus.4112</a></p>
+    </div>
+    <div class="about-card">
+      <h3>What AI tools provide</h3>
+      <p>AI tools accelerate specific tasks across the research lifecycle: literature searching and synthesis, proposal drafting and critique, SPSS/R syntax generation and debugging, statistical output interpretation, and manuscript drafting, editing and compliance checking.</p>
+      <p style="font-size:12px;color:var(--ink2);margin-top:8px;">AI supplements clinical judgment — it does not replace it. The researcher remains the <strong>expert pilot</strong>; AI is the thinking partner.</p>
+    </div>
+    <div class="about-card">
+      <h3>Three epidemiologic design principles</h3>
+      <p>Every clinical research is planned across three interlocking designs:</p>
+      <ul>
+        <li><strong>Theoretical design</strong> — qualitative or quantitative; primary or secondary; causal or non-causal</li>
+        <li><strong>Data collection design</strong> — experimental or non-experimental; sampling or census; time features</li>
+        <li><strong>Statistical design</strong> — pre-specified, pre-determined, exploratory analyses</li>
+      </ul>
+    </div>
+    <div class="about-card">
+      <h3>Four categories of clinical research</h3>
+      <p>Based on Grobbee &amp; Hoes classification, all clinical research belongs to one of four epidemiologic categories:</p>
+      <ul>
+        <li><strong>Diagnostic</strong> — cross-sectional; odds ratio; gold standard required</li>
+        <li><strong>Prognostic</strong> — longitudinal; hazard ratio; calibration and discrimination</li>
+        <li><strong>Interventional</strong> — RCT; risk ratio; intention-to-treat analysis</li>
+        <li><strong>Etiologic</strong> — cohort/case-control; relative risk; incidence</li>
+      </ul>
+    </div>
+  </div>
+
+<hr class="rule">
+
+<section class="section">
+  <p class="section-label">The learning journey</p>
+  <h2 class="section-title">Two-part research lifecycle</h2>
+  <p class="section-desc">Before starting either part, visit the AI Tools &amp; Prompting tab to learn about LLMs, choose your tools, understand their limitations, and build your prompt strategy. Then use Part 1 to plan and write your proposal. Return to Part 2 when your data collection is complete.</p>
+
+  <div class="journey-wrapper">
+    <div class="journey-phase phase-p1">
+      <div class="phase-header">
+        <div class="phase-num">1</div>
+        <div class="phase-header-text">
+          <h2>Part 1 — Research proposal preparation</h2>
+          <p>For researchers starting a new study · Part 1A: quantitative proposals · Part 1B: qualitative proposals · Both build toward a submission-ready, ethics-approvable proposal</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-left:auto;">
+          <span style="display:inline-block;padding:8px 18px;border-radius:6px;background:var(--cream2);color:var(--ink3);font-size:13px;font-weight:600;white-space:nowrap;">🔒 Open Part 1A — Quantitative →</span>
+          <span style="display:inline-block;padding:8px 18px;border-radius:6px;background:var(--cream2);color:var(--ink3);font-size:13px;font-weight:600;white-space:nowrap;">🔒 Open Part 1B — Qualitative →</span>
+        </div>
+      </div>
+      <div class="phase-steps">
+        <div class="phase-step"><span class="step-num">Steps 1–6</span><h3>Research idea through objectives</h3><p>Research idea &amp; topic, literature review, conceptual framework, theoretical design &amp; research question, problem statement, objectives &amp; SMART criteria</p><div class="step-tools">ChatGPT · Claude · Elicit · ResearchRabbit · Zotero</div></div>
+        <div class="phase-step"><span class="step-num">Steps 7–9</span><h3>Methodology, design &amp; bias</h3><p>Methodology, data collection design (instruments, validity, reliability), bias across all five research phases — from theoretical design to publication of findings</p><div class="step-tools">ChatGPT · Claude · DeepSeek · Perplexity</div></div>
+        <div class="phase-step"><span class="step-num">Steps 10–11</span><h3>Sampling &amp; sample size</h3><p>Probability vs non-probability sampling, purposive &amp; consecutive methods, power calculation (formulas A–E), G*Power and OpenEpi verification, worked examples</p><div class="step-tools">G*Power · OpenEpi · ChatGPT (formula check)</div></div>
+        <div class="phase-step"><span class="step-num">Steps 12–14</span><h3>Analysis, discussion &amp; conclusion</h3><p>Pre-specified statistical analysis plan, prospective discussion (TAG framework), conclusion — all written before data collection</p><div class="step-tools">SPSS · Claude · ChatGPT · Paperpal</div></div>
+        <div class="phase-step"><span class="step-num">Steps 15–18</span><h3>Completing the proposal</h3><p>Acknowledgements &amp; references, budget &amp; Gantt chart, supplementary materials (consent, ethics, instruments), protocol registration &amp; publication</p><div class="step-tools">Zotero · Canva · ClinicalTrials.gov · NMRR · OSF</div></div>
+        <div class="phase-step-qual">
+          <span class="step-num-qual">Part 1B — Qualitative</span>
+          <h3>Qualitative proposals →</h3>
+          <p>Philosophical foundations, qualitative research question (SPIDER), purposive sampling &amp; saturation, data collection methods, trustworthiness criteria (Lincoln &amp; Guba), reflexivity, PPI</p>
+          <div class="step-tools">ChatGPT · Claude · NVivo · Atlas.ti</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bridge"><div class="bridge-line"></div><span class="bridge-text" style="border-color:var(--gold-m);color:var(--gold);font-weight:600;">Data collection complete — continue to Part 2 (quantitative) or Part 2B (qualitative)</span><div class="bridge-line"></div></div>
+
+    <div class="journey-phase phase-p2">
+      <div class="phase-header">
+        <div class="phase-num">2</div>
+        <div class="phase-header-text">
+          <h2>Part 2 — Data to publication</h2>
+          <p>For researchers with a completed dataset · Part 2A: quantitative analysis to publication · Part 2B: qualitative analysis to publication</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-left:auto;">
+          <span style="display:inline-block;padding:8px 18px;border-radius:6px;background:var(--cream2);color:var(--ink3);font-size:13px;font-weight:600;white-space:nowrap;">🔒 Open Part 2A — Quantitative →</span>
+          <span style="display:inline-block;padding:8px 18px;border-radius:6px;background:var(--cream2);color:var(--ink3);font-size:13px;font-weight:600;white-space:nowrap;">🔒 Open Part 2B — Qualitative →</span>
+        </div>
+      </div>
+      <div class="phase-steps">
+        <div class="phase-step"><span class="step-num">1</span><h3>AI briefing &amp; scientific anchor</h3><p>Upload protocol; anchor all analysis to pre-specified objectives; provide variable dictionary; set up persistent project workspace</p><div class="step-tools">ChatGPT Projects · Claude Instructions · Gemini Gems · NotebookLM</div></div>
+        <div class="phase-step"><span class="step-num">2</span><h3>Variables &amp; measurement</h3><p>Scales of measurement (Stevens), operationalisation of constructs, validity and reliability of instruments, data dictionary review</p><div class="step-tools">SPSS · Julius AI · ChatGPT (syntax)</div></div>
+        <div class="phase-step"><span class="step-num">3</span><h3>Missing data &amp; data cleaning</h3><p>Data cleaning, outlier detection, missing data mechanisms (MCAR/MAR/MNAR), Little's MCAR test, normality testing, Table 1 generation, attrition bias assessment</p><div class="step-tools">SPSS · JASP · Julius AI · Excel + Copilot</div></div>
+        <div class="phase-step"><span class="step-num">4</span><h3>Statistical analysis &amp; diagnostics</h3><p>Inferential statistics, effect estimates, multivariable modelling, logistic regression three-pillar diagnostics, measures of association, analysis-stage biases</p><div class="step-tools">SPSS · JASP · ChatGPT · Claude</div></div>
+        <div class="phase-step"><span class="step-num">5</span><h3>Data visualisation</h3><p>Selecting the right graph for the data type, generating publication-quality figures, avoiding 3D and chartjunk, captioning conventions</p><div class="step-tools">SPSS · Julius AI · Excel · Canva · ChatGPT (code)</div></div>
+        <div class="phase-step"><span class="step-num">6</span><h3>Manuscript drafting</h3><p>IMRAD structure, Results (Reporter Mode), Discussion (TAG framework), Introduction (inverted funnel), Methods tense shift, cover letter &amp; abstract</p><div class="step-tools">ChatGPT · Claude · Jenni · Paperpal · Grammarly · Zotero</div></div>
+        <div class="phase-step"><span class="step-num">7</span><h3>Integrity gate &amp; submission</h3><p>Text-to-table audit, AI hallucination checks, STROBE/CONSORT/PRISMA compliance, spin detection, linguistic de-biasing, AI disclosure, privacy sweep</p><div class="step-tools">scite.ai · Zotero · Paperpal · Grammarly · Manual DOI check</div></div>
+        <div class="phase-step"><span class="step-num">8</span><h3>Replicability &amp; reproducibility</h3><p>Non-replicable and non-reproducible research — publication-stage biases, transparent reporting, open data, pre-registration, evidence translation gap</p><div class="step-tools">OSF · Zenodo · medRxiv · EQUATOR Network</div></div>
+        <div class="phase-step-qual" style="background:#f5e0ef;border-left-color:#a04478;">
+          <span class="step-num-qual" style="background:#a04478;">Part 2B — Qualitative</span>
+          <h3>Qualitative data to publication →</h3>
+          <p>Transcript management, saturation assessment, coding (first &amp; second cycle), theme development (Braun &amp; Clarke 6-step), negative case analysis, thematic diagrams, qualitative manuscript drafting (QIE structure), COREQ/SRQR, transferability &amp; meta-synthesis</p>
+          <div class="step-tools">ChatGPT · Claude · NVivo · Atlas.ti · Miro · EQUATOR Network</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<hr class="rule">
+
+  <div class="about-grid">
+<div class="about-card" style="grid-column:1/-1;border-top:3px solid var(--purple);">
+      <h3>Research classification — the full picture</h3>
+      <p style="font-size:12px;color:var(--ink2);margin-bottom:1rem;line-height:1.7;">Clinical research can be classified in many ways. The classification used in this module — based on Grobbee &amp; Hoes, as presented by Chew (2019) — maps directly onto the questions clinicians and patients ask in practice. Two broader classification systems also exist alongside it.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
+        <div>
+          <!-- SVG classification diagram reproduced from Chew BH (2019) Figure 1 -->
+          <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:DM Sans,sans-serif;font-size:12px;">
+            <!-- Central: Clinical Research -->
+            <rect x="185" y="10" width="150" height="44" rx="6" fill="white" stroke="#4a3f8f" stroke-width="2"/>
+            <text x="260" y="28" text-anchor="middle" font-weight="600" fill="#4a3f8f" font-size="13">Clinical</text>
+            <text x="260" y="46" text-anchor="middle" font-weight="600" fill="#4a3f8f" font-size="13">Research</text>
+            <!-- Left branch: Qualitative -->
+            <line x1="185" y1="32" x2="100" y2="32" stroke="#888" stroke-width="1.5"/>
+            <line x1="100" y1="32" x2="100" y2="80" stroke="#888" stroke-width="1.5"/>
+            <rect x="38" y="80" width="124" height="36" rx="4" fill="white" stroke="#888" stroke-width="1.5"/>
+            <text x="100" y="102" text-anchor="middle" fill="#3d3d39" font-size="12">Qualitative Research</text>
+            <!-- Qualitative sub-branches -->
+            <line x1="75" y1="116" x2="55" y2="140" stroke="#aaa" stroke-width="1.2" stroke-dasharray="4,3"/>
+            <rect x="8" y="140" width="94" height="32" rx="4" fill="#f7f5f0" stroke="#bbb" stroke-width="1.2" stroke-dasharray="4,3"/>
+            <text x="55" y="160" text-anchor="middle" fill="#6b6b65" font-size="11">Primary</text>
+            <text x="55" y="172" text-anchor="middle" fill="#6b6b65" font-size="11">Research</text>
+            <line x1="125" y1="116" x2="145" y2="140" stroke="#aaa" stroke-width="1.2" stroke-dasharray="4,3"/>
+            <rect x="100" y="140" width="96" height="32" rx="4" fill="#f7f5f0" stroke="#bbb" stroke-width="1.2" stroke-dasharray="4,3"/>
+            <text x="148" y="160" text-anchor="middle" fill="#6b6b65" font-size="11">Secondary</text>
+            <text x="148" y="172" text-anchor="middle" fill="#6b6b65" font-size="11">Research</text>
+            <!-- Right branch: Quantitative -->
+            <line x1="335" y1="32" x2="420" y2="32" stroke="#888" stroke-width="1.5"/>
+            <line x1="420" y1="32" x2="420" y2="80" stroke="#888" stroke-width="1.5"/>
+            <rect x="358" y="80" width="124" height="36" rx="4" fill="white" stroke="#888" stroke-width="1.5"/>
+            <text x="420" y="102" text-anchor="middle" fill="#3d3d39" font-size="12">Quantitative Research</text>
+            <!-- Quantitative sub-branches -->
+            <line x1="395" y1="116" x2="375" y2="140" stroke="#aaa" stroke-width="1.2" stroke-dasharray="4,3"/>
+            <rect x="328" y="140" width="94" height="32" rx="4" fill="#f7f5f0" stroke="#bbb" stroke-width="1.2" stroke-dasharray="4,3"/>
+            <text x="375" y="160" text-anchor="middle" fill="#6b6b65" font-size="11">Primary</text>
+            <text x="375" y="172" text-anchor="middle" fill="#6b6b65" font-size="11">Research</text>
+            <line x1="445" y1="116" x2="465" y2="140" stroke="#aaa" stroke-width="1.2" stroke-dasharray="4,3"/>
+            <rect x="418" y="140" width="96" height="32" rx="4" fill="#f7f5f0" stroke="#bbb" stroke-width="1.2" stroke-dasharray="4,3"/>
+            <text x="466" y="160" text-anchor="middle" fill="#6b6b65" font-size="11">Secondary</text>
+            <text x="466" y="172" text-anchor="middle" fill="#6b6b65" font-size="11">Research</text>
+            <!-- Arrows from Quant Primary down to Non-causal and Causal -->
+            <path d="M355 172 Q305 200 265 220" stroke="#4a3f8f" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+            <path d="M395 172 Q405 200 395 220" stroke="#4a3f8f" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+            <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#4a3f8f"/></marker></defs>
+            <!-- Non-causal box -->
+            <rect x="190" y="220" width="120" height="36" rx="4" fill="#ede9fb" stroke="#4a3f8f" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <text x="250" y="240" text-anchor="middle" fill="#4a3f8f" font-size="12" font-weight="500">Non-causal</text>
+            <text x="250" y="253" text-anchor="middle" fill="#4a3f8f" font-size="12" font-weight="500">Research</text>
+            <!-- Causal box -->
+            <rect x="330" y="220" width="120" height="36" rx="4" fill="#e3f4ec" stroke="#1a6b4a" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <text x="390" y="240" text-anchor="middle" fill="#1a6b4a" font-size="12" font-weight="500">Causal</text>
+            <text x="390" y="253" text-anchor="middle" fill="#1a6b4a" font-size="12" font-weight="500">Research</text>
+            <!-- Non-causal children -->
+            <line x1="220" y1="256" x2="210" y2="285" stroke="#7F77DD" stroke-width="1.2"/>
+            <rect x="160" y="285" width="100" height="32" rx="4" fill="white" stroke="#7F77DD" stroke-width="1.2"/>
+            <text x="210" y="305" text-anchor="middle" fill="#3C3489" font-size="11">Diagnostic</text>
+            <text x="210" y="317" text-anchor="middle" fill="#3C3489" font-size="11">Research</text>
+            <line x1="250" y1="256" x2="250" y2="285" stroke="#7F77DD" stroke-width="1.2"/>
+            <rect x="200" y="343" width="100" height="32" rx="4" fill="white" stroke="#7F77DD" stroke-width="1.2"/>
+            <text x="250" y="363" text-anchor="middle" fill="#3C3489" font-size="11">Prognostic</text>
+            <text x="250" y="375" text-anchor="middle" fill="#3C3489" font-size="11">Research</text>
+            <line x1="210" y1="317" x2="210" y2="330" stroke="#7F77DD" stroke-width="1.2"/>
+            <line x1="210" y1="330" x2="250" y2="343" stroke="#7F77DD" stroke-width="1.2"/>
+            <!-- Causal children -->
+            <line x1="360" y1="256" x2="370" y2="285" stroke="#1D9E75" stroke-width="1.2"/>
+            <rect x="320" y="285" width="100" height="32" rx="4" fill="white" stroke="#1D9E75" stroke-width="1.2"/>
+            <text x="370" y="305" text-anchor="middle" fill="#085041" font-size="11">Interventional</text>
+            <text x="370" y="317" text-anchor="middle" fill="#085041" font-size="11">Research</text>
+            <line x1="390" y1="256" x2="410" y2="285" stroke="#1D9E75" stroke-width="1.2"/>
+            <rect x="360" y="343" width="100" height="32" rx="4" fill="white" stroke="#1D9E75" stroke-width="1.2"/>
+            <text x="410" y="363" text-anchor="middle" fill="#085041" font-size="11">Etiologic</text>
+            <text x="410" y="375" text-anchor="middle" fill="#085041" font-size="11">Research</text>
+            <line x1="370" y1="317" x2="370" y2="330" stroke="#1D9E75" stroke-width="1.2"/>
+            <line x1="370" y1="330" x2="410" y2="343" stroke="#1D9E75" stroke-width="1.2"/>
+          </svg>
+          <p style="font-size:10.5px;color:var(--ink3);text-align:center;margin-top:4px;font-style:italic;">Figure 1. Fundamental classification of clinical researches (Chew BH, 2019)</p>
+        </div>
+        <div>
+          <div style="background:var(--blue-l);border-radius:6px;padding:12px;margin-bottom:10px;border-left:3px solid var(--blue);">
+            <p style="font-size:11.5px;font-weight:600;color:var(--blue);margin-bottom:5px;">Other classification systems</p>
+            <p style="font-size:12px;color:var(--ink2);line-height:1.65;margin-bottom:4px;"><strong>Stokes / Chalmers:</strong> Based on axes of knowledge generation and application — pure basic research, inspired basic research, pure applied research.</p>
+            <p style="font-size:12px;color:var(--ink2);line-height:1.65;"><strong>Common labels:</strong> Basic research · Clinical research · Health Care (Services) research · Health Systems (Policy) research · Educational research</p>
+          </div>
+          <div style="background:var(--amber-l);border-radius:6px;padding:12px;border-left:3px solid var(--amber);">
+            <p style="font-size:11.5px;font-weight:600;color:var(--amber);margin-bottom:5px;">Also commonly encountered</p>
+            <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Cross-sectional · Retrospective cohort · Prospective cohort · Mixed-method · Quasi-experimental — and others. These terms describe data collection design features rather than epidemiologic categories, and are best understood within the three-design framework.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-card" style="grid-column:1/-1;border-top:3px solid var(--teal);">
+      <h3 style="color:var(--teal);">Research types — definitions and real examples</h3>
+      <p style="font-size:12px;color:var(--ink2);line-height:1.7;margin-bottom:1.25rem;">The terms below are used throughout clinical and health research. Definitions are drawn from authoritative sources — WHO, the Dictionary of Epidemiology (Porta, 2014), Grobbee &amp; Hoes, and Chew BH (2019) — and cross-referenced with the four-category clinical research framework above.</p>
+
+      <!-- ── Part A: Definitions ─────────────────────────────────────── -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:1.5rem;">
+
+        <div style="background:#f0f4fb;border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:10px 13px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;">1 · Clinical Research</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Research conducted on or with human participants (or human-derived material) to generate knowledge applicable to improving health outcomes, clinical practice, or health policy. Clinical research subsumes all four epidemiologic categories — diagnostic, prognostic, interventional, and etiologic — and encompasses both quantitative and qualitative designs.</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;font-style:italic;">Chew BH. An Illustrated Version. UPM; 2019 · WHO definition of clinical research</p>
+        </div>
+
+        <div style="background:#f0f4fb;border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:10px 13px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;">2 · Medical Research</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">A broader term that encompasses clinical research plus basic research conducted in laboratory settings (in vitro, in vivo animal studies, molecular and cell biology), with the intention of advancing medical knowledge. Not all medical research involves human participants directly — but clinical research always does. In Malaysia, the term "medical research" is used in the NMRR registration system and by the MOH MREC to mean research involving human subjects in health and medical contexts.</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;font-style:italic;">Declaration of Helsinki (2024) · Porta M. Dictionary of Epidemiology. 5th ed. Oxford; 2014</p>
+        </div>
+
+        <div style="background:#f0f4fb;border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:10px 13px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;">3 · Biomedical Research</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Research that applies the biological sciences to the understanding, prevention, diagnosis, and treatment of disease. Includes molecular biology, genomics, biochemistry, physiology, pharmacology, and related disciplines — from cell culture to first-in-human trials. Biomedical research is the broadest category; it includes all of medical research and extends to non-clinical laboratory science. In grant taxonomy (NIH, Wellcome), biomedical research encompasses basic, translational, and clinical research along the bench-to-bedside continuum.</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;font-style:italic;">NIH definition of biomedical research · Stokes DE. Pasteur's Quadrant. 1997</p>
+        </div>
+
+        <div style="background:#f5eaf2;border-left:3px solid #7b3f6e;border-radius:0 6px 6px 0;padding:10px 13px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7b3f6e;margin-bottom:4px;">4 · Qualitative Research</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Research that seeks to understand meaning, experience, context, and social processes through the collection and analysis of non-numerical data (words, images, observations). Designs include phenomenology, grounded theory, ethnography, thematic analysis, and case study. Qualitative research asks "how?" and "why?" — not "how many?" It uses purposive sampling, reaches data saturation rather than statistical power, and evaluates quality through trustworthiness criteria (Lincoln &amp; Guba, 1985) rather than validity and reliability statistics.</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;font-style:italic;">Moser A, Korstjens I. Eur J Gen Pract. 2017–2018 (series) · Lincoln YS, Guba EG. Naturalistic Inquiry. Sage; 1985</p>
+        </div>
+
+        <div style="background:#ede9fb;border-left:3px solid var(--purple);border-radius:0 6px 6px 0;padding:10px 13px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--purple);margin-bottom:4px;">5 · Quantitative Research</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Research that generates or analyses numerical data using statistical methods to measure, describe, or test relationships between variables. Includes experimental designs (RCTs) and non-experimental designs (cross-sectional, cohort, case-control, registry studies). Quantitative research asks "how much?", "how often?", and "is there an association?" It requires pre-specified hypotheses, adequate sample size (power calculation), and reports effect estimates with confidence intervals and <em>p</em>-values.</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;font-style:italic;">Grobbee DE, Hoes AW. Clinical Epidemiology. Jones &amp; Bartlett; 2009 · Chew BH. UPM; 2019</p>
+        </div>
+
+        <div style="background:#e3eef8;border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:10px 13px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;">6 · Primary Research</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Research in which the investigator collects original, first-hand data directly from participants or the environment — rather than using pre-existing datasets. Includes surveys, clinical trials, cohort studies, qualitative interviews, and observational studies. Primary research requires ethics approval for data collection, participant recruitment, and informed consent.</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;font-style:italic;">Porta M. Dictionary of Epidemiology. Oxford; 2014 · Chew BH. UPM; 2019</p>
+        </div>
+
+        <div style="background:#e3eef8;border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:10px 13px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:4px;">7 · Secondary Research</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Research that analyses pre-existing data originally collected for another purpose — including clinical records, registries (NMRR, hospital EMR), administrative databases, published studies (systematic reviews, meta-analyses), and biobanks. Secondary research typically requires ethics review but not individual participant recruitment. Advantages include large sample sizes and long follow-up; disadvantages include limited control over data quality, completeness, and variable definitions.</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;font-style:italic;">Porta M. Dictionary of Epidemiology. Oxford; 2014 · Higgins JPT et al. Cochrane Handbook. 2019</p>
+        </div>
+
+        <div style="background:#fdf8ee;border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:10px 13px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);margin-bottom:4px;">8 · Diagnostic Research</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Research that characterises a defined population at a single point in time — classifying, describing, or measuring a phenomenon cross-sectionally without requiring a comparator or gold-standard reference test. Diagnostic research uses odds ratios (ORs) as its primary measure of association. Prevalence studies (counting existing cases at a point in time) and Knowledge–Attitude–Practice (KAP) studies are sub-types of diagnostic research. <strong>Psychometric studies</strong> — validating a questionnaire or measurement instrument in a target population — also belong here, as they characterise the measurement properties of an instrument in a cross-sectional sample. <em>Note:</em> Although prevalence studies yield a prevalence proportion, they do not meet the statistical rigour required of Diagnostic Test Research (see item 9 below), which requires sensitivity, specificity, and a gold-standard comparator.</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;font-style:italic;">Grobbee DE, Hoes AW. Clinical Epidemiology. 2009 · Chew BH. UPM; 2019</p>
+        </div>
+
+        <div style="background:#fdf8ee;border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:10px 13px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);margin-bottom:4px;">9 · Diagnostic Test Research</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Research that evaluates the accuracy of a diagnostic test (index test) against a reference standard (gold standard) in a cross-sectional sample. Requires: an index test, a reference standard applied to the same participants, and calculation of sensitivity, specificity, positive predictive value (PPV), negative predictive value (NPV), and likelihood ratios. Reported using the STARD (Standards for Reporting of Diagnostic Accuracy Studies) checklist. Diagnostic test research is a specific, technically demanding sub-type of diagnostic research — it goes well beyond prevalence studies in its design requirements and statistical analysis.</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;font-style:italic;">Bossuyt PM et al. STARD 2015. BMJ. 2015;351:h5527 · Chew BH. UPM; 2019</p>
+        </div>
+
+        <div style="background:#e3f4ec;border-left:3px solid var(--green);border-radius:0 6px 6px 0;padding:10px 13px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:4px;">10 · Prognostic Research</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Research that determines the natural course, outcomes, or predictors of outcomes in people who already have a condition, exposure, or risk factor — followed forward in time. Primary measures include hazard ratios (Cox regression), incidence rates, and cumulative incidence. Cohort studies (prospective and retrospective) are the main design; incidence studies (counting new cases in a defined period) and longitudinal point-prevalence studies (repeated cross-sectional measures over time) may contribute to prognostic evidence. Prognostic models (clinical prediction rules) are evaluated using calibration and discrimination statistics (AUC, C-statistic, Brier score).</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;font-style:italic;">Grobbee DE, Hoes AW. Clinical Epidemiology. 2009 · Moons KGM et al. TRIPOD. Ann Intern Med. 2015</p>
+        </div>
+
+        <div style="background:#e3f4ec;border-left:3px solid var(--green);border-radius:0 6px 6px 0;padding:10px 13px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:4px;">11 · Intervention Research</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Research that tests the effect of an active intervention — a drug, device, behavioural programme, surgical procedure, educational intervention, or health system change — on an outcome. The randomised controlled trial (RCT) is the gold standard for intervention research because randomisation is the only design feature that controls both measured and unmeasured confounding. Includes feasibility trials, pilot RCTs, explanatory and pragmatic trials, cluster RCTs, and stepped-wedge designs. Primary measures: risk ratio (RR), risk difference (RD), number needed to treat (NNT), analysed by intention-to-treat (ITT).</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;font-style:italic;">Chew BH. UPM; 2019 · Schulz KF et al. CONSORT 2010. BMJ. 2010;340:c332</p>
+        </div>
+
+        <div style="background:#fde8e8;border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:10px 13px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:4px;">12 · Etiologic Research</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Research that investigates the causes or determinants of disease — why some people develop a condition and others do not. Etiologic research requires a temporal sequence (exposure precedes outcome), an association of sufficient strength, a dose–response relationship, and biological plausibility. Study designs that can contribute to etiologic evidence include: <strong>case-control studies</strong> (efficient for rare diseases; measure odds ratio); <strong>prospective cohort studies</strong> (strongest observational design; relative risk); <strong>retrospective cohort studies</strong> (using existing records; relative risk); and <strong>interventional studies</strong> (RCTs provide the strongest causal evidence when randomisation breaks the confounding chain). Primary measure: relative risk (RR) or hazard ratio (HR); in case-control designs, odds ratio (OR) as an approximation of RR.</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;font-style:italic;">Porta M. Dictionary of Epidemiology. Oxford; 2014 · Chew BH. UPM; 2019 · Grobbee &amp; Hoes. 2009</p>
+        </div>
+
+      </div><!-- end definitions grid -->
+
+      <!-- ── Part B: Classical examples ────────────────────────────────── -->
+      <p style="font-size:12.5px;font-weight:700;color:var(--ink);margin:1.5rem 0 0.75rem 0;padding-top:1rem;border-top:1px solid var(--rule);">Classical published examples by research type</p>
+      <p style="font-size:12px;color:var(--ink2);line-height:1.7;margin-bottom:1rem;">The following are landmark or representative studies that clearly exemplify each research type. Each is real, open-access where possible, and cited to the original publication.</p>
+
+      <div style="display:flex;flex-direction:column;gap:10px;">
+
+        <!-- Diagnostic Research -->
+        <div style="border:1px solid var(--amber-l);border-radius:6px;background:#fffbf0;padding:10px 14px;">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--amber);margin-bottom:6px;">Diagnostic Research examples</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="font-size:12px;color:var(--ink2);line-height:1.6;">
+              <strong>Psychometric validation:</strong> Chew BH et al. Validity and reliability of a Malay version of the Brief Illness Perception Questionnaire for T2DM patients. <em>BMC Med Res Methodol.</em> 2017;17:118. — Cross-sectional study validating the MBIPQ in Malaysian primary care patients (n=312); reports ICC, internal consistency, and construct validity.
+              <br><a href="https://doi.org/10.1186/s12874-017-0394-5" target="_blank" style="color:var(--blue);font-size:11px;">doi:10.1186/s12874-017-0394-5</a>
+            </div>
+            <div style="font-size:12px;color:var(--ink2);line-height:1.6;">
+              <strong>KAP study:</strong> Datiko DG, Habte D, Jerene D, Suarez P. Knowledge, attitudes, and practices related to TB among the general population of Ethiopia: findings from a national cross-sectional survey. <em>PLoS ONE.</em> 2019;14(10):e0224196. — National cross-sectional KAP survey in seven Ethiopian regions; n=3,327; characterises community awareness, stigma, health-seeking behaviour, and practice gaps regarding tuberculosis using a structured questionnaire; data inform national TB control policy.
+              <br><a href="https://doi.org/10.1371/journal.pone.0224196" target="_blank" style="color:var(--blue);font-size:11px;">doi:10.1371/journal.pone.0224196</a> · PMID: 31658300 · <em>Open access</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prevalence Studies -->
+        <div style="border:1px solid var(--amber-l);border-radius:6px;background:#fffbf0;padding:10px 14px;">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--amber);margin-bottom:6px;">Prevalence Studies examples</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="font-size:12px;color:var(--ink2);line-height:1.6;">
+              <strong>Disease burden / normal range:</strong> National Health and Morbidity Survey (NHMS) Malaysia 2019. — Cross-sectional national survey establishing the prevalence of NCDs, risk factors, and health behaviours in the Malaysian adult population; provides the national reference baseline for T2DM, hypertension, dyslipidaemia, and obesity prevalence.
+              <br><a href="https://www.iku.gov.my/nhms" target="_blank" style="color:var(--blue);font-size:11px;">iku.gov.my/nhms</a>
+            </div>
+            <div style="font-size:12px;color:var(--ink2);line-height:1.6;">
+              <strong>Population-specific reference intervals (new population setting):</strong> Ambayya A, Su AT, Osman NH et al. Haematological reference intervals in a multiethnic population. <em>PLoS ONE.</em> 2014;9(3):e91968. — Cross-sectional study of 2,725 healthy adults in Malaysia (Hospital Ampang) across all ages, both genders, and three principal races; establishes full blood count reference intervals for the Malaysian population using ICSH-standardised methods, demonstrating significant differences from non-Malaysian-derived reference values.
+              <br><a href="https://doi.org/10.1371/journal.pone.0091968" target="_blank" style="color:var(--blue);font-size:11px;">doi:10.1371/journal.pone.0091968</a> · PMID: 24642526 · <em>Open access</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagnostic Test Research -->
+        <div style="border:1px solid var(--amber-l);border-radius:6px;background:#fffbf0;padding:10px 14px;">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--amber);margin-bottom:6px;">Diagnostic Test Research examples</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="font-size:12px;color:var(--ink2);line-height:1.6;">
+              <strong>HbA1c as diagnostic test for T2DM:</strong> Shahid M, Mahar SA, Shaikh S, Zuberi SJ et al. Diagnostic accuracy of HbA1c and fasting plasma glucose for diabetes screening. <em>PLoS ONE.</em> 2020;15(11):e0242415. — Systematic review and meta-analysis (n=17 studies); index test: HbA1c ≥6.5%; reference standard: 75 g OGTT; pooled sensitivity 50% (95% CI 42–59%), specificity 97% (95% CI 95–98%), LR+ 18.3 (95% CI 11–30); demonstrates that HbA1c at standard threshold is highly specific but insufficiently sensitive as a screening test; PROSPERO CRD42018102477; QUADAS-2 quality appraisal.
+              <br><a href="https://doi.org/10.1371/journal.pone.0242415" target="_blank" style="color:var(--blue);font-size:11px;">doi:10.1371/journal.pone.0242415</a> · PMID: 33216783 · <em>Open access</em>
+            </div>
+            <div style="font-size:12px;color:var(--ink2);line-height:1.6;">
+              <strong>Landmark example:</strong> Wells PS et al. Evaluation of D-dimer in the diagnosis of suspected deep-vein thrombosis. <em>NEJM.</em> 2003;349:1227–35. — D-dimer test (index) vs venography (reference standard); computes sensitivity, specificity, LR+, LR− at different cut-points; introduced the clinical decision rule for DVT diagnosis.
+              <br><a href="https://doi.org/10.1056/NEJMoa023153" target="_blank" style="color:var(--blue);font-size:11px;">doi:10.1056/NEJMoa023153</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prognostic Research -->
+        <div style="border:1px solid var(--green-l);border-radius:6px;background:var(--green-l);padding:10px 14px;">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:6px;">Prognostic Research examples</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="font-size:12px;color:var(--ink2);line-height:1.6;">
+              <strong>Prospective cohort:</strong> UK Prospective Diabetes Study (UKPDS) Group. Intensive blood-glucose control with sulphonylureas or insulin vs conventional treatment and risk of complications in patients with type 2 diabetes (UKPDS 33). <em>Lancet.</em> 1998;352(9131):837–53. — 10-year prospective cohort of 3,867 newly diagnosed T2DM patients; reports hazard ratios for microvascular and macrovascular complications; landmark prognostic evidence.
+              <br><a href="https://doi.org/10.1016/S0140-6736(98)07019-6" target="_blank" style="color:var(--blue);font-size:11px;">doi:10.1016/S0140-6736(98)07019-6</a>
+            </div>
+            <div style="font-size:12px;color:var(--ink2);line-height:1.6;">
+              <strong>Prognostic model:</strong> Framingham Heart Study — Wilson PWF et al. Prediction of coronary heart disease using risk factor categories. <em>Circulation.</em> 1998;97:1837–47. — Developed the Framingham Risk Score; a prognostic model using age, sex, cholesterol, BP, smoking, and diabetes to predict 10-year CHD risk; evaluated using AUC/C-statistic.
+              <br><a href="https://doi.org/10.1161/01.CIR.97.18.1837" target="_blank" style="color:var(--blue);font-size:11px;">doi:10.1161/01.CIR.97.18.1837</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Intervention Research -->
+        <div style="border:1px solid var(--green-l);border-radius:6px;background:var(--green-l);padding:10px 14px;">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:6px;">Intervention Research examples</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="font-size:12px;color:var(--ink2);line-height:1.6;">
+              <strong>Landmark RCT:</strong> ISIS-2 (Second International Study of Infarct Survival) Collaborative Group. Randomised trial of intravenous streptokinase, oral aspirin, both, or neither among 17,187 cases of suspected acute myocardial infarction: ISIS-2. <em>Lancet.</em> 1988;2(8607):349–60. — 2×2 factorial placebo-controlled RCT in 417 hospitals across 16 countries; both streptokinase and aspirin each independently reduced 35-day vascular mortality by approximately 23% (each ~25 fewer deaths per 1,000 treated); together reduced mortality by ~40–50%; described as "probably the biggest single step in the advancement of managing acute myocardial infarction" (Yusuf). PMID: 2899772.
+              <br><a href="https://doi.org/10.1016/S0140-6736(88)92833-4" target="_blank" style="color:var(--blue);font-size:11px;">doi:10.1016/S0140-6736(88)92833-4</a> · PMID: 2899772
+            </div>
+            <div style="font-size:12px;color:var(--ink2);line-height:1.6;">
+              <strong>Feasibility RCT (Malaysian):</strong> Benton M, Iman I, …, Chew BH et al. MY GODDESS feasibility RCT — mobile phone app for T2DM prevention in Malaysian women with GDM. <em>Diabet Med.</em> 2026;e70257. — Two-arm parallel feasibility RCT; n=60; primary outcomes are participation and retention rates; no efficacy testing.
+              <br><a href="https://doi.org/10.1111/dme.70257" target="_blank" style="color:var(--blue);font-size:11px;">doi:10.1111/dme.70257</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Etiologic Research -->
+        <div style="border:1px solid var(--red-l);border-radius:6px;background:var(--red-l);padding:10px 14px;">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--red);margin-bottom:6px;">Etiologic Research examples</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="font-size:12px;color:var(--ink2);line-height:1.6;">
+              <strong>Classic case-control study:</strong> Doll R, Hill AB. Smoking and carcinoma of the lung: preliminary report. <em>Br Med J.</em> 1950;2(4682):739–48. — Hospital-based case-control study; 1,357 lung cancer cases matched with 1,357 controls with other diagnoses in London hospitals; computed odds of smoking in cases vs controls; dose–response relationship demonstrated (risk 25× higher in heavy smokers vs non-smokers); established smoking as a cause of lung cancer. PMC: 2038856; PMID: 14772469.
+              <br><a href="https://doi.org/10.1136/bmj.2.4682.739" target="_blank" style="color:var(--blue);font-size:11px;">doi:10.1136/bmj.2.4682.739</a> · PMID: 14772469 · <em>Open access (PMC2038856)</em>
+            </div>
+            <div style="font-size:12px;color:var(--ink2);line-height:1.6;">
+              <strong>Prospective cohort study:</strong> UKPDS Group. Intensive blood-glucose control with sulphonylureas or insulin compared with conventional treatment and risk of complications in patients with type 2 diabetes (UKPDS 33). <em>Lancet.</em> 1998;352(9131):837–53. — 10-year prospective cohort of 3,867 newly diagnosed T2DM patients; hazard ratios (Cox regression) reported for microvascular and macrovascular complications by glycaemic exposure category; dose–response between HbA1c and complications; landmark etiologic evidence for the causal role of hyperglycaemia in diabetic complications.
+              <br><a href="https://doi.org/10.1016/S0140-6736(98)07019-6" target="_blank" style="color:var(--blue);font-size:11px;">doi:10.1016/S0140-6736(98)07019-6</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end examples -->
+
+      <p style="font-size:11px;color:var(--ink3);margin-top:1rem;font-style:italic;">Sources: Grobbee DE, Hoes AW. Clinical Epidemiology: Principles, Methods and Applications. Jones &amp; Bartlett; 2009 · Porta M. A Dictionary of Epidemiology. 5th ed. Oxford; 2014 · Chew BH. An Illustrated Version: Understanding and Conducting Clinical Research. UPM; 2019. <a href="https://doi.org/10.7759/cureus.4112" target="_blank" style="color:var(--blue);">doi:10.7759/cureus.4112</a> · Declaration of Helsinki (2024). WMA · Lincoln YS, Guba EG. Naturalistic Inquiry. Sage; 1985 · Bossuyt PM et al. STARD 2015. BMJ. 2015;351:h5527 · Moons KGM et al. TRIPOD. Ann Intern Med. 2015;162:55–63 · Schulz KF et al. CONSORT 2010. BMJ. 2010;340:c332</p>
+
+    </div><!-- end research-types card -->
+
+    <div class="about-card" style="grid-column:1/-1;border-top:3px solid var(--green);">
+      <h3>Mixed methods and multimethod research — when more than one approach is used</h3>
+      <p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:.75rem;">Both mixed methods and multimethod research use more than one approach within a single project, but they differ fundamentally in <strong>when and how</strong> the approaches interact — not simply in which data types are combined.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:.75rem;">
+        <div style="background:var(--green-l);border-radius:6px;padding:12px;">
+          <p style="font-size:11.5px;font-weight:600;color:var(--green);margin-bottom:5px;">Mixed methods research (Creswell &amp; Plano Clark)</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Deliberately integrates qualitative and quantitative data — at the design, collection, analysis, or interpretation stage — so that the combined understanding exceeds what either approach alone could produce. Integration is the defining feature, not merely the co-existence of methods.</p>
+          <p style="font-size:11px;color:var(--ink3);margin-top:5px;font-style:italic;">Designs: Convergent · Explanatory sequential · Exploratory sequential · Embedded</p>
+        </div>
+        <div style="background:var(--purple-l);border-radius:6px;padding:12px;">
+          <p style="font-size:11.5px;font-weight:600;color:var(--purple);margin-bottom:5px;">Multimethod research (Morse, 2003)</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Each method is conducted as a complete, independent, standalone study. The methods do not interact during data collection or analysis — they are only brought together at the final interpretation stage. Critically, this can be <strong>intra-paradigmatic</strong> (QUAL + qual, or QUAN + quan) <em>or</em> <strong>inter-paradigmatic</strong> (QUAL + quan), as long as independence is maintained throughout. The defining criterion is methodological independence, not paradigm membership.</p>
+          <p style="font-size:11px;color:var(--ink3);margin-top:5px;font-style:italic;">Example: a standalone RCT (QUAN) + a standalone phenomenological study (QUAL) — each complete on its own; results merged only in the final discussion</p>
+        </div>
+      </div>
+      <div style="background:var(--amber-l);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:9px 13px;margin-bottom:.75rem;">
+        <p style="font-size:12px;color:var(--ink2);line-height:1.65;"><strong>The key distinction is independence, not paradigm.</strong> Mixed methods research requires active integration across the design. Multimethod research requires each component to stand alone as a publishable study — the paradigm combination (intra- or inter-) is secondary to this structural independence. A multimethod project using QUAL + quan is not "mixed methods" because the two components are never integrated during the research process itself.</p>
+      </div>
+      <p style="font-size:12px;color:var(--ink2);line-height:1.7;"><strong>Four integration strategies in mixed methods (Creswell &amp; Plano Clark, 2018):</strong> <em>Connecting</em> — one dataset guides selection of participants for the next phase; <em>Building</em> — findings from one phase develop the instrument for the next; <em>Merging</em> — quantitative and qualitative data are directly compared for triangulation; <em>Embedding</em> — both data types integrated at multiple points within the same study.</p>
+      <p style="font-size:11px;color:var(--ink3);margin-top:8px;font-style:italic;">Creswell JW, Plano Clark VL. Designing and Conducting Mixed Methods Research. 3rd ed. SAGE; 2018. ISBN 978-1-5063-3104-3 · Morse JM. Principles of mixed and multimethod research design. In: Tashakkori A, Teddlie C, eds. <em>Handbook of Mixed Methods in Social &amp; Behavioral Research.</em> SAGE; 2003. <a href="https://doi.org/10.4324/9781315424538" target="_blank" style="color:var(--blue);">doi:10.4324/9781315424538</a> · Chew BH. An Illustrated Version. UPM; 2019. Tables 2–3 · Chew BH. Proposal Manual. UPM; 2025.</p>
+    </div>
+
+
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="section impl-section">
+  <p class="section-label">Foundations</p>
+  <h2 class="section-title">Implementation research and hybrid trials</h2>
+  <p class="section-desc">Once an intervention is proven efficacious, a second and equally important question arises: <em>how do we get it into routine practice — and keep it there?</em> Implementation research addresses this question. Hybrid effectiveness-implementation trials bridge the gap between efficacy and implementation by combining both questions in a single study, accelerating the journey from evidence to practice.</p>
+
+  <div style="display:flex;flex-direction:column;gap:24px;">
+
+    <!-- Implementation Research card -->
+    <div class="about-card" style="border-top:3px solid var(--teal);">
+      <h3 style="color:var(--teal);">Implementation research — what it is and why it matters</h3>
+
+      <p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:1rem;">Implementation research is the scientific study of methods to promote the systematic uptake of research findings and other evidence-based practices into routine clinical and public health practice, to improve the quality and effectiveness of health services (Eccles &amp; Mittman, <em>Implementation Science,</em> 2006;1:1). It fills a critical gap: <strong>the knowledge-to-action gap</strong> — the well-documented failure of evidence-based interventions to reach patients at scale, often taking 17 or more years from trial evidence to routine clinical practice (Balas &amp; Boren, 2000).</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1rem;">
+
+        <div style="background:var(--teal-l);border-radius:6px;padding:12px;border-left:3px solid var(--teal);">
+          <p style="font-size:11.5px;font-weight:700;color:var(--teal);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">Definition and scope</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Implementation research asks: <em>Why</em> do evidence-based interventions fail to be adopted, delivered with fidelity, or sustained? <em>What strategies</em> overcome these barriers? <em>For whom, in which settings, and under what conditions</em> does an implementation strategy work? It is applied across health systems, community health programmes, and clinical practice — from primary care to hospital settings to public health policy.</p>
+        </div>
+
+        <div style="background:var(--teal-l);border-radius:6px;padding:12px;border-left:3px solid var(--teal);">
+          <p style="font-size:11.5px;font-weight:700;color:var(--teal);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">The Proctor implementation outcomes taxonomy</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Proctor et al. (2011) proposed eight distinct <strong>implementation outcomes</strong> that must be distinguished from clinical treatment outcomes:</p>
+          <ul style="font-size:12px;color:var(--ink2);line-height:1.8;padding-left:1.1rem;margin:4px 0;">
+            <li><strong>Acceptability</strong> — stakeholders find it agreeable</li>
+            <li><strong>Adoption</strong> — intent or decision to use it</li>
+            <li><strong>Appropriateness</strong> — perceived fit to the setting</li>
+            <li><strong>Feasibility</strong> — can be carried out in that context</li>
+            <li><strong>Fidelity</strong> — delivered as intended</li>
+            <li><strong>Penetration</strong> — reach within an eligible population</li>
+            <li><strong>Sustainability</strong> — maintained over time</li>
+            <li><strong>Implementation cost</strong> — cost of implementation activities</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p style="font-size:12.5px;font-weight:700;color:var(--ink);margin:0.5rem 0 0.4rem 0;">Key frameworks used in implementation research</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:0.75rem;">
+</div>
+        <div style="background:var(--amber-l);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:10px 16px;margin-bottom:1rem;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--amber);margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;">Implementation strategies — the 'how' of implementation</p>
+          
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.6;">A determinant framework identifying barriers and facilitators across five domains: intervention characteristics, outer setting, inner setting, characteristics of individuals, and implementation process. Used to diagnose <em>why</em> implementation succeeded or failed and to tailor strategies accordingly.</p>
+          
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:5px;">Damschroder et al. <em>Implement Sci.</em> 2009;4:50</p>
+        </div>
+
+      <div style="background:var(--amber-l);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:1rem;">
+        <p style="font-size:11.5px;font-weight:700;color:var(--amber);margin-bottom:4px;">How implementation research differs from clinical research</p>
+        <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Clinical research asks: <em>Does this intervention work?</em> (efficacy) or <em>Does it work in real-world conditions?</em> (effectiveness). Implementation research asks: <em>How do we get it into practice? With what fidelity? At what cost? Sustained by whom?</em> These are different questions requiring different outcomes (Proctor's taxonomy above), different designs (stepped-wedge, cluster RCT, hybrid trials), and different frameworks (CFIR, RE-AIM). Both are necessary — an intervention that works in a trial but fails to reach patients at scale has limited public health value.</p>
+      </div>
+
+      <p style="font-size:12.5px;font-weight:700;color:var(--ink);margin:0.5rem 0 0.4rem 0;">Published examples — implementation research studies</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="border:1px solid var(--rule);border-radius:6px;background:var(--teal-l);padding:10px 14px;">
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;"><strong>Community health worker TB implementation — Ethiopia (cluster RCT):</strong> Datiko DG, Lindtjørn B. Health extension workers improve tuberculosis case detection and treatment success in southern Ethiopia: a community randomized trial. <em>PLoS ONE.</em> 2009;4(5):e5443. — 51 kebeles (n=296,811) randomised to HEW-led TB case finding and DOTS vs control; HEW intervention doubled smear-positive case detection rates and significantly improved treatment success. A landmark LMIC implementation study demonstrating that task-shifting to community health workers scales evidence-based TB care with real-world fidelity. RE-AIM outcomes (reach, adoption) reported.</p>
+          <p style="font-size:11px;"><a href="https://doi.org/10.1371/journal.pone.0005443" target="_blank" style="color:var(--blue);">doi:10.1371/journal.pone.0005443</a> · PMID: 19424460 · Open access</p>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:6px;background:var(--teal-l);padding:10px 14px;">
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;"><strong>Task-shifting ART from doctors to nurses — STRETCH trial, South Africa (pragmatic cluster RCT):</strong> Fairall L, Bachmann MO, Lombard C et al. Task shifting of antiretroviral treatment from doctors to primary-care nurses in South Africa (STRETCH): a pragmatic, parallel, cluster-randomised trial. <em>Lancet.</em> 2012;380(9845):889–98. — 31 primary-care ART clinics randomised; nurse-initiated and managed ART (NIMART) implementation strategy using educational outreach training; primary outcomes mortality (cohort 1) and viral suppression (cohort 2). A landmark pragmatic implementation trial measuring adoption, fidelity, and patient outcomes of a task-shifting implementation strategy in a high-burden LMIC setting.</p>
+          <p style="font-size:11px;"><a href="https://doi.org/10.1016/S0140-6736(12)60730-2" target="_blank" style="color:var(--blue);">doi:10.1016/S0140-6736(12)60730-2</a> · PMID: 22901955 · PMC free article</p>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:6px;background:var(--teal-l);padding:10px 14px;">
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;"><strong>NCD nurse-led care implementation — PC101, South Africa (pragmatic cluster RCT):</strong> Fairall LR, Folb N, Timmerman V et al. Educational outreach with an integrated clinical tool for nurse-led non-communicable chronic disease management in primary care in South Africa. <em>PLoS Med.</em> 2016;13(11):e1002178. — Cluster RCT of PC101 educational outreach implementation strategy across 34 clinics; outcomes included RE-AIM dimensions (reach to patients with hypertension, diabetes, asthma, COPD, mental health); implementation fidelity measured by clinical records audit. Illustrates a full RE-AIM evaluation within a complex multi-disease implementation study.</p>
+          <p style="font-size:11px;"><a href="https://doi.org/10.1371/journal.pmed.1002178" target="_blank" style="color:var(--blue);">doi:10.1371/journal.pmed.1002178</a> · PMID: 27875528 · Open access</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hybrid Trials card -->
+    <div class="about-card" style="border-top:3px solid var(--blue);">
+      <h3 style="color:var(--blue);">Effectiveness-implementation hybrid trials — bridging the evidence-to-practice gap</h3>
+
+      <p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:1rem;">A hybrid effectiveness-implementation trial takes a <strong>dual focus a priori</strong> — combining a question about clinical effectiveness with a question about how to implement the intervention. The approach was codified by Curran et al. (2012), whose typology has since been cited over 2,000 times and is now explicitly required by NIH, PCORI, and many international funders. <em>As of 2012, it was proposed that "in the future, all good trials will be hybrid in some way."</em></p>
+
+      <p style="font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:8px;">The three hybrid types (Curran et al. 2012)</p>
+      <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:1rem;">
+        <thead>
+          <tr style="background:var(--blue-l);">
+            <th style="padding:8px 10px;text-align:left;border-bottom:2px solid var(--blue);color:var(--blue);font-size:11.5px;">Type</th>
+            <th style="padding:8px 10px;text-align:left;border-bottom:2px solid var(--blue);color:var(--blue);font-size:11.5px;">Primary focus</th>
+            <th style="padding:8px 10px;text-align:left;border-bottom:2px solid var(--blue);color:var(--blue);font-size:11.5px;">Secondary focus</th>
+            <th style="padding:8px 10px;text-align:left;border-bottom:2px solid var(--blue);color:var(--blue);font-size:11.5px;">Use when</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--rule);">
+            <td style="padding:8px 10px;font-weight:700;color:var(--blue);">Type 1</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Testing clinical effectiveness of an intervention (primary)</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Observing implementability — barriers, facilitators, context (secondary)</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Intervention has limited direct effectiveness evidence; understanding real-world feasibility is needed for future implementation</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--rule);background:var(--cream);">
+            <td style="padding:8px 10px;font-weight:700;color:var(--blue);">Type 2</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Dual co-primary focus: clinical effectiveness AND implementation outcomes</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Testing implementation strategy simultaneously with effectiveness trial</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Intervention has indirect effectiveness evidence; implementation strategy needs piloting alongside clinical testing</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 10px;font-weight:700;color:var(--blue);">Type 3</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Testing an implementation strategy — adoption, fidelity, penetration, sustainability (primary)</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Gathering effectiveness data on the clinical intervention (secondary)</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Intervention is proven effective but remains underused; need to find the best strategy to scale it up</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="background:var(--blue-l);border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:1rem;">
+        <p style="font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:4px;">Why hybrid trials matter for clinical researchers</p>
+        <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Traditional clinical trials test efficacy or effectiveness in controlled or semi-controlled settings — they answer "does it work?" but not "will clinicians use it, at what cost, and for how long?" Hybrid trials simultaneously generate both types of knowledge, producing more rapid translational gains, more effective implementation strategies, and more useful information for health system decision-makers. For grant applicants: NIH has explicitly directed hybrid proposals to specific review panels and actively funds all three types under multiple mechanisms.</p>
+      </div>
+
+      <p style="font-size:12.5px;font-weight:700;color:var(--ink);margin:0.5rem 0 0.4rem 0;">Published examples — hybrid effectiveness-implementation studies</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="border:1px solid var(--rule);border-radius:6px;background:var(--blue-l);padding:10px 14px;">
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;"><strong>Type 2 hybrid — brief CBT in primary care for depression/anxiety (RCT + implementation strategy):</strong> Cully JA, Armento MEA, Mott J et al. Brief cognitive behavioral therapy in primary care: a hybrid type 2 patient-randomized effectiveness-implementation design. <em>Implement Sci.</em> 2012;7:64. — Multisite RCT (bCBT vs usual care) in medically ill veterans with comorbid depression/anxiety at VA primary care clinics; co-primary aims tested both clinical effectiveness (PHQ-9, anxiety scores) and acceptability/feasibility of a multifaceted implementation strategy (online training, fidelity auditing with feedback, internal/external facilitation). One of the most widely cited published examples of a Type 2 hybrid trial.</p>
+          <p style="font-size:11px;"><a href="https://doi.org/10.1186/1748-5908-7-64" target="_blank" style="color:var(--blue);">doi:10.1186/1748-5908-7-64</a> · PMID: 22784436 · PMC3503767 · Open access</p>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:6px;background:var(--blue-l);padding:10px 14px;">
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;"><strong>Type 1 hybrid — STRETCH task-shifting trial with implementation process evaluation:</strong> Georgeu D, Colvin CJ, Lewin S et al. Implementing nurse-initiated and managed antiretroviral treatment (NIMART) in South Africa: a qualitative process evaluation of the STRETCH trial. <em>Implement Sci.</em> 2012;7:66. — Concurrent qualitative process evaluation embedded within the STRETCH cluster RCT (Fairall 2012, <em>Lancet</em>); assessed barriers and facilitators to implementation of NIMART using thematic analysis of staff interviews; maps findings to implementation determinants to inform future scale-up — a textbook Type 1 hybrid process evaluation alongside a clinical effectiveness trial.</p>
+          <p style="font-size:11px;"><a href="https://doi.org/10.1186/1748-5908-7-66" target="_blank" style="color:var(--blue);">doi:10.1186/1748-5908-7-66</a> · PMID: 22839714 · PMC3502162 · Open access</p>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:6px;background:var(--blue-l);padding:10px 14px;">
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;"><strong>Type 2 hybrid — Collaborative Behavioral Health Program for depression in primary care (randomized roll-out):</strong> Smith JD et al. Collaborative care for depression management in primary care: a randomized roll-out trial using a type 2 hybrid effectiveness-implementation design. <em>Contemp Clin Trials.</em> 2021;108:106503. — Stepped-wedge randomised roll-out of a collaborative care depression programme across 11 Northwestern Medicine primary care practices; co-primary aims: (1) progressive improvement in CBHP implementation speed/quantity; (2) effectiveness on depression symptoms; mixed-methods process evaluation using PHQ-9 screening rates, staff interviews, and stakeholder surveys. Exemplifies use of a stepped-wedge design within a Type 2 hybrid framework.</p>
+          <p style="font-size:11px;"><a href="https://doi.org/10.1016/j.cct.2021.106503" target="_blank" style="color:var(--blue);">doi:10.1016/j.cct.2021.106503</a> · PMID: 34314840 · PMC8350002 · Open access</p>
+        </div>
+      </div>
+
+      <p style="font-size:11px;color:var(--ink3);margin-top:1rem;font-style:italic;">Key resources: WHO TDR Implementation Research Training Materials — <a href="https://tdr.who.int/home/our-work/strengthening-research-capacity/implementation-research-training-materials" target="_blank" style="color:var(--blue);">tdr.who.int</a> · RE-AIM Framework — <a href="https://re-aim.org/learn/" target="_blank" style="color:var(--blue);">re-aim.org/learn</a> · CFIR 2.0 — <a href="https://cfirguide.org" target="_blank" style="color:var(--blue);">cfirguide.org</a> · Implementation Science journal — <a href="https://implementationscience.biomedcentral.com" target="_blank" style="color:var(--blue);">implementationscience.biomedcentral.com</a></p>
+    </div>
+
+  </div>
+</section>
+
+
+
+</section>
+
+
+<hr class="rule">
+
+<section class="section" id="ai-fluency">
+  <div style="max-width:960px;margin:0 auto;">
+    <p class="section-label">AI Fluency Framework</p>
+    <h2 class="section-title">Understanding AI for research — what you need to know</h2>
+    <p class="section-desc">AI is already transforming how research is conducted, written, and published. You do not need to be a computer scientist to use it effectively — but you do need to understand what AI actually is, what it reliably does, and where its limits lie. This section builds the mental model that prepares you to work confidently and responsibly with AI throughout both parts of this module.</p>
+
+    <!-- WHAT IS AN LLM -->
+    <div class="about-card" style="margin-bottom:1.5rem;border-top:3px solid var(--teal);">
+      <h3>What is AI? What is an LLM?</h3>
+      <p style="font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:.8rem;">
+        <strong>Artificial intelligence (AI)</strong> is the field of computer science concerned with building systems that perform tasks that would normally require human intelligence — understanding language, recognising patterns, making decisions, generating content. Modern AI is not programmed with rules: it <em>learns</em> patterns from large amounts of data.
+      </p>
+      <p style="font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:.8rem;">
+        A <strong>Large Language Model (LLM)</strong> is the specific type of AI that powers tools like ChatGPT, Claude, and Gemini. LLMs are trained on vast amounts of text — books, websites, research papers, code — and learn to predict the most statistically likely continuation of any given input. They are extraordinarily good at generating fluent, relevant, contextually appropriate text. They do <em>not</em> "look things up" in real time (unless connected to a search tool), do not "know" facts the way humans do, and can generate confident-sounding text that is factually wrong — a phenomenon called <strong>hallucination</strong>.
+      </p>
+      <p style="font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:.8rem;">
+        Five properties that shape how you use every LLM: (1) <strong>Context window</strong> — the LLM only "sees" what you put in your current conversation; it has no memory of past sessions unless you re-paste context. (2) <strong>Probabilistic output</strong> — two identical prompts can produce different outputs; there is no single "correct" answer. (3) <strong>No real-time knowledge</strong> — the model was trained up to a cutoff date; recent events, new guidelines, or updated statistics require web search tools. (4) <strong>No intrinsic accuracy</strong> — fluency is not reliability; always verify numbers, citations, and clinical claims. (5) <strong>Steerability</strong> — you control quality through prompt design; short, concrete, verifiable instructions produce more reliable outputs than long, abstract ones.
+      </p>
+    </div>
+
+    <!-- GENERAL VS SPECIALISED TOOLS -->
+    <div class="about-card" style="margin-bottom:1.5rem;border-top:3px solid var(--purple);">
+      <h3>General-purpose vs specialised AI tools for research</h3>
+      <p style="font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:.75rem;">Not all AI tools are the same. Understanding the difference prevents both under-use and misuse.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:.5rem;">
+        <div style="background:var(--cream2);border-radius:6px;padding:12px 14px;">
+          <p style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">General-purpose LLMs</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;margin:0;"><strong>ChatGPT, Claude, Gemini, DeepSeek.</strong> Broad capability across any domain. Best for: drafting, editing, code generation, prompt-based analysis, synthesis, and writing assistance. Require strong prompting and output verification. Knowledge cutoff applies — no automatic access to new literature.</p>
+        </div>
+        <div style="background:var(--cream2);border-radius:6px;padding:12px 14px;">
+          <p style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:4px;">Specialised research tools</p>
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;margin:0;"><strong>Elicit, Consensus, Perplexity, scite.ai, NotebookLM.</strong> Purpose-built for specific research tasks — literature search, evidence synthesis, citation verification. Retrieve from live databases. Reduce hallucination risk for factual retrieval. Trade breadth for reliability in their domain.</p>
+        </div>
+      </div>
+      <p style="font-size:11.5px;color:var(--ink3);line-height:1.65;margin-top:10px;">Use specialised tools for literature retrieval and citation verification; use general LLMs for drafting, synthesis, and writing. The two complement each other — neither replaces the other.</p>
+    </div>
+
+    <!-- AI AGENTS -->
+    <div class="about-card" style="margin-bottom:1.5rem;border-top:3px solid var(--blue);">
+      <h3>AI agents — what they are and why they matter for research</h3>
+      <p style="font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:.75rem;">
+        Beyond single-turn conversations, <strong>AI agents</strong> are systems where an LLM orchestrates sequences of actions — searching databases, running code, evaluating outputs, and iterating — to complete complex multi-step tasks with minimal human intervention. In March 2026, <em>The AI Scientist</em> (Lu et al., <em>Nature</em> 651:914–919) became the first agentic system to automate the full ML research cycle from idea generation through experiment, analysis, manuscript writing, and automated peer review, with a paper passing the first round of workshop review at a top-tier conference.
+      </p>
+      <p style="font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:.75rem;">
+        <strong>For health sciences researchers, three constraints mean end-to-end agentic automation does not currently apply:</strong> (1) human participants requiring ethics approval and informed consent; (2) patient data governed by privacy law and institutional governance; and (3) interpretive accountability — clinical decisions must be made by qualified professionals who can be held responsible. Agents can accelerate components (literature search, analysis coding, draft writing), but the researcher remains legally and ethically responsible for all outputs.
+      </p>
+      <p style="font-size:12.5px;color:var(--ink2);line-height:1.75;">
+        Meanwhile, even as AI accelerates the generation of findings, the academic publishing system remains a significant bottleneck — peer review taking 12–18 months, article processing charges of USD 5,000–11,000, and a reproducibility crisis where an estimated 50–90% of published findings may not replicate (Chew, <em>JMIR</em> 2026). AI tools solve the production problem, not the validation and trust problem.
+      </p>
+    </div>
+
+    
+  </div>
+</section>
+
+
+<div class="book-quote">
+  <div class="book-quote-inner">
+    <blockquote>"Having grasped the knowledge delineated in this book could avoid wasting in clinical research and contribute to the body of knowledge with less false but accurate evidence."</blockquote>
+    <cite>— Chew BH. An Illustrated Version: Understanding and Conducting Clinical Research. UPM; 2019.</cite>
+    <br><br>
+    <blockquote style="font-size:.95rem;">"Hierarchies of evidence should be replaced by accepting — indeed embracing — a diversity of approaches… the interpretation of evidence requires judgment."</blockquote>
+    <cite>— Sir Michael Rawlins, former Chairman NICE, as cited in Chew BH, 2019.</cite>
+  </div>
+</div>
+
+<hr class="rule">
+
+<section class="section-sm">
+  <div style="max-width:960px;margin:0 auto;">
+    <p class="section-label">Non-negotiable principles</p>
+    <h2 class="section-title" style="font-size:1.3rem;margin-bottom:.75rem;">Research ethics &amp; AI transparency</h2>
+    <p style="font-size:13px;color:var(--ink2);margin-bottom:1.25rem;">These apply throughout both parts. Based on the Declaration of Helsinki, ICMJE guidelines, and the Diligence competency of the AI Fluency Framework.</p>
+    <div class="checklist">
+      <span class="check-item"><span class="check-dot" style="background:var(--red)"></span>AI cannot be listed as an author (ICMJE)</span>
+      <span class="check-item"><span class="check-dot" style="background:var(--red)"></span>Verify every AI-generated citation manually</span>
+      <span class="check-item"><span class="check-dot" style="background:var(--red)"></span>Never input identifiable patient/animal data into public AI tools</span>
+      <span class="check-item"><span class="check-dot" style="background:var(--amber)"></span>Disclose AI use specifically — name tool and task</span>
+      <span class="check-item"><span class="check-dot" style="background:var(--amber)"></span>Verify all AI-generated sample sizes in G*Power or OpenEpi</span>
+      <span class="check-item"><span class="check-dot" style="background:var(--amber)"></span>Pre-specify all primary analyses to prevent <em>p</em>-hacking</span>
+      <span class="check-item"><span class="check-dot" style="background:var(--green)"></span>Research proposal must be reviewed by an independent ethics committee before proceeding</span>
+      <span class="check-item"><span class="check-dot" style="background:var(--green)"></span>Topics must have justifiable scientific merit and clinical equipoise</span>
+    </div>
+
+    <!-- Researcher training and team set-up — new cards -->
+    <div style="display:flex;flex-direction:column;gap:20px;margin-top:1.5rem;">
+
+      <!-- Card 1: Researcher training & GCP -->
+      <div style="border-radius:8px;border:1px solid var(--rule);background:white;padding:1.25rem;border-top:3px solid var(--red);">
+        <h3 style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:0.6rem;">Researcher training &amp; preparedness — a non-negotiable prerequisite</h3>
+        <p style="font-size:12.5px;color:var(--ink2);line-height:1.7;margin-bottom:0.75rem;">No researcher should embark on clinical research without adequate training. Under the <strong>Malaysian Guideline for Good Clinical Practice (GCP), Fifth Edition 2026</strong> (ICH E6(R3), MOH/S/ICR/74.26(GU)-e), Section 2.1 mandates that every investigator must have sufficient education, training, and experience to assume responsibility for the proper conduct of a clinical trial. A qualified physician or appropriately qualified healthcare professional must have overall medical responsibility for the trial. The GCP Fifth Edition — adapted from the 2025 ICH E6(R3) update — additionally emphasises a quality culture, proactive risk-based design, and competency with electronic and digital data systems.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0.75rem;">
+          <div style="background:#fff5f5;border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:10px 12px;">
+            <p style="font-size:11.5px;font-weight:700;color:var(--red);margin-bottom:4px;">GCP certification — mandatory for clinical trialists; strongly recommended for all clinical researchers</p>
+            <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;">All principal investigators and sub-investigators involved in <strong>clinical trials</strong> (interventional studies with an investigational product) conducted in Malaysia are required to hold a current <strong>GCP certificate</strong>. The certificate is awarded upon completing a course accredited by the National Committee for Clinical Research (NCCR) / Institute for Clinical Research (ICR), Ministry of Health Malaysia. As of the Fifth Edition 2026, over 30,000 individuals in Malaysia have obtained GCP certification. Certificates must be renewed periodically (typically every 2–3 years) and must be available in the trial master file.</p>
+            <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;margin-top:6px;"><strong>Important note:</strong> GCP certification is <em>not</em> a regulatory requirement for clinical researchers conducting observational, survey-based, qualitative, or secondary-data studies that do not involve an investigational product. However, the principles of GCP — ethical conduct, data integrity, participant protection, and documentation standards — remain fully applicable to all clinical research, regardless of design. Researchers conducting non-interventional clinical research are strongly encouraged to obtain GCP certification as a mark of professional preparedness.</p>
+            <p style="font-size:10.5px;color:var(--ink3);margin-top:6px;">Source: Malaysian Guideline for GCP, 5th Ed. 2026, §2.1; Guideline Scope (p. 2); ICR — <a href="https://icr.nih.gov.my" target="_blank" style="color:var(--blue);">icr.nih.gov.my</a></p>
+          </div>
+          <div style="background:#fff5f5;border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:10px 12px;">
+            <p style="font-size:11.5px;font-weight:700;color:var(--red);margin-bottom:4px;">NMRR registration — required before recruitment begins</p>
+            <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;">Every clinical study involving human participants in Malaysia must be registered with the <strong>National Medical Research Register (NMRR)</strong> before any recruitment commences. Prospective registration is required for ethics approval applications to MREC (MOH), JKEUPM, or other institutional ethics committees. NMRR registration documents the protocol, PI credentials, and confirms ethical oversight — it cannot be backdated after data collection begins.</p>
+            <p style="font-size:10.5px;color:var(--ink3);margin-top:6px;"><a href="https://www.nmrr.gov.my" target="_blank" style="color:var(--blue);">nmrr.gov.my</a></p>
+          </div>
+        </div>
+
+        <div style="background:#fff5f5;border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:0.75rem;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--red);margin-bottom:6px;">Methodology training — required for <em>all</em> clinical researchers, regardless of study design</p>
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;margin-bottom:8px;">Whether or not GCP certification applies, every clinical researcher must be adequately trained in the specific methodology they intend to use <em>before</em> data collection begins. There is no substitute for formal training in the methods underpinning your research design. Ad hoc learning during a live study is a protocol deviation, an ethics concern, and a source of preventable bias. Training should be documented and, where possible, credentialled.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="background:white;border-radius:6px;padding:9px 11px;border:1px solid var(--rule);">
+              <p style="font-size:11px;font-weight:700;color:var(--ink);margin-bottom:4px;">For quantitative &amp; clinical trial researchers</p>
+              <ul style="font-size:11px;color:var(--ink2);line-height:1.75;padding-left:1rem;margin:0;">
+                <li>GCP course (NCCR/ICR — mandatory for clinical trials)</li>
+                <li>Clinical epidemiology and biostatistics workshop</li>
+                <li>Sample size calculation and power analysis training</li>
+                <li>Research design and protocol development course</li>
+                <li>Systematic review and meta-analysis methodology (if applicable)</li>
+                <li>Data management and FAIR principles workshop</li>
+                <li>CONSORT / STROBE / PRISMA reporting standards</li>
+              </ul>
+            </div>
+            <div style="background:white;border-radius:6px;padding:9px 11px;border:1px solid var(--rule);">
+              <p style="font-size:11px;font-weight:700;color:var(--ink);margin-bottom:4px;">For qualitative &amp; mixed-methods researchers <span style="color:var(--red);font-style:italic;">(special attention required)</span></p>
+              <ul style="font-size:11px;color:var(--ink2);line-height:1.75;padding-left:1rem;margin:0;">
+                <li>Formal qualitative methodology training (e.g., grounded theory, thematic analysis, IPA, phenomenology, ethnography) — <em>approach-specific</em></li>
+                <li>Purposive and theoretical sampling principles</li>
+                <li>Interview and focus group facilitation skills workshop</li>
+                <li>Qualitative data analysis software training (NVivo, Atlas.ti, MAXQDA)</li>
+                <li>Reflexivity and positionality in qualitative inquiry</li>
+                <li>Rigour and trustworthiness criteria (Lincoln &amp; Guba framework)</li>
+                <li>COREQ / SRQR / ENTREQ reporting standards for qualitative research</li>
+              </ul>
+            </div>
+          </div>
+          <div style="background:#ffe8e8;border-radius:6px;padding:8px 11px;margin-top:8px;">
+            <p style="font-size:11px;color:var(--ink2);line-height:1.65;"><strong style="color:var(--red);">Qualitative researchers require particular attention.</strong> Qualitative methodology is frequently misunderstood as requiring less formal preparation than quantitative work. This is incorrect. Qualitative research demands a different — and equally rigorous — skillset: epistemological literacy, reflexive awareness, method-appropriate sampling, and approach-specific analysis techniques. A researcher trained only in quantitative methods should not conduct qualitative interviews and analysis without dedicated qualitative methodology training first. Many qualitative research errors (e.g., applying thematic analysis to data collected for grounded theory; misrepresenting saturation; inadequate reflexivity statements) arise directly from inadequate pre-study preparation.</p>
+          </div>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:6px;">See also: Part 1B — Qualitative Proposal · Part 2B — Qualitative Data to Publication</p>
+        </div>
+
+        <div style="background:#fff5f5;border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:0.75rem;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--red);margin-bottom:4px;">Core competencies required before starting clinical research (GCP §2.1 &amp; ICH E8(R1))</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;">
+            <div style="font-size:11.5px;color:var(--ink2);line-height:1.7;">
+              <div>✦ GCP certification (mandatory for clinical trialists; recommended for all)</div>
+              <div>✦ Understanding of the Declaration of Helsinki</div>
+              <div>✦ Knowledge of applicable regulatory requirements (NMRR, MREC, NPRA)</div>
+              <div>✦ Protocol training and protocol compliance</div>
+              <div>✦ Informed consent procedures and documentation</div>
+            </div>
+            <div style="font-size:11.5px;color:var(--ink2);line-height:1.7;">
+              <div>✦ Human participant protection and safety reporting</div>
+              <div>✦ Research data management and source documentation</div>
+              <div>✦ Statistical literacy and analysis plan understanding</div>
+              <div>✦ AI tool use and disclosure literacy</div>
+              <div>✦ Research integrity and conflict-of-interest awareness</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--amber-l);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;">
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;"><strong>AI literacy is now also a required preparedness domain.</strong> Elsevier's 2025 <em>Researcher of the Future</em> report (n=3,200+ researchers, 113 countries) found that while 58% of researchers now use AI tools in their work, only <strong>27% believe they have adequate training in using AI</strong> and just <strong>32% say their institution provides good AI governance</strong>. This gap makes AI literacy — including when and how to use AI tools, how to verify outputs, and how to disclose use — an essential pre-research competency alongside GCP and ethics training.</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:4px;">Elsevier, <em>Researcher of the Future</em>. Confidence in Research Report, 2025 — <a href="https://www.elsevier.com/insights/confidence-in-research/researcher-of-the-future" target="_blank" style="color:var(--blue);">elsevier.com</a></p>
+        </div>
+      </div>
+
+      <!-- Card 2: Research team set-up -->
+      <div style="border-radius:8px;border:1px solid var(--rule);background:white;padding:1.25rem;border-top:3px solid var(--blue);">
+        <h3 style="font-size:14px;font-weight:700;color:var(--blue);margin-bottom:0.6rem;">Research project team set-up — expertise, roles, and accountability</h3>
+        <p style="font-size:12.5px;color:var(--ink2);line-height:1.7;margin-bottom:0.75rem;">The research team is not assembled after the project begins — it is constituted as part of study design, before ethics submission. GCP §2.2 specifies that the investigator must have adequate resources, including sufficient number of <em>qualified staff</em> and adequate facilities for the foreseen duration of the trial. GCP §3.7 further requires sponsors to select investigators who are qualified by training, experience, and resources to conduct the trial. A well-structured research team ensures methodological rigour, ethical accountability, participant safety, and sustainable research output.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0.75rem;">
+          <div style="background:var(--blue-l);border-radius:6px;padding:10px 12px;">
+            <p style="font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:5px;">Essential team roles and required expertise</p>
+            <ul style="font-size:11.5px;color:var(--ink2);line-height:1.75;padding-left:1rem;margin:0;">
+              <li><strong>Principal Investigator (PI)</strong> — Qualified physician or senior researcher; overall responsibility for protocol, safety, and ethics compliance; GCP-certified</li>
+              <li><strong>Sub-investigators / Co-investigators</strong> — Clinical or methodological expertise relevant to study design; GCP-certified and listed in trial master file</li>
+              <li><strong>Biostatistician</strong> — Involved from sample size calculation through analysis plan and final statistical report; co-authorship commensurate with contribution</li>
+              <li><strong>Clinical Research Coordinator (CRC)</strong> — Day-to-day trial management, data collection, participant follow-up; GCP-trained</li>
+              <li><strong>Data manager</strong> — Ensures data integrity, FAIR compliance, audit trail maintenance</li>
+            </ul>
+          </div>
+          <div style="background:var(--blue-l);border-radius:6px;padding:10px 12px;">
+            <p style="font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:5px;">What GCP requires of team composition</p>
+            <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;margin-bottom:6px;">GCP §2.2 (Resources) states the investigator must demonstrate that: <em>adequate numbers of qualified staff are available; staff are trained in the protocol and GCP; and facilities for the expected duration of the trial are adequate.</em> GCP §3.7 (Investigator selection) requires the sponsor to document that investigators have qualifications, time, and resources to conduct the trial before it begins.</p>
+            <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;">The team composition must be declared in the ethics application, with CVs and GCP certificates of the PI and sub-investigators as mandatory attachments. Any change in key personnel during the trial must be communicated to the ethics committee.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--blue-l);border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:0.75rem;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:4px;">Building an effective research team — evidence-based principles (Nature, 2022)</p>
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;">Pedersen CL (<em>Nature</em> Career Column, 2022) identifies that the most productive scientific collaborations rest on two orthogonal dimensions: <strong>competence alignment</strong> (does each collaborator bring expertise the team lacks?) and <strong>motivational alignment</strong> (do all members share the same goals and commitment levels?). Teams with high competence but low motivational alignment produce "misaligned partners"; high motivation but low competence yields "enthusiastic novices." The optimal team brings together complementary methodological expertise with aligned scientific motivation — a direct parallel to GCP's requirement for both qualification and adequate time commitment from each team member.</p>
+          <p style="font-size:10.5px;color:var(--ink3);margin-top:4px;">Pedersen CL. How to pick a great scientific collaborator. <em>Nature.</em> 2022. doi:10.1038/d41586-022-01323-9</p>
+        </div>
+
+        <div style="background:var(--green-l);border-left:3px solid var(--green);border-radius:0 6px 6px 0;padding:8px 12px;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--green);margin-bottom:3px;">Pre-submission checklist — team readiness</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:11.5px;color:var(--ink2);line-height:1.7;">
+            <div>
+              <div>✅ PI holds current GCP certificate</div>
+              <div>✅ All sub-investigators GCP-certified and named in ethics application</div>
+              <div>✅ Biostatistician consulted and named in the protocol</div>
+              <div>✅ CRC identified and trained in study procedures</div>
+            </div>
+            <div>
+              <div>✅ NMRR registration completed before recruitment</div>
+              <div>✅ Ethics committee approval obtained (MREC, JKEUPM, or equivalent)</div>
+              <div>✅ Team AI literacy assessed; institutional AI governance policy reviewed</div>
+              <div>✅ Conflict-of-interest declarations completed by all team members</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end new cards -->
+
+    <p style="font-size:11px;color:var(--ink3);margin-top:1rem;font-style:italic;">Sources: Malaysian Guideline for GCP, 5th Ed. 2026 (MOH/S/ICR/74.26(GU)-e; ICH E6(R3)) — <a href="https://icr.nih.gov.my" target="_blank" style="color:var(--blue);">icr.nih.gov.my</a> · Elsevier, <em>Researcher of the Future</em> (Confidence in Research Report 2025) — <a href="https://www.elsevier.com/insights/confidence-in-research/researcher-of-the-future" target="_blank" style="color:var(--blue);">elsevier.com</a> · Pedersen CL. <em>Nature.</em> 2022. doi:10.1038/d41586-022-01323-9 · Declaration of Helsinki 2024 · ICMJE Recommendations</p>
+<div style="background:var(--ink);border-radius:6px;padding:8px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:0.75rem;"><span style="font-size:10.5px;font-weight:700;color:var(--green-m);text-transform:uppercase;letter-spacing:.06em;">Related on this page:</span><a href="#research-integrity" style="font-size:11.5px;color:rgba(232,230,224,0.85);text-decoration:none;background:rgba(255,255,255,0.09);padding:3px 10px;border-radius:12px;">↓ Research integrity — FFP &amp; QRP definitions</a></div>
+
+
+  </div>
+</section>
+
+
+
+<hr class="rule">
+
+<hr class="rule">
+
+<section class="section-sm" id="research-integrity">
+  <div style="max-width:960px;margin:0 auto;">
+    <p class="section-label">Non-negotiable principles</p>
+    <h2 class="section-title" style="font-size:1.3rem;margin-bottom:.75rem;">Research integrity</h2>
+    <p style="font-size:13px;color:var(--ink2);line-height:1.75;margin-bottom:1.25rem;">Research integrity is the foundation on which all scientific knowledge rests. Without it, data cannot be trusted, findings cannot be replicated, and clinical decisions cannot be safely grounded in evidence. It is defined as adherence to professional values, standards, and practices of the research community — honesty, rigour, transparency, and accountability — in the design, conduct, analysis, and reporting of research. Integrity is not simply the absence of misconduct; it is an active, ongoing commitment to the trustworthiness of research at every stage of the research cycle.</p>
+
+    <!-- Card 1: Research Misconduct — FFP -->
+    <div style="border-radius:8px;border:1px solid var(--rule);background:white;padding:1.25rem;border-top:3px solid var(--red);margin-bottom:1.25rem;">
+      <h3 style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:0.5rem;">Research misconduct — fabrication, falsification, and plagiarism (FFP)</h3>
+      <p style="font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:0.75rem;">The Office of Science and Technology Policy (OSTP) and the US Office of Research Integrity (ORI) define <strong>research misconduct</strong> as <em>"fabrication, falsification, or plagiarism in proposing, performing, or reviewing research, or in reporting research results."</em> These three acts — commonly referred to as <strong>FFP</strong> — represent the most serious violations of research integrity. To be classified as research misconduct under federal policy, actions must represent a <em>significant departure from accepted practices</em>, have been committed intentionally, knowingly, or recklessly, and be proven by a preponderance of evidence.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:0.75rem;">
+        <div style="background:#fff5f5;border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:9px 12px;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--red);margin-bottom:3px;">Fabrication</p>
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;">Making up data, results, or findings and recording or reporting them as if they were real. Includes inventing participant responses, laboratory measurements, or clinical outcomes that were never collected.</p>
+        </div>
+        <div style="background:#fff5f5;border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:9px 12px;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--red);margin-bottom:3px;">Falsification</p>
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;">Manipulating research materials, equipment, or processes, or changing or omitting data or results such that the research is not accurately represented. Includes selectively deleting inconvenient data points without justification.</p>
+        </div>
+        <div style="background:#fff5f5;border-left:3px solid var(--red);border-radius:0 6px 6px 0;padding:9px 12px;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--red);margin-bottom:3px;">Plagiarism</p>
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;">The appropriation of another person's ideas, processes, results, or words without giving appropriate credit. Includes copying text, figures, or data from published or unpublished work — including self-plagiarism of one's own previously published work.</p>
+        </div>
+      </div>
+      <div style="background:#fff5f5;border-radius:6px;padding:8px 12px;font-size:11.5px;color:var(--ink2);line-height:1.65;">
+        <strong style="color:var(--red);">Consequences of research misconduct</strong> — FFP is not merely a professional failing. It constitutes a fundamental breach of the social contract between science and society. Researchers found guilty of FFP may face retraction of published work, loss of funding, institutional sanctions, professional debarment, and in severe cases criminal liability. Every fabricated result that enters the literature can inform — and potentially harm — clinical practice until it is detected and retracted. The average time from publication to retraction is over four years.
+      </div>
+      <p style="font-size:10.5px;color:var(--ink3);margin-top:8px;">Source: OSTP Federal Policy on Research Misconduct, December 2000 · ORI — Office of Research Integrity, US DHHS — <a href="https://ori.hhs.gov" target="_blank" style="color:var(--blue);">ori.hhs.gov</a> · NSF Responsible and Ethical Conduct of Research — <a href="https://www.nsf.gov/policies/responsible-research-conduct" target="_blank" style="color:var(--blue);">nsf.gov</a></p>
+    
+<div style="background:var(--ink);border-radius:0 0 8px 8px;padding:8px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:0;"><span style="font-size:10.5px;font-weight:700;color:var(--green-m);text-transform:uppercase;letter-spacing:.06em;">See also:</span>↗ Part 1A — Research ethics↗ Part 2A — Integrity gate↗ Part 2B — Qualitative integrity gate</div>
+</div>
+
+    <!-- Card 2: QRPs spectrum (Kolstoe/UKRIO 2023) -->
+    <div style="border-radius:8px;border:1px solid var(--rule);background:white;padding:1.25rem;border-top:3px solid var(--amber);margin-bottom:1.25rem;">
+      <h3 style="font-size:14px;font-weight:700;color:#b45000;margin-bottom:0.5rem;">Questionable research practices (QRPs) — the broader spectrum</h3>
+      <p style="font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:0.75rem;">Research misconduct (FFP) represents only the most severe end of a far broader range of problematic behaviours. The <strong>UKRIO spectrum of Questionable Research Practices</strong> (Kolstoe, 2023) conceptualises research integrity failures as a continuum — from honest errors and sloppiness at one end, through to falsification, fabrication, and criminality at the other. This framing is important: it recognises that <em>everyone involved in research</em> may at times engage in QRPs, and that addressing them is therefore a community-wide responsibility, not a matter of policing a minority.</p>
+      <div style="background:#fffbf0;border:1px solid var(--amber);border-radius:6px;padding:10px 14px;margin-bottom:0.75rem;">
+        <p style="font-size:11.5px;font-weight:700;color:#b45000;margin-bottom:6px;">The QRP spectrum — left to right, from unintentional to deliberate</p>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;">
+          <div style="text-align:center;background:white;border-radius:5px;border:1px solid #e8d5a3;padding:7px 5px;">
+            <p style="font-size:10.5px;font-weight:700;color:#888;margin-bottom:3px;">← Least severe</p>
+            <p style="font-size:11px;color:var(--ink2);line-height:1.5;">Honest errors &amp; mistakes (methodology, statistical, data entry)</p>
+          </div>
+          <div style="text-align:center;background:white;border-radius:5px;border:1px solid #e8c87a;padding:7px 5px;">
+            <p style="font-size:10.5px;font-weight:700;color:#c8860a;margin-bottom:3px;">Misunderstandings</p>
+            <p style="font-size:11px;color:var(--ink2);line-height:1.5;">Genuine disagreements about data interpretation; inadequate training</p>
+          </div>
+          <div style="text-align:center;background:white;border-radius:5px;border:1px solid #e8a84a;padding:7px 5px;">
+            <p style="font-size:10.5px;font-weight:700;color:#c86a00;margin-bottom:3px;">Sloppiness &amp; incompetence</p>
+            <p style="font-size:11px;color:var(--ink2);line-height:1.5;">Poor record-keeping; inadequate methodology; p-hacking; HARKing; cherry-picking</p>
+          </div>
+          <div style="text-align:center;background:white;border-radius:5px;border:1px solid #e87a4a;padding:7px 5px;">
+            <p style="font-size:10.5px;font-weight:700;color:#c84000;margin-bottom:3px;">Intentional QRPs</p>
+            <p style="font-size:11px;color:var(--ink2);line-height:1.5;">Ghost authorship; gift authorship; salami slicing; duplicate publication; data manipulation</p>
+          </div>
+          <div style="text-align:center;background:#fff5f5;border-radius:5px;border:1px solid var(--red);padding:7px 5px;">
+            <p style="font-size:10.5px;font-weight:700;color:var(--red);margin-bottom:3px;">Most severe →</p>
+            <p style="font-size:11px;color:var(--ink2);line-height:1.5;">Fabrication, falsification, plagiarism, fraud, criminality</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0.75rem;">
+        <div style="background:#fffbf0;border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:9px 12px;">
+          <p style="font-size:11.5px;font-weight:700;color:#b45000;margin-bottom:4px;">Common QRPs in clinical research</p>
+          <ul style="font-size:11.5px;color:var(--ink2);line-height:1.75;padding-left:1rem;margin:0;">
+            <li><strong>HARKing</strong> — Hypothesising After Results are Known; presenting a post-hoc hypothesis as if it were pre-specified</li>
+            <li><strong>p-hacking</strong> — running multiple analyses until a p-value &lt;0.05 is achieved without pre-registration</li>
+            <li><strong>Cherry-picking</strong> — reporting only favourable outcomes or time points; outcome switching</li>
+            <li><strong>Salami slicing</strong> — dividing one study's data into multiple publications for greater output</li>
+            <li><strong>Gift authorship</strong> — listing authors who made no substantive contribution</li>
+            <li><strong>Ghost authorship</strong> — omitting those who made significant contributions</li>
+            <li><strong>Duplicate publication</strong> — submitting the same data to multiple journals simultaneously</li>
+          </ul>
+        </div>
+        <div style="background:#fffbf0;border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:9px 12px;">
+          <p style="font-size:11.5px;font-weight:700;color:#b45000;margin-bottom:4px;">Why QRPs matter — even the "minor" ones</p>
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;margin-bottom:6px;">Minor infringements on the left of the spectrum can escalate. A researcher who habitually cuts corners on record-keeping may, under competitive or financial pressure, move progressively toward the right — covering up mistakes rather than acknowledging them. Kolstoe (2023) emphasises that the appropriate response to QRPs depends on their position on the spectrum: methodological safeguards (strict protocols, open data, pre-registration) address the left; governance processes and sanctions address the right.</p>
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;"><strong>Humility is a key research virtue.</strong> Acknowledging and correcting errors is a marker of research integrity — not a weakness. How a researcher responds when a mistake is pointed out is more important than the fact that the mistake occurred.</p>
+        </div>
+      </div>
+      <p style="font-size:10.5px;color:var(--ink3);margin-top:4px;">Source: Kolstoe SE. Defining the Spectrum of Questionable Research Practices (QRPs). UKRIO, 2023. doi:10.37672/UKRIO.2023.02.QRPs · <a href="https://ukrio.org/ukrio-resources/questionable-research-practices/" target="_blank" style="color:var(--blue);">ukrio.org</a></p>
+    
+<div style="background:var(--ink);border-radius:0 0 8px 8px;padding:8px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:0;"><span style="font-size:10.5px;font-weight:700;color:var(--green-m);text-transform:uppercase;letter-spacing:.06em;">See also:</span>↗ Part 1A — Bias framework↗ Part 2A — Integrity gate↗ Part 2B — Qualitative integrity gate</div>
+</div>
+
+    <!-- Card 3: Positive definition — what research integrity IS -->
+    <div style="border-radius:8px;border:1px solid var(--rule);background:white;padding:1.25rem;border-top:3px solid var(--teal);margin-bottom:1.25rem;">
+      <h3 style="font-size:14px;font-weight:700;color:var(--teal);margin-bottom:0.5rem;">What research integrity requires — the positive obligations</h3>
+      <p style="font-size:12.5px;color:var(--ink2);line-height:1.75;margin-bottom:0.75rem;">Integrity is not merely the avoidance of misconduct. It demands a set of active, ongoing behaviours that the research community has defined through international statements and codes of conduct. Three authoritative frameworks set out these positive obligations.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:0.75rem;">
+        <div style="background:var(--teal-l);border-radius:6px;padding:10px 12px;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--teal);margin-bottom:5px;">Singapore Statement on Research Integrity (2010)</p>
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;margin-bottom:5px;">The first international consensus on research integrity principles. Establishes <strong>four core principles</strong>: Honesty in all aspects of research · Accountability in the conduct of research · Professional courtesy and fairness · Good stewardship of research on behalf of others. And <strong>nine responsibilities</strong> covering integrity, adherence to regulations, appropriate methods, accurate records, open sharing, authorship, acknowledgement, peer review, and conflict-of-interest disclosure.</p>
+          <p style="font-size:10px;color:var(--ink3);"><a href="https://www.wcrif.org/guidance/singapore-statement" target="_blank" style="color:var(--blue);">wcrif.org/singapore-statement</a> · Available in Bahasa Malaysia</p>
+        </div>
+        <div style="background:var(--teal-l);border-radius:6px;padding:10px 12px;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--teal);margin-bottom:5px;">European Code of Conduct for Research Integrity — ALLEA (2023 Revised)</p>
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;margin-bottom:5px;">The primary standard for EU-funded research and a global model for institutional codes. Organised around <strong>four principles</strong>: Reliability (rigour in design, methodology, analysis, and reporting) · Honesty (transparent communication and conflict-of-interest declaration) · Respect (for participants, animals, environment, and colleagues) · Accountability (for research from conception to publication, data stewardship, and societal responsibility). The 2023 edition adds explicit requirements for research culture, GDPR compliance, and responsible AI use.</p>
+          <p style="font-size:10px;color:var(--ink3);"><a href="https://allea.org/code-of-conduct/" target="_blank" style="color:var(--blue);">allea.org/code-of-conduct</a> · Endorsed by the European Commission for all Horizon Europe projects</p>
+        </div>
+        <div style="background:var(--teal-l);border-radius:6px;padding:10px 12px;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--teal);margin-bottom:5px;">COPE Code of Conduct for Researchers</p>
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;margin-bottom:5px;">The Committee on Publication Ethics (COPE) establishes expectations for researchers at the publication stage: honest and complete reporting · ethical data management · appropriate authorship · disclosure of all conflicts of interest · responsible peer review · prompt correction of errors. COPE provides a suite of flowcharts for handling suspected misconduct in submitted and published papers, used by journals worldwide.</p>
+          <p style="font-size:10px;color:var(--ink3);"><a href="https://publicationethics.org" target="_blank" style="color:var(--blue);">publicationethics.org</a></p>
+        </div>
+      </div>
+
+      <!-- Hong Kong Principles -->
+      <div style="background:var(--blue-l);border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:0.75rem;">
+        <p style="font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:4px;">Hong Kong Principles for assessing researchers (Moher et al., PLOS Biology, 2020)</p>
+        <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;">For research integrity to be sustainable, researchers must be <em>rewarded</em> for responsible practices — not just penalised for misconduct. Moher et al. (2020) argue that the dominant publish-or-perish metric system creates perverse incentives that push researchers toward QRPs. The Hong Kong Principles (HKPs), developed at the 6th World Conference on Research Integrity, propose five principles for how research institutions should assess and reward researchers: <strong>(1)</strong> Assess for responsible research practices — pre-registration, methodology transparency, data sharing; <strong>(2)</strong> Value transparent reporting — adherence to reporting guidelines (CONSORT, STROBE, PRISMA); <strong>(3)</strong> Value open research — open data, open materials, open access; <strong>(4)</strong> Value a diversity of research outputs — reviews, datasets, methods papers, not only high-impact journal articles; <strong>(5)</strong> Value all contributions — peer review, mentoring, outreach, and knowledge exchange. Implementation of the HKPs would create institutional incentives that align individual career advancement with research trustworthiness.</p>
+        <p style="font-size:10.5px;color:var(--ink3);margin-top:4px;">Moher D, Bouter L, Kleinert S et al. The Hong Kong Principles for assessing researchers: Fostering research integrity. <em>PLOS Biol.</em> 2020;18(7):e3000737. <a href="https://doi.org/10.1371/journal.pbio.3000737" target="_blank" style="color:var(--blue);">doi:10.1371/journal.pbio.3000737</a> · Open access (CC BY 4.0)</p>
+      </div>
+
+      <!-- Montreal Statement -->
+      <div style="background:var(--teal-l);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:10px 14px;">
+        <p style="font-size:11.5px;font-weight:700;color:var(--teal);margin-bottom:4px;">Montreal Statement on Research Integrity in Cross-Boundary Collaborations (2013)</p>
+        <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;">As research becomes increasingly collaborative across institutions, disciplines, and countries, integrity obligations extend across the collaboration as a whole. The Montreal Statement — a 20-point companion to the Singapore Statement, developed at the 3rd World Conference on Research Integrity — outlines the responsibilities of <em>all collaborating partners</em>: mutual agreement on roles and responsibilities from the outset; open discussion of customary practices and assumptions; prompt resolution of conflicts; agreed authorship and acknowledgement standards (with full recognition for junior partners); and collective procedures for responding to allegations of misconduct. Crucially, the Statement establishes that <strong>partners should take collective responsibility for the trustworthiness of the overall collaborative research</strong> — not just their own component.</p>
+        <p style="font-size:10.5px;color:var(--ink3);margin-top:4px;">3rd World Conference on Research Integrity, Montréal, 2013 · <a href="https://www.wcrif.org/guidance/montreal-statement" target="_blank" style="color:var(--blue);">wcrif.org/montreal-statement</a> · Also available in Bahasa Malaysia</p>
+      </div>
+    
+<div style="background:var(--ink);border-radius:0 0 8px 8px;padding:8px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:0;"><span style="font-size:10.5px;font-weight:700;color:var(--green-m);text-transform:uppercase;letter-spacing:.06em;">See also:</span>↗ Academic Writing — Authorship (ICMJE)↗ Publication — CRediT taxonomy↗ Part 2A — AI disclosure</div>
+</div>
+
+    <!-- Card 4: UKRIO Code of Practice + NSF context -->
+    <div style="border-radius:8px;border:1px solid var(--rule);background:white;padding:1.25rem;border-top:3px solid var(--green);margin-bottom:1.25rem;">
+      <h3 style="font-size:14px;font-weight:700;color:var(--green);margin-bottom:0.5rem;">Codes of practice and responsible conduct of research — practical standards</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0.75rem;">
+        <div style="background:var(--green-l);border-radius:6px;padding:10px 12px;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--green);margin-bottom:4px;">UKRIO Code of Practice for Research</p>
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;">The UK Research Integrity Office Code of Practice sets out standards covering: excellence in research design and conduct; a safe and supportive research environment; transparent and honest communication of results; fair and rigorous peer review; responsible data management; and equitable, transparent authorship. It distinguishes between primary obligations (non-negotiable standards) and aspirational goals (characteristics of excellent research culture). The Code applies to all researchers regardless of career stage.</p>
+          <p style="font-size:10px;color:var(--ink3);margin-top:4px;"><a href="https://ukrio.org/ukrio-resources/publications/code-of-practice-for-research/" target="_blank" style="color:var(--blue);">ukrio.org — Code of Practice</a></p>
+        </div>
+        <div style="background:var(--green-l);border-radius:6px;padding:10px 12px;">
+          <p style="font-size:11.5px;font-weight:700;color:var(--green);margin-bottom:4px;">NSF Responsible and Ethical Conduct of Research (RECR)</p>
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;">The US National Science Foundation requires all funded institutions to have a plan for RECR training across all levels — undergraduates, postgraduates, postdoctoral scholars, and senior personnel. RECR covers: conducting peer review with the highest ethical standards; protecting proprietary information and intellectual property; treating students and colleagues fairly and with respect; rigorous and honest generation and dissemination of knowledge. NSF also recognises that research integrity standards and challenges differ across international contexts, and that researchers in cross-national collaborations must be aware of different regulatory environments.</p>
+          <p style="font-size:10px;color:var(--ink3);margin-top:4px;"><a href="https://www.nsf.gov/policies/responsible-research-conduct" target="_blank" style="color:var(--blue);">nsf.gov/responsible-research-conduct</a> · <a href="https://www.nsf.gov/policies/responsible-research-conduct/international-contexts" target="_blank" style="color:var(--blue);">International contexts</a></p>
+        </div>
+      </div>
+      <!-- Green checklist -->
+      <div style="background:var(--green-l);border-left:3px solid var(--green);border-radius:0 6px 6px 0;padding:10px 14px;">
+        <p style="font-size:11.5px;font-weight:700;color:var(--green);margin-bottom:6px;">Researcher integrity commitments — active obligations at every stage of the research cycle</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:11.5px;color:var(--ink2);line-height:1.75;">
+          <div>
+            <div>✅ Pre-register hypothesis, design, and primary outcomes before data collection</div>
+            <div>✅ Keep complete, accurate, auditable research records throughout</div>
+            <div>✅ Report all pre-specified outcomes — not just statistically significant ones</div>
+            <div>✅ Apply correct statistical methods and report exact test statistics</div>
+            <div>✅ Share data and materials openly where possible (FAIR principles)</div>
+          </div>
+          <div>
+            <div>✅ Apply appropriate authorship criteria — contribution-based, not honorary</div>
+            <div>✅ Disclose all conflicts of interest financial and non-financial</div>
+            <div>✅ Acknowledge all sources, funding, and contributions accurately</div>
+            <div>✅ Correct errors promptly and transparently — issue corrigenda when needed</div>
+            <div>✅ Report suspected misconduct through appropriate institutional channels</div>
+          </div>
+        </div>
+      </div>
+    
+<div style="background:var(--ink);border-radius:0 0 8px 8px;padding:8px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:0;"><span style="font-size:10.5px;font-weight:700;color:var(--green-m);text-transform:uppercase;letter-spacing:.06em;">See also:</span>↗ Part 1A — Pre-registration (Step 18)↗ Publication — Reporting guidelines</div>
+</div>
+
+    <p style="font-size:11px;color:var(--ink3);margin-top:0.75rem;font-style:italic;">Key sources: ORI/OSTP Federal Policy on Research Misconduct (2000) · Kolstoe SE. UKRIO QRP Spectrum (2023). doi:10.37672/UKRIO.2023.02.QRPs · Singapore Statement on Research Integrity, 2nd WCRI (2010) · ALLEA European Code of Conduct for Research Integrity, Revised Edition (2023) · COPE Code of Conduct for Researchers · Moher D et al. Hong Kong Principles. <em>PLOS Biol.</em> 2020;18:e3000737 · Montreal Statement on Research Integrity in Cross-Boundary Collaborations, 3rd WCRI (2013) · UKRIO Code of Practice for Research · NSF Responsible and Ethical Conduct of Research</p>
+
+  </div>
+</section>
+
+<section class="section-sm">
+  <div style="max-width:960px;margin:0 auto;">
+    <p class="section-label">Core reading list</p>
+    <h2 class="section-title" style="font-size:1.3rem;margin-bottom:.75rem;">Key references &amp; further reading</h2>
+    <div class="refs-grid">
+      <div class="ref-item"><span class="ref-num">[1]</span>Chew BH. An Illustrated Version: Understanding and Conducting Clinical Research — A Clinical Epidemiology Approach. ISBN 978-967-960-450-4. UPM; 2019–2022. [Primary textbook for this module]</div>
+      <div class="ref-item"><span class="ref-num">[2]</span>Chew BH. Planning and Conducting Clinical Research: The Whole Process. <em>Cureus.</em> 2019;11(2):e4112. <a href="https://doi.org/10.7759/cureus.4112" target="_blank">doi:10.7759/cureus.4112</a> <span style="color:var(--green);font-weight:500;">Open access</span></div>
+      <div class="ref-item"><span class="ref-num">[3]</span>Chew BH. Enhancing Research Proposal Preparation with AI. Zenodo preprint v9; 2025. <a href="https://doi.org/10.5281/zenodo.17606362" target="_blank">doi:10.5281/zenodo.17606362</a> <span style="color:var(--green);font-weight:500;">Open access</span></div>
+      <div class="ref-item"><span class="ref-num">[4]</span>Dakan R, Feller J. Framework for AI Fluency (Practical Summary Document), v1.1. Ringling College / UCC; 2025. <a href="https://ringling.libguides.com/ai/framework" target="_blank">ringling.libguides.com/ai/framework</a> <span style="color:var(--green);font-weight:500;">Free · CC BY-NC-ND 4.0</span></div>
+      <div class="ref-item"><span class="ref-num">[5]</span>Anthropic Academy. AI Fluency: Framework &amp; Foundations. <a href="https://anthropic.skilljar.com/ai-fluency-framework-foundations" target="_blank">anthropic.skilljar.com</a> <span style="color:var(--green);font-weight:500;">Free online course</span></div>
+      <div class="ref-item"><span class="ref-num">[6]</span>Grobbee DE, Hoes AW. Clinical Epidemiology: Principles, Methods, and Applications. Jones &amp; Bartlett; 2009. ISBN 978-0-7637-5315-2 [Classification framework used in this module]</div>
+      <div class="ref-item"><span class="ref-num">[7]</span>Hulley SB et al. Designing Clinical Research. 4th ed. Lippincott Williams &amp; Wilkins; 2013. ISBN 978-1-60831-804-9</div>
+      <div class="ref-item"><span class="ref-num">[8]</span>Gordis L. Epidemiology. 5th ed. Elsevier Saunders; 2014. ISBN 978-1-4557-3733-8</div>
+      <div class="ref-item"><span class="ref-num">[9]</span>EQUATOR Network. Reporting guidelines for health research (CONSORT, STROBE, PRISMA, STARD, COREQ, SPIRIT). <a href="https://www.equator-network.org" target="_blank">www.equator-network.org</a> <span style="color:var(--green);font-weight:500;">Free · All checklists downloadable</span></div>
+      <div class="ref-item"><span class="ref-num">[10]</span>ICMJE. Recommendations for the Conduct, Reporting, Editing, and Publication of Scholarly Work in Medical Journals. <a href="https://www.icmje.org" target="_blank">www.icmje.org</a> <span style="color:var(--green);font-weight:500;">Free · Full text online</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p><strong>AI-Assisted Clinical Research: From Proposal to Publication</strong></p>
+  <p>Based on the works of <strong>Prof. Dr. Boon-How Chew</strong>, Department of Family Medicine, Faculty of Medicine &amp; Health Sciences, Universiti Putra Malaysia.</p>
+  <p style="margin-top:4px;">AI Fluency framework: Dakan R, Feller J. <a href="https://ringling.libguides.com/ai/framework" target="_blank">ringling.libguides.com/ai/framework</a> (CC BY-NC-ND 4.0) · <a href="https://anthropic.skilljar.com/ai-fluency-framework-foundations" target="_blank">Anthropic Academy</a></p>
+  <p style="margin-top:4px;">ISBN 978-967-960-450-4 · <a href="https://doi.org/10.5281/zenodo.17606362" target="_blank">doi:10.5281/zenodo.17606362</a> · <a href="https://doi.org/10.7759/cureus.4112" target="_blank">doi:10.7759/cureus.4112</a></p>
+  <p style="margin-top:6px;font-size:11px;">For educational use. CC-BY licensed materials credited where applicable.</p>
+</footer>
+</body>
+</html>
