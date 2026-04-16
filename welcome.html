@@ -703,7 +703,7 @@ footer strong { color: rgba(247,245,240,.8); }
       <div class="form-row">
         <label>I am interested in <span class="req">*</span></label>
         <div class="checkbox-group">
-          <label class="check-opt"><input type="checkbox" id="f-online" value="online"> The free self-directed online module (available now)</label>
+          <label class="check-opt"><input type="checkbox" id="f-online" value="online"> The self-directed online module for a fee of up to RM 200</label>
           <label class="check-opt"><input type="checkbox" id="f-workshop-proposal" value="workshop-proposal"> The guided one-day workshop to develop a high-quality research proposal</label>
           <label class="check-opt"><input type="checkbox" id="f-workshop-publication" value="workshop-publication"> The guided one-day workshop to write up a high-quality report for publication</label>
           <label class="check-opt"><input type="checkbox" id="f-both" value="both"> Both — I'd like to do the online module first, then attend the workshop</label>
@@ -794,7 +794,7 @@ async function submitForm() {
   const comments = document.getElementById('f-comments').value;
 
   const interest = [
-    online               && 'Online module (free access)',
+    online               && 'Self-directed online module (up to RM 200)',
     workshop_proposal    && 'Workshop — develop a research proposal',
     workshop_publication && 'Workshop — write up a report for publication',
     both                 && 'Both (online + workshop)'
