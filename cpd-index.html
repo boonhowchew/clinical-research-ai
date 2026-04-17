@@ -31,16 +31,34 @@ a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
 
 /* ── Shared site header / nav ── */
-.site-header{background:var(--ink);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
-.logo{font-family:'Libre Baskerville',serif;font-size:14px;color:var(--cream);font-weight:400;letter-spacing:.01em}
-.logo:hover{color:#fff;text-decoration:none}
-.site-nav{display:flex;gap:6px;flex-wrap:wrap}
-.nav-pill{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;color:rgba(247,245,240,.75);background:rgba(247,245,240,.1);transition:background .15s,color .15s;letter-spacing:.04em;text-transform:uppercase}
-.nav-pill:hover{background:rgba(247,245,240,.2);color:#fff;text-decoration:none}
+.site-header{background:var(--ink);color:var(--cream);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.08)}
+.site-header .logo{font-family:'Libre Baskerville',serif;font-size:13px;color:var(--cream);text-decoration:none;opacity:.9}
+
+.site-nav{display:flex;gap:6px;align-items:center;flex-wrap:nowrap;overflow-x:auto}
+.nav-pill{font-size:11.5px;font-weight:500;padding:4px 11px;border-radius:20px;text-decoration:none;color:rgba(247,245,240,0.65);transition:all .15s;white-space:nowrap;flex-shrink:0}
+.nav-pill:hover{color:var(--cream);background:rgba(255,255,255,0.12)}
 .nav-pill.active{color:#fff;background:rgba(247,245,240,.22)}
-.nav-pill.ai{color:#9FE1CB}.nav-pill.p1{color:#c5bef0}.nav-pill.p1q{color:#f0b8e0}
-.nav-pill.p2{color:#f5d080}.nav-pill.aw{color:#9ab8e0}.nav-pill.pp{color:#9FE1CB}
+.nav-pill.ai{background:rgba(14,107,107,0.35);color:#b8f5f5}
+.nav-pill.ai:hover{background:rgba(14,107,107,0.55)}
+.nav-pill.ai:not([href]){background:rgba(14,107,107,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(14,107,107,0.5)}
+.nav-pill.p1{background:rgba(74,63,143,0.35);color:#d4ceff}
+.nav-pill.p1:hover{background:rgba(74,63,143,0.55)}
+.nav-pill.p1:not([href]){background:rgba(74,63,143,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(74,63,143,0.5)}
+.nav-pill.p1q{background:rgba(123,63,110,0.40);color:#f0cce8}
+.nav-pill.p1q:hover{background:rgba(123,63,110,0.60)}
+.nav-pill.p1q:not([href]){background:rgba(123,63,110,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(123,63,110,0.5)}
+.nav-pill.p2{background:rgba(122,90,0,0.45);color:#fff3b8}
+.nav-pill.p2:hover{background:rgba(122,90,0,0.65)}
+.nav-pill.p2:not([href]){background:rgba(122,90,0,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(122,90,0,0.5)}
+.nav-pill.aw{background:rgba(26,64,96,0.55);color:#c8e2f5}
+.nav-pill.aw:hover{background:rgba(26,64,96,0.75)}
+.nav-pill.aw:not([href]){background:rgba(26,64,96,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(26,64,96,0.5)}
+.nav-pill.pp{background:rgba(26,92,56,0.50);color:#b8e8cc}
+.nav-pill.pp:hover{background:rgba(26,92,56,0.70)}
+.nav-pill.pp:not([href]){background:rgba(26,92,56,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(26,92,56,0.5)}
 .nav-pill.home{color:#e8e6e0;background:rgba(247,245,240,.18)}
+.nav-pill.home:hover{background:rgba(247,245,240,.28)}
+.nav-pill.home:not([href]){background:rgba(247,245,240,.40);color:#fff;box-shadow:0 0 0 2px rgba(247,245,240,.3)}
 
 /* ── Hero ── */
 .index-hero{background:var(--ink);color:var(--cream);padding:56px 40px 48px;text-align:center;border-bottom:4px solid rgba(247,245,240,.08)}
@@ -261,11 +279,11 @@ table.cpd-tbl td:first-child{font-weight:600;color:var(--ink)}
             <span class="mod-label lbl-intro">Foundation</span>
           </div>
           <div class="mod-title">AI-Assisted Clinical Research — From Proposal to Publication</div>
-          <div class="mod-desc">Module overview and orientation. Covers the two-part research lifecycle, the AI Fluency Framework (Describe, Discern, Delegate, Diligence), the 4Ds competency model, research integrity principles, and the role of AI transparency in modern health sciences research.</div>
+          <div class="mod-desc">Module overview and orientation. Grounds the module in clinical epidemiology and introduces the two-part research lifecycle — from proposal preparation (Part 1) to data and publication (Part 2). Covers implementation research and hybrid trial designs, research ethics, AI transparency principles, and research integrity. Directed reading list provided.</div>
           <div class="mod-sections">
             <span class="mod-sec-tag">Two-part lifecycle</span>
-            <span class="mod-sec-tag">AI Fluency Framework</span>
-            <span class="mod-sec-tag">4Ds competency</span>
+            <span class="mod-sec-tag">Implementation research</span>
+            <span class="mod-sec-tag">Hybrid trial designs</span>
             <span class="mod-sec-tag">Research integrity</span>
             <span class="mod-sec-tag">Ethics &amp; AI transparency</span>
           </div>
@@ -291,13 +309,13 @@ table.cpd-tbl td:first-child{font-weight:600;color:var(--ink)}
             <span class="mod-label lbl-ai">AI Literacy</span>
           </div>
           <div class="mod-title">AI Tools for Research</div>
-          <div class="mod-desc">Before-you-begin orientation to responsible AI use. Covers what LLMs are, how they work, five process failure modes and six technical failure modes, three modalities of human-AI interaction, tool directory (LLMs + specialised research tools + free/paid tiers), four-step AI strategy, safety &amp; disclosure, and a reusable prompt library for research, writing, and analysis tasks.</div>
+          <div class="mod-desc">Before-you-begin orientation to responsible AI use. Covers what LLMs are, how they work, the AI Fluency Framework and 4Ds competency model (Describe, Discern, Delegate, Diligence), five process failure modes and six technical failure modes, three modalities of human-AI interaction, tool directory (LLMs + specialised research tools + free/paid tiers), four-step AI strategy, safety &amp; disclosure, and a reusable prompt library for research, writing, and analysis tasks.</div>
           <div class="mod-sections">
             <span class="mod-sec-tag">LLM literacy</span>
+            <span class="mod-sec-tag">AI Fluency Framework</span>
+            <span class="mod-sec-tag">4Ds competency</span>
             <span class="mod-sec-tag">Failure modes</span>
             <span class="mod-sec-tag">Tool directory</span>
-            <span class="mod-sec-tag">Four-step strategy</span>
-            <span class="mod-sec-tag">Safety &amp; disclosure</span>
             <span class="mod-sec-tag">Prompt library</span>
           </div>
         </div>
@@ -652,11 +670,12 @@ table.cpd-tbl td:first-child{font-weight:600;color:var(--ink)}
         Department of Family Medicine<br>
         Faculty of Medicine and Health Sciences<br>
         Universiti Putra Malaysia (UPM), Serdang, Selangor<br><br>
-        <strong>Target audience:</strong> Postgraduate health sciences students (Master's and PhD), medical officers, and clinician-researchers pursuing academic publishing in Malaysia and Southeast Asia.<br><br>
+        <strong>Target audience:</strong> Postgraduate health sciences students (Master's and PhD), medical officers, and clinician-researchers pursuing academic publishing in Malaysia and Southeast Asia for physical workshops, and basically anyone who want self-directed online learning about clinical research with AI.<br><br>
         <strong>Primary sources:</strong><br>
         Chew BH. <em>An Illustrated Version of Research Methodology.</em> ISBN 978-967-960-450-4. UPM; 2019.<br>
-        Chew BH. <em>Manual for Scientific Article Writing with AI Tools.</em> UPM; February 2026.<br>
-        Chew BH. <em>Prevalence Study Best Practices.</em> UPM; 2025.
+        Chew BH. <em>Planning and Drafting a Clinical Research Proposal: An Instructional Manual.</em> UPM; April 2025.<br>
+        Chew BH. <em>Prevalence Study Best Practices.</em> UPM; 2025.<br>
+        Chew BH. <em>Manual for Scientific Article Writing with AI Tools.</em> UPM; February 2026.
       </div>
     </div>
   </div>
