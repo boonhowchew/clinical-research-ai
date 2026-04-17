@@ -148,12 +148,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);f
 
 /* Implementation section — ensure cards fill grid evenly */
 .impl-section .about-grid{align-items:start}
+
+.nav-pill.home{color:#e8e6e0;background:rgba(247,245,240,.18)}
+.nav-pill.home:hover{background:rgba(247,245,240,.28)}
+.nav-pill.home:not([href]){background:rgba(247,245,240,.40);color:#fff;box-shadow:0 0 0 2px rgba(247,245,240,.3)}
+.nav-pill.intro{background:rgba(16,100,80,0.40);color:#b8eed8}
+.nav-pill.intro:hover{background:rgba(16,100,80,0.60)}
+.nav-pill.intro:not([href]){background:rgba(16,100,80,0.92);color:#ffffff;box-shadow:0 0 0 2px rgba(16,100,80,0.5)}
 </style>
 </head>
 <body>
 <header class="site-header">
   <a class="logo" href="welcome.html">Clinical Research with AI</a>
   <nav class="site-nav">
+    <a class="nav-pill home" href="index.html">Module Index</a>
+    <a class="nav-pill intro">Introduction</a>
     <a class="nav-pill ai">AI Tools &amp; Prompting</a>
     <a class="nav-pill p1">Part 1A — Quantitative</a>
     <a class="nav-pill p1q">Part 1B — Qualitative</a>
