@@ -666,31 +666,70 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);f
 
       <p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:1rem;">Implementation research is the scientific study of methods to promote the systematic uptake of research findings and other evidence-based practices into routine clinical and public health practice, to improve the quality and effectiveness of health services (Eccles &amp; Mittman, <em>Implementation Science,</em> 2006;1:1). It fills a critical gap: <strong>the knowledge-to-action gap</strong> — the well-documented failure of evidence-based interventions to reach patients at scale, often taking 17 or more years from trial evidence to routine clinical practice (Balas &amp; Boren, 2000).</p>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1rem;">
-
-        <div style="background:var(--teal-l);border-radius:6px;padding:12px;border-left:3px solid var(--teal);">
-          <p style="font-size:11.5px;font-weight:700;color:var(--teal);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">Definition and scope</p>
-          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Implementation research asks: <em>Why</em> do evidence-based interventions fail to be adopted, delivered with fidelity, or sustained? <em>What strategies</em> overcome these barriers? <em>For whom, in which settings, and under what conditions</em> does an implementation strategy work? It is applied across health systems, community health programmes, and clinical practice — from primary care to hospital settings to public health policy.</p>
-        </div>
-
-        <div style="background:var(--teal-l);border-radius:6px;padding:12px;border-left:3px solid var(--teal);">
-          <p style="font-size:11.5px;font-weight:700;color:var(--teal);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">The Proctor implementation outcomes taxonomy</p>
-          <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Proctor et al. (2011) proposed eight distinct <strong>implementation outcomes</strong> that must be distinguished from clinical treatment outcomes:</p>
-          <ul style="font-size:12px;color:var(--ink2);line-height:1.8;padding-left:1.1rem;margin:4px 0;">
-            <li><strong>Acceptability</strong> — stakeholders find it agreeable</li>
-            <li><strong>Adoption</strong> — intent or decision to use it</li>
-            <li><strong>Appropriateness</strong> — perceived fit to the setting</li>
-            <li><strong>Feasibility</strong> — can be carried out in that context</li>
-            <li><strong>Fidelity</strong> — delivered as intended</li>
-            <li><strong>Penetration</strong> — reach within an eligible population</li>
-            <li><strong>Sustainability</strong> — maintained over time</li>
-            <li><strong>Implementation cost</strong> — cost of implementation activities</li>
-          </ul>
-        </div>
-
+      <div style="background:var(--teal-l);border-radius:6px;padding:12px;border-left:3px solid var(--teal);margin-bottom:1rem;">
+        <p style="font-size:11.5px;font-weight:700;color:var(--teal);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">Definition and scope</p>
+        <p style="font-size:12px;color:var(--ink2);line-height:1.65;">Implementation research asks: <em>Why</em> do evidence-based interventions fail to be adopted, delivered with fidelity, or sustained? <em>What strategies</em> overcome these barriers? <em>For whom, in which settings, and under what conditions</em> does an implementation strategy work? It is applied across health systems, community health programmes, and clinical practice — from primary care to hospital settings to public health policy.</p>
       </div>
 
       <p style="font-size:12.5px;font-weight:700;color:var(--ink);margin:0.5rem 0 0.4rem 0;">Key frameworks used in implementation research</p>
+
+      <!-- Overview box -->
+      <div style="border:1px solid var(--rule);border-radius:6px;background:var(--cream);padding:12px 16px;margin-bottom:0.9rem;">
+        <p style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:8px;">Why frameworks matter — and how to choose one</p>
+        <p style="font-size:12px;color:var(--ink2);line-height:1.7;margin-bottom:10px;">Implementation science is framework-dense, which can be disorienting for clinician-researchers new to the field. Nilsen's widely cited taxonomy (2015) organises the 60+ published frameworks into three functional categories: <strong>process models</strong> that guide the sequence of implementation steps; <strong>determinant frameworks</strong> that identify barriers and facilitators; and <strong>evaluation frameworks</strong> that measure implementation outcomes. Most real-world studies draw on more than one. The table below maps the frameworks most frequently encountered in health research to their category, primary question answered, and typical use case.</p>
+
+        <table style="width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:10px;">
+          <thead>
+            <tr style="background:var(--cream2);">
+              <th style="padding:7px 10px;text-align:left;border-bottom:2px solid var(--rule);color:var(--ink);width:18%;">Framework</th>
+              <th style="padding:7px 10px;text-align:left;border-bottom:2px solid var(--rule);color:var(--ink);width:16%;">Category</th>
+              <th style="padding:7px 10px;text-align:left;border-bottom:2px solid var(--rule);color:var(--ink);width:26%;">Primary question</th>
+              <th style="padding:7px 10px;text-align:left;border-bottom:2px solid var(--rule);color:var(--ink);">Typical use in health research</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--rule);">
+              <td style="padding:7px 10px;font-weight:600;color:var(--ink2);">RE-AIM</td>
+              <td style="padding:7px 10px;color:var(--ink2);">Evaluation</td>
+              <td style="padding:7px 10px;color:var(--ink2);font-style:italic;">How broadly and sustainably was the intervention delivered?</td>
+              <td style="padding:7px 10px;color:var(--ink2);">Five-dimension outcome reporting: Reach, Effectiveness, Adoption, Implementation fidelity, Maintenance; widely required by NIH, PCORI, and WHO funding bodies · <a href="https://doi.org/10.2105/ajph.89.9.1322" target="_blank" style="color:var(--blue);font-size:10.5px;">Glasgow et al. <em>Am J Public Health</em> 1999</a> · <a href="https://re-aim.org" target="_blank" style="color:var(--blue);font-size:10.5px;">re-aim.org</a></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);background:var(--cream);">
+              <td style="padding:7px 10px;font-weight:600;color:var(--ink2);">EPIS</td>
+              <td style="padding:7px 10px;color:var(--ink2);">Determinant</td>
+              <td style="padding:7px 10px;color:var(--ink2);font-style:italic;">How do outer and inner system factors interact over time?</td>
+              <td style="padding:7px 10px;color:var(--ink2);">Exploration–Preparation–Implementation–Sustainment; maps how health system context shapes adoption across phases; increasingly used in policy and system-level studies · <a href="https://doi.org/10.1007/s10488-010-0327-7" target="_blank" style="color:var(--blue);font-size:10.5px;">Aarons et al. <em>Adm Policy Ment Health</em> 2011</a> · <a href="https://episframework.com" target="_blank" style="color:var(--blue);font-size:10.5px;">episframework.com</a></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);">
+              <td style="padding:7px 10px;font-weight:600;color:var(--ink2);">KTA / i-PARIHS</td>
+              <td style="padding:7px 10px;color:var(--ink2);">Process</td>
+              <td style="padding:7px 10px;color:var(--ink2);font-style:italic;">How do we move knowledge into action?</td>
+              <td style="padding:7px 10px;color:var(--ink2);">Knowledge-to-Action (KTA) cycle guides knowledge creation through a 7-step action cycle; i-PARIHS (integrated Promoting Action on Research Implementation in Health Services) emphasises facilitation, innovation, context, and recipients · <a href="https://doi.org/10.1002/chp.47" target="_blank" style="color:var(--blue);font-size:10.5px;">Graham et al. <em>J Contin Educ Health Prof</em> 2006</a> · <a href="https://doi.org/10.1186/s13012-016-0398-2" target="_blank" style="color:var(--blue);font-size:10.5px;">Harvey &amp; Kitson <em>Implement Sci</em> 2016</a></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);background:var(--cream);">
+              <td style="padding:7px 10px;font-weight:600;color:var(--ink2);">Implementation Research Logic Model</td>
+              <td style="padding:7px 10px;color:var(--ink2);">Process + Evaluation</td>
+              <td style="padding:7px 10px;color:var(--ink2);font-style:italic;">How do strategies lead to outcomes through determinants?</td>
+              <td style="padding:7px 10px;color:var(--ink2);">Visually links implementation strategies → determinants → implementation outcomes → clinical outcomes; widely used in grant applications and protocol design (e.g., ADHERE trial, Ethiopia); required by multiple NIH funding mechanisms · <a href="https://doi.org/10.1186/s13012-020-01041-8" target="_blank" style="color:var(--blue);font-size:10.5px;">Smith, Li &amp; Rafferty <em>Implement Sci</em> 2020</a></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);">
+              <td style="padding:7px 10px;font-weight:600;color:var(--ink2);">Proctor's taxonomy</td>
+              <td style="padding:7px 10px;color:var(--ink2);">Evaluation</td>
+              <td style="padding:7px 10px;color:var(--ink2);font-style:italic;">What exactly are we measuring?</td>
+              <td style="padding:7px 10px;color:var(--ink2);">Defines 8 discrete implementation outcomes (acceptability, adoption, appropriateness, feasibility, fidelity, penetration, sustainability, cost) used to specify primary and secondary outcomes in hybrid trial protocols · <a href="https://doi.org/10.1007/s10488-010-0319-7" target="_blank" style="color:var(--blue);font-size:10.5px;">Proctor et al. <em>Adm Policy Ment Health</em> 2011</a></td>
+            </tr>
+            <tr style="background:var(--cream);">
+              <td style="padding:7px 10px;font-weight:600;color:var(--ink2);">CFIR 2.0</td>
+              <td style="padding:7px 10px;color:var(--ink2);">Determinant</td>
+              <td style="padding:7px 10px;color:var(--ink2);font-style:italic;">Why did implementation succeed or fail?</td>
+              <td style="padding:7px 10px;color:var(--ink2);">Barrier and facilitator analysis across 5 domains (intervention, outer setting, inner setting, individuals, implementation process); one of the most widely cited determinant frameworks; guides strategy selection and process evaluations in hybrid trials · <a href="https://doi.org/10.1186/s13012-022-01245-0" target="_blank" style="color:var(--blue);font-size:10.5px;">Damschroder et al. <em>Implement Sci</em> 2022</a> · <a href="https://cfirguide.org" target="_blank" style="color:var(--blue);font-size:10.5px;">cfirguide.org</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="font-size:11px;color:var(--ink3);line-height:1.6;margin:0;"><strong>Choosing:</strong> Use <em>RE-AIM</em> when funders or journals require standardised implementation outcome reporting. Use <em>EPIS</em> when studying how system-level context shapes adoption over time. Use <em>KTA</em> to sequence knowledge-to-action steps or <em>i-PARIHS</em> when facilitation is your implementation strategy. Use the <em>Implementation Research Logic Model</em> to specify causal pathways for grant applications. Use <em>Proctor's taxonomy</em> to name and define your implementation outcomes precisely. Use <em>CFIR 2.0</em> to diagnose barriers and facilitators and tailor strategies accordingly. Combine frameworks when a study has both diagnostic and evaluative aims — most do. · Nilsen P. Making sense of implementation theories, models and frameworks. <a href="https://doi.org/10.1186/s13012-015-0242-0" target="_blank" style="color:var(--blue);">doi:10.1186/s13012-015-0242-0</a> · <em>Implement Sci.</em> 2015;10:53.</p>
+      </div>
+
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:0.75rem;">
 </div>
         <div style="background:var(--amber-l);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:10px 16px;margin-bottom:1rem;">
@@ -778,6 +817,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);f
         </div>
       </div>
 
+      <!-- AI for implementation science box -->
+      <div style="margin-top:1.25rem;">
+        <p style="font-size:12.5px;font-weight:700;color:var(--ink);margin:0 0 0.4rem 0;">Artificial intelligence for implementation science</p>
+        <div style="border:1px solid var(--rule);border-radius:6px;background:var(--teal-l);padding:10px 14px;">
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;"><strong>Leveraging AI to advance implementation science — opportunities and cautions:</strong> Trinkley KE, An R, Maw AM, Glasgow RE, Brownson RC et al. Leveraging artificial intelligence to advance implementation science: potential opportunities and cautions. <em>Implement Sci.</em> 2024;19:17. — This debate paper directly addresses the evidence-to-practice gap that implementation science was designed to close, arguing that AI offers specific, targeted opportunities to accelerate progress. The authors systematically map AI applications to six persistent implementation science challenges: (1) <strong>speed</strong> — automating evidence synthesis, framework selection, and fidelity monitoring; (2) <strong>sustainability</strong> — predicting which contexts maintain intervention effects over time; (3) <strong>equity</strong> — identifying and correcting disparities in reach and adoption across populations; (4) <strong>generalizability</strong> — enabling rapid replication across diverse health systems; (5) <strong>context and context-outcome relationships</strong> — using machine learning to unpack how setting, culture, and organisational factors shape implementation; and (6) <strong>causality and mechanisms</strong> — moving beyond association to understand why implementation succeeds or fails. Examples are drawn from global health systems, public health, and precision health. Critically, the authors also catalogue hazards: algorithmic bias, opacity of AI decisions, over-reliance on automated outputs, and the risks of applying AI without transdisciplinary collaboration. The paper concludes with practical recommendations for implementation researchers who wish to leverage AI responsibly — a direct methodological bridge to the AI tools covered in this module.</p>
+          <p style="font-size:11px;"><a href="https://doi.org/10.1186/s13012-024-01346-y" target="_blank" style="color:var(--blue);">doi:10.1186/s13012-024-01346-y</a> · PMID: — · <em>Implement Sci.</em> 2024;19:17 · Open access · 44 citations</p>
+        </div>
+      </div>
+
       <p style="font-size:11px;color:var(--ink3);margin-top:1rem;font-style:italic;">Key resources: WHO TDR Implementation Research Training Materials — <a href="https://tdr.who.int/home/our-work/strengthening-research-capacity/implementation-research-training-materials" target="_blank" style="color:var(--blue);">tdr.who.int</a> · RE-AIM Framework — <a href="https://re-aim.org/learn/" target="_blank" style="color:var(--blue);">re-aim.org/learn</a> · CFIR 2.0 — <a href="https://cfirguide.org" target="_blank" style="color:var(--blue);">cfirguide.org</a> · Implementation Science journal — <a href="https://implementationscience.biomedcentral.com" target="_blank" style="color:var(--blue);">implementationscience.biomedcentral.com</a></p>
     </div>
 
@@ -788,6 +836,77 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);f
 
 </section>
 
+
+<hr class="rule">
+
+<section class="section" id="ai-clinical-trials">
+  <div style="max-width:960px;margin:0 auto;">
+    <p class="section-label">Emerging evidence</p>
+    <h2 class="section-title">AI and large language models in clinical trials</h2>
+    <p class="section-desc">The same AI tools introduced in the previous sections are beginning to transform how clinical trials are designed, conducted, and analysed. Understanding how LLMs are being integrated into the trial lifecycle is increasingly relevant for clinical researchers — both as a practical opportunity and as a methodological responsibility.</p>
+
+    <div class="about-card" style="border-top:3px solid var(--purple);">
+
+      <p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:1rem;">Clinical trials remain the cornerstone of evidence-based medicine, yet they face mounting operational challenges: approximately 80% of trials experience recruitment delays, pharmaceutical R&amp;D costs exceed $200 billion annually, success rates remain below 12%, and data quality issues affect roughly half of all datasets. Large language models are now being systematically evaluated as tools to address these bottlenecks — not by replacing trial methodology, but by augmenting the human processes that surround it.</p>
+
+      <p style="font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:8px;">Where LLMs are being applied in the trial lifecycle</p>
+      <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:1rem;">
+        <thead>
+          <tr style="background:var(--purple-l,#f0eeff);">
+            <th style="padding:8px 10px;text-align:left;border-bottom:2px solid var(--purple);color:var(--purple);font-size:11.5px;width:22%;">Trial phase</th>
+            <th style="padding:8px 10px;text-align:left;border-bottom:2px solid var(--purple);color:var(--purple);font-size:11.5px;">LLM application</th>
+            <th style="padding:8px 10px;text-align:left;border-bottom:2px solid var(--purple);color:var(--purple);font-size:11.5px;width:28%;">Reported impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--rule);">
+            <td style="padding:8px 10px;font-weight:600;color:var(--ink2);">Design &amp; protocol</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Eligibility criteria drafting, endpoint suggestion, scientific rationale generation</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Accelerates protocol development; requires expert review for clinical validity</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--rule);background:var(--cream);">
+            <td style="padding:8px 10px;font-weight:600;color:var(--ink2);">Patient recruitment</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Automated patient-trial matching from EHR text; eligibility screening from unstructured records</td>
+            <td style="padding:8px 10px;color:var(--ink2);">AI-powered tools improve enrolment rates by ~65%; screening time reduced from hours to &lt;9 min per patient</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--rule);">
+            <td style="padding:8px 10px;font-weight:600;color:var(--ink2);">Data management</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Information extraction from clinical notes, relation classification, adverse event detection from text</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Digital biomarkers enable ~90% sensitivity for adverse event detection; reduces manual abstraction burden</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--rule);background:var(--cream);">
+            <td style="padding:8px 10px;font-weight:600;color:var(--ink2);">Risk monitoring</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Predictive analytics for trial outcome and failure risk; safety signal extraction</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Predictive models achieve ~85% accuracy for trial outcomes; 30–50% acceleration in trial timelines</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 10px;font-weight:600;color:var(--ink2);">Reporting &amp; analysis</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Structured report generation, CONSORT compliance checking, manuscript drafting support</td>
+            <td style="padding:8px 10px;color:var(--ink2);">Cost reductions of ~40% reported; requires rigorous human oversight of all generated content</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:12.5px;font-weight:700;color:var(--ink);margin:0.5rem 0 0.4rem 0;">Published evidence — two recent reviews</p>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:1rem;">
+        <div style="border:1px solid var(--rule);border-radius:6px;background:var(--purple-l,#f0eeff);padding:10px 14px;">
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;"><strong>LLMs in clinical trials — applications, technical advances, and future directions (narrative review):</strong> Lin A, Wang Z, Jiang A, Chen L, Qi C, Zhu L et al. Large language models in clinical trials: applications, technical advances, and future directions. <em>BMC Med.</em> 2025;23:563. — Narrative review covering LLM applications across the full trial lifecycle: patient-trial matching, trial data extraction and processing, scientific rationale generation, medical decision support, and endpoint prediction. With domain-specific pre-training and fine-tuning, LLMs show promising potential to reduce both time and financial costs. The review also examines comparative advantages over traditional NLP models, technical limitations, and real-world integration challenges — making it essential reading for any researcher seeking to understand the current frontier of AI in clinical trials.</p>
+          <p style="font-size:11px;"><a href="https://doi.org/10.1186/s12916-025-04348-9" target="_blank" style="color:var(--blue);">doi:10.1186/s12916-025-04348-9</a> · <em>BMC Medicine</em> 2025 · Open access</p>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:6px;background:var(--purple-l,#f0eeff);padding:10px 14px;">
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;"><strong>AI in clinical trials — comprehensive review of opportunities, challenges, and future directions:</strong> Olawade DB, Fidelis SC, Marinze S, Egbon E, Osunmakinde A, Osborne A et al. Artificial intelligence in clinical trials: A comprehensive review of opportunities, challenges, and future directions. <em>Int J Med Inform.</em> 2026;206:106141. — Comprehensive review spanning AI-powered patient recruitment, predictive analytics for trial outcomes, digital biomarkers, and intelligent data management. Key findings: AI recruitment tools improve enrolment by 65%, predictive models reach 85% accuracy for trial outcomes, AI integration accelerates timelines by 30–50% and reduces costs by 40%, and digital biomarkers achieve 90% sensitivity for adverse event detection. Critically, the review identifies implementation barriers including regulatory uncertainty, algorithmic bias, and the need for prospective validation — highlighting the gap between reported performance metrics and real-world deployment.</p>
+          <p style="font-size:11px;"><a href="https://doi.org/10.1016/j.ijmedinf.2025.106141" target="_blank" style="color:var(--blue);">doi:10.1016/j.ijmedinf.2025.106141</a> · <em>Int J Med Inform.</em> 2026;206 · Open access</p>
+        </div>
+      </div>
+
+      <div style="background:var(--amber-l);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:10px 14px;">
+        <p style="font-size:11.5px;font-weight:700;color:var(--amber);margin-bottom:4px;">What this means for clinical researchers</p>
+        <p style="font-size:12px;color:var(--ink2);line-height:1.65;">LLMs are not yet a substitute for rigorous trial methodology — they are powerful assistants that can reduce the administrative and analytical burden at specific bottlenecks. For researchers in this module, the most immediately actionable applications are protocol drafting support, eligibility criteria refinement, and literature synthesis during the proposal stage (covered in Part 1A), and manuscript structure and reporting standard checks during the write-up stage (covered in Part 2). Critically, all LLM-generated content in a trial context must be verified by domain experts — the technical failure modes covered in the AI Tools page apply here with particular force, given the patient safety implications.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <hr class="rule">
 
