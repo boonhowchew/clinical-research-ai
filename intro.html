@@ -61,7 +61,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);f
 .section-sm{padding:2rem 2rem;max-width:960px;margin:0 auto}
 .section-label{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:1.25rem}
 .section-title{font-family:'Libre Baskerville',serif;font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:.75rem;line-height:1.3}
-.section-desc{font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:2rem;max-width:680px}
+.section-desc{font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:2rem}
 .journey-wrapper{display:flex;flex-direction:column;gap:0}
 .journey-phase{border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:white;box-shadow:var(--shadow)}
 .phase-header{display:flex;align-items:center;gap:16px;padding:1.25rem 1.5rem}
@@ -311,75 +311,132 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);f
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
         <div>
           <!-- SVG classification diagram reproduced from Chew BH (2019) Figure 1 -->
-          <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:DM Sans,sans-serif;font-size:12px;">
-            <!-- Central: Clinical Research -->
-            <rect x="185" y="10" width="150" height="44" rx="6" fill="white" stroke="#4a3f8f" stroke-width="2"/>
-            <text x="260" y="28" text-anchor="middle" font-weight="600" fill="#4a3f8f" font-size="13">Clinical</text>
-            <text x="260" y="46" text-anchor="middle" font-weight="600" fill="#4a3f8f" font-size="13">Research</text>
-            <!-- Left branch: Qualitative -->
-            <line x1="185" y1="32" x2="100" y2="32" stroke="#888" stroke-width="1.5"/>
-            <line x1="100" y1="32" x2="100" y2="80" stroke="#888" stroke-width="1.5"/>
-            <rect x="38" y="80" width="124" height="36" rx="4" fill="white" stroke="#888" stroke-width="1.5"/>
-            <text x="100" y="102" text-anchor="middle" fill="#3d3d39" font-size="12">Qualitative Research</text>
-            <!-- Qualitative sub-branches -->
-            <line x1="75" y1="116" x2="55" y2="140" stroke="#aaa" stroke-width="1.2" stroke-dasharray="4,3"/>
-            <rect x="8" y="140" width="94" height="32" rx="4" fill="#f7f5f0" stroke="#bbb" stroke-width="1.2" stroke-dasharray="4,3"/>
-            <text x="55" y="160" text-anchor="middle" fill="#6b6b65" font-size="11">Primary</text>
-            <text x="55" y="172" text-anchor="middle" fill="#6b6b65" font-size="11">Research</text>
-            <line x1="125" y1="116" x2="145" y2="140" stroke="#aaa" stroke-width="1.2" stroke-dasharray="4,3"/>
-            <rect x="100" y="140" width="96" height="32" rx="4" fill="#f7f5f0" stroke="#bbb" stroke-width="1.2" stroke-dasharray="4,3"/>
-            <text x="148" y="160" text-anchor="middle" fill="#6b6b65" font-size="11">Secondary</text>
-            <text x="148" y="172" text-anchor="middle" fill="#6b6b65" font-size="11">Research</text>
-            <!-- Right branch: Quantitative -->
-            <line x1="335" y1="32" x2="420" y2="32" stroke="#888" stroke-width="1.5"/>
-            <line x1="420" y1="32" x2="420" y2="80" stroke="#888" stroke-width="1.5"/>
-            <rect x="358" y="80" width="124" height="36" rx="4" fill="white" stroke="#888" stroke-width="1.5"/>
-            <text x="420" y="102" text-anchor="middle" fill="#3d3d39" font-size="12">Quantitative Research</text>
-            <!-- Quantitative sub-branches -->
-            <line x1="395" y1="116" x2="375" y2="140" stroke="#aaa" stroke-width="1.2" stroke-dasharray="4,3"/>
-            <rect x="328" y="140" width="94" height="32" rx="4" fill="#f7f5f0" stroke="#bbb" stroke-width="1.2" stroke-dasharray="4,3"/>
-            <text x="375" y="160" text-anchor="middle" fill="#6b6b65" font-size="11">Primary</text>
-            <text x="375" y="172" text-anchor="middle" fill="#6b6b65" font-size="11">Research</text>
-            <line x1="445" y1="116" x2="465" y2="140" stroke="#aaa" stroke-width="1.2" stroke-dasharray="4,3"/>
-            <rect x="418" y="140" width="96" height="32" rx="4" fill="#f7f5f0" stroke="#bbb" stroke-width="1.2" stroke-dasharray="4,3"/>
-            <text x="466" y="160" text-anchor="middle" fill="#6b6b65" font-size="11">Secondary</text>
-            <text x="466" y="172" text-anchor="middle" fill="#6b6b65" font-size="11">Research</text>
-            <!-- Arrows from Quant Primary down to Non-causal and Causal -->
-            <path d="M355 172 Q305 200 265 220" stroke="#4a3f8f" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-            <path d="M395 172 Q405 200 395 220" stroke="#4a3f8f" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-            <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#4a3f8f"/></marker></defs>
+          <svg viewBox="0 0 940 510" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:DM Sans,sans-serif;">
+            <defs>
+              <marker id="arr" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                <path d="M0,0 L0,10 L10,5 z" fill="#4a3f8f"/>
+              </marker>
+            </defs>
+
+            <!-- ══ ROW 1 — Clinical Research  centre-x=470 ══ -->
+            <rect x="350" y="14" width="240" height="56" rx="8" fill="white" stroke="#4a3f8f" stroke-width="2.5"/>
+            <text x="470" y="36" text-anchor="middle" font-weight="700" fill="#4a3f8f" font-size="18">Clinical</text>
+            <text x="470" y="60" text-anchor="middle" font-weight="700" fill="#4a3f8f" font-size="18">Research</text>
+
+            <!-- ══ ROW 2 — Qualitative x=56–236 c=146  Quantitative x=686–866 c=776 ══ -->
+            <!-- Clinical → Qualitative -->
+            <line x1="350" y1="42" x2="146" y2="42"  stroke="#888" stroke-width="1.8"/>
+            <line x1="146" y1="42" x2="146" y2="112" stroke="#888" stroke-width="1.8"/>
+
+            <rect x="56" y="112" width="180" height="48" rx="6" fill="white" stroke="#888" stroke-width="1.8"/>
+            <text x="146" y="133" text-anchor="middle" fill="#3d3d39" font-size="16">Qualitative</text>
+            <text x="146" y="152" text-anchor="middle" fill="#3d3d39" font-size="16">Research</text>
+
+            <!-- Clinical → Quantitative -->
+            <line x1="590" y1="42" x2="776" y2="42"  stroke="#888" stroke-width="1.8"/>
+            <line x1="776" y1="42" x2="776" y2="112" stroke="#888" stroke-width="1.8"/>
+
+            <rect x="686" y="112" width="180" height="48" rx="6" fill="white" stroke="#888" stroke-width="1.8"/>
+            <text x="776" y="133" text-anchor="middle" fill="#3d3d39" font-size="16">Quantitative</text>
+            <text x="776" y="152" text-anchor="middle" fill="#3d3d39" font-size="16">Research</text>
+
+            <!-- ══ ROW 3 — Primary/Secondary under each ══
+                 Qual-Primary:   x=20–162  c=91
+                 Qual-Secondary: x=172–314 c=243
+                 Qnt-Primary:    x=650–792 c=721
+                 Qnt-Secondary:  x=802–920 c=861
+            ══ -->
+            <!-- Qual → Primary -->
+            <line x1="118" y1="160" x2="91"  y2="194" stroke="#aaa" stroke-width="1.4" stroke-dasharray="5,4"/>
+            <rect x="20"  y="194" width="142" height="48" rx="6" fill="#f7f5f0" stroke="#bbb" stroke-width="1.4" stroke-dasharray="5,4"/>
+            <text x="91"  y="215" text-anchor="middle" fill="#6b6b65" font-size="14">Primary</text>
+            <text x="91"  y="234" text-anchor="middle" fill="#6b6b65" font-size="14">Research</text>
+
+            <!-- Qual → Secondary -->
+            <line x1="174" y1="160" x2="243" y2="194" stroke="#aaa" stroke-width="1.4" stroke-dasharray="5,4"/>
+            <rect x="172" y="194" width="142" height="48" rx="6" fill="#f7f5f0" stroke="#bbb" stroke-width="1.4" stroke-dasharray="5,4"/>
+            <text x="243" y="215" text-anchor="middle" fill="#6b6b65" font-size="14">Secondary</text>
+            <text x="243" y="234" text-anchor="middle" fill="#6b6b65" font-size="14">Research</text>
+
+            <!-- Quant → Primary -->
+            <line x1="748" y1="160" x2="721" y2="194" stroke="#aaa" stroke-width="1.4" stroke-dasharray="5,4"/>
+            <rect x="650" y="194" width="142" height="48" rx="6" fill="#f7f5f0" stroke="#bbb" stroke-width="1.4" stroke-dasharray="5,4"/>
+            <text x="721" y="215" text-anchor="middle" fill="#6b6b65" font-size="14">Primary</text>
+            <text x="721" y="234" text-anchor="middle" fill="#6b6b65" font-size="14">Research</text>
+
+            <!-- Quant → Secondary -->
+            <line x1="804" y1="160" x2="861" y2="194" stroke="#aaa" stroke-width="1.4" stroke-dasharray="5,4"/>
+            <rect x="802" y="194" width="118" height="48" rx="6" fill="#f7f5f0" stroke="#bbb" stroke-width="1.4" stroke-dasharray="5,4"/>
+            <text x="861" y="215" text-anchor="middle" fill="#6b6b65" font-size="14">Secondary</text>
+            <text x="861" y="234" text-anchor="middle" fill="#6b6b65" font-size="14">Research</text>
+
+            <!-- ══ ROW 4 — Non-causal x=294–462 c=378   Causal x=532–700 c=616
+                 Qnt-Primary bottom-left x=684, bottom-right x=756, y=242
+                 → Non-causal: exit x=690 → down y=274 → left x=378 → down y=304
+                 → Causal:     exit x=752 → down y=274 → right x=616 → down y=304
+            ══ -->
+            <polyline points="690,242 690,274 378,274 378,304"
+              stroke="#4a3f8f" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+            <polyline points="752,242 752,274 616,274 616,304"
+              stroke="#4a3f8f" stroke-width="1.8" fill="none" marker-end="url(#arr)"/>
+
             <!-- Non-causal box -->
-            <rect x="190" y="220" width="120" height="36" rx="4" fill="#ede9fb" stroke="#4a3f8f" stroke-width="1.5" stroke-dasharray="5,3"/>
-            <text x="250" y="240" text-anchor="middle" fill="#4a3f8f" font-size="12" font-weight="500">Non-causal</text>
-            <text x="250" y="253" text-anchor="middle" fill="#4a3f8f" font-size="12" font-weight="500">Research</text>
+            <rect x="294" y="304" width="168" height="48" rx="6" fill="#ede9fb" stroke="#4a3f8f" stroke-width="1.8" stroke-dasharray="6,4"/>
+            <text x="378" y="325" text-anchor="middle" fill="#4a3f8f" font-size="15" font-weight="700">Non-causal</text>
+            <text x="378" y="344" text-anchor="middle" fill="#4a3f8f" font-size="15" font-weight="700">Research</text>
+
             <!-- Causal box -->
-            <rect x="330" y="220" width="120" height="36" rx="4" fill="#e3f4ec" stroke="#1a6b4a" stroke-width="1.5" stroke-dasharray="5,3"/>
-            <text x="390" y="240" text-anchor="middle" fill="#1a6b4a" font-size="12" font-weight="500">Causal</text>
-            <text x="390" y="253" text-anchor="middle" fill="#1a6b4a" font-size="12" font-weight="500">Research</text>
-            <!-- Non-causal children -->
-            <line x1="220" y1="256" x2="210" y2="285" stroke="#7F77DD" stroke-width="1.2"/>
-            <rect x="160" y="285" width="100" height="32" rx="4" fill="white" stroke="#7F77DD" stroke-width="1.2"/>
-            <text x="210" y="305" text-anchor="middle" fill="#3C3489" font-size="11">Diagnostic</text>
-            <text x="210" y="317" text-anchor="middle" fill="#3C3489" font-size="11">Research</text>
-            <line x1="250" y1="256" x2="250" y2="285" stroke="#7F77DD" stroke-width="1.2"/>
-            <rect x="200" y="343" width="100" height="32" rx="4" fill="white" stroke="#7F77DD" stroke-width="1.2"/>
-            <text x="250" y="363" text-anchor="middle" fill="#3C3489" font-size="11">Prognostic</text>
-            <text x="250" y="375" text-anchor="middle" fill="#3C3489" font-size="11">Research</text>
-            <line x1="210" y1="317" x2="210" y2="330" stroke="#7F77DD" stroke-width="1.2"/>
-            <line x1="210" y1="330" x2="250" y2="343" stroke="#7F77DD" stroke-width="1.2"/>
-            <!-- Causal children -->
-            <line x1="360" y1="256" x2="370" y2="285" stroke="#1D9E75" stroke-width="1.2"/>
-            <rect x="320" y="285" width="100" height="32" rx="4" fill="white" stroke="#1D9E75" stroke-width="1.2"/>
-            <text x="370" y="305" text-anchor="middle" fill="#085041" font-size="11">Interventional</text>
-            <text x="370" y="317" text-anchor="middle" fill="#085041" font-size="11">Research</text>
-            <line x1="390" y1="256" x2="410" y2="285" stroke="#1D9E75" stroke-width="1.2"/>
-            <rect x="360" y="343" width="100" height="32" rx="4" fill="white" stroke="#1D9E75" stroke-width="1.2"/>
-            <text x="410" y="363" text-anchor="middle" fill="#085041" font-size="11">Etiologic</text>
-            <text x="410" y="375" text-anchor="middle" fill="#085041" font-size="11">Research</text>
-            <line x1="370" y1="317" x2="370" y2="330" stroke="#1D9E75" stroke-width="1.2"/>
-            <line x1="370" y1="330" x2="410" y2="343" stroke="#1D9E75" stroke-width="1.2"/>
-          </svg>
-          <p style="font-size:10.5px;color:var(--ink3);text-align:center;margin-top:4px;font-style:italic;">Figure 1. Fundamental classification of clinical researches (Chew BH, 2019)</p>
+            <rect x="532" y="304" width="168" height="48" rx="6" fill="#e3f4ec" stroke="#1a6b4a" stroke-width="1.8" stroke-dasharray="6,4"/>
+            <text x="616" y="325" text-anchor="middle" fill="#1a6b4a" font-size="15" font-weight="700">Causal</text>
+            <text x="616" y="344" text-anchor="middle" fill="#1a6b4a" font-size="15" font-weight="700">Research</text>
+
+            <!-- ══ ROW 5 — four leaf boxes, evenly spaced, NO overlap
+                 Diagnostic:     x=28–192   c=110   gap=28
+                 Prognostic:     x=220–384  c=302   gap=28
+                 Interventional: x=412–590  c=501   gap=28  (wider for long word)
+                 Etiologic:      x=618–782  c=700   gap=28
+
+                 Non-causal bottom: centre=378, y=352
+                   → Diagnostic:  exit x=348,y=352 → down y=388 → left x=110  → down y=420
+                   → Prognostic:  exit x=408,y=352 → down y=388 → right x=302 → down y=420
+                 Causal bottom: centre=616, y=352
+                   → Interventional: exit x=586,y=352 → down y=388 → left x=501 → down y=420
+                   → Etiologic:      exit x=646,y=352 → down y=388 → right x=700 → down y=420
+            ══ -->
+            <!-- Non-causal → Diagnostic -->
+            <polyline points="348,352 348,388 110,388 110,420"
+              stroke="#7F77DD" stroke-width="1.4" fill="none"/>
+            <!-- Non-causal → Prognostic -->
+            <polyline points="408,352 408,388 302,388 302,420"
+              stroke="#7F77DD" stroke-width="1.4" fill="none"/>
+            <!-- Causal → Interventional -->
+            <polyline points="586,352 586,388 501,388 501,420"
+              stroke="#1D9E75" stroke-width="1.4" fill="none"/>
+            <!-- Causal → Etiologic -->
+            <polyline points="646,352 646,388 700,388 700,420"
+              stroke="#1D9E75" stroke-width="1.4" fill="none"/>
+
+            <!-- Diagnostic -->
+            <rect x="28"  y="420" width="164" height="48" rx="6" fill="white" stroke="#7F77DD" stroke-width="1.4"/>
+            <text x="110" y="441" text-anchor="middle" fill="#3C3489" font-size="14">Diagnostic</text>
+            <text x="110" y="460" text-anchor="middle" fill="#3C3489" font-size="14">Research</text>
+
+            <!-- Prognostic -->
+            <rect x="220" y="420" width="164" height="48" rx="6" fill="white" stroke="#7F77DD" stroke-width="1.4"/>
+            <text x="302" y="441" text-anchor="middle" fill="#3C3489" font-size="14">Prognostic</text>
+            <text x="302" y="460" text-anchor="middle" fill="#3C3489" font-size="14">Research</text>
+
+            <!-- Interventional -->
+            <rect x="412" y="420" width="178" height="48" rx="6" fill="white" stroke="#1D9E75" stroke-width="1.4"/>
+            <text x="501" y="441" text-anchor="middle" fill="#085041" font-size="14">Interventional</text>
+            <text x="501" y="460" text-anchor="middle" fill="#085041" font-size="14">Research</text>
+
+            <!-- Etiologic -->
+            <rect x="618" y="420" width="164" height="48" rx="6" fill="white" stroke="#1D9E75" stroke-width="1.4"/>
+            <text x="700" y="441" text-anchor="middle" fill="#085041" font-size="14">Etiologic</text>
+            <text x="700" y="460" text-anchor="middle" fill="#085041" font-size="14">Research</text>
+
+          </svg><p style="font-size:10.5px;color:var(--ink3);text-align:center;margin-top:4px;font-style:italic;">Figure 1. Fundamental classification of clinical researches (Chew BH, 2019)</p>
         </div>
         <div>
           <div style="background:var(--blue-l);border-radius:6px;padding:12px;margin-bottom:10px;border-left:3px solid var(--blue);">
@@ -851,9 +908,67 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);f
       <!-- AI for implementation science box -->
       <div style="margin-top:1.25rem;">
         <p style="font-size:12.5px;font-weight:700;color:var(--ink);margin:0 0 0.4rem 0;">Artificial intelligence for implementation science</p>
-        <div style="border:1px solid var(--rule);border-radius:6px;background:var(--teal-l);padding:10px 14px;">
-          <p style="font-size:12px;color:var(--ink2);line-height:1.65;"><strong>Leveraging AI to advance implementation science — opportunities and cautions:</strong> Trinkley KE, An R, Maw AM, Glasgow RE, Brownson RC et al. Leveraging artificial intelligence to advance implementation science: potential opportunities and cautions. <em>Implement Sci.</em> 2024;19:17. — This debate paper directly addresses the evidence-to-practice gap that implementation science was designed to close, arguing that AI offers specific, targeted opportunities to accelerate progress. The authors systematically map AI applications to six persistent implementation science challenges: (1) <strong>speed</strong> — automating evidence synthesis, framework selection, and fidelity monitoring; (2) <strong>sustainability</strong> — predicting which contexts maintain intervention effects over time; (3) <strong>equity</strong> — identifying and correcting disparities in reach and adoption across populations; (4) <strong>generalizability</strong> — enabling rapid replication across diverse health systems; (5) <strong>context and context-outcome relationships</strong> — using machine learning to unpack how setting, culture, and organisational factors shape implementation; and (6) <strong>causality and mechanisms</strong> — moving beyond association to understand why implementation succeeds or fails. Examples are drawn from global health systems, public health, and precision health. Critically, the authors also catalogue hazards: algorithmic bias, opacity of AI decisions, over-reliance on automated outputs, and the risks of applying AI without transdisciplinary collaboration. The paper concludes with practical recommendations for implementation researchers who wish to leverage AI responsibly — a direct methodological bridge to the AI tools covered in this module.</p>
-          <p style="font-size:11px;"><a href="https://doi.org/10.1186/s13012-024-01346-y" target="_blank" style="color:var(--blue);">doi:10.1186/s13012-024-01346-y</a> · PMID: — · <em>Implement Sci.</em> 2024;19:17 · Open access · 44 citations</p>
+        <div style="border:1px solid var(--rule);border-radius:6px;background:var(--teal-l);padding:12px 14px;">
+
+          <!-- Citation header -->
+          <p style="font-size:12px;color:var(--ink2);line-height:1.65;margin-bottom:8px;">
+            <strong>Leveraging AI to advance implementation science — opportunities and cautions:</strong><br>
+            Trinkley KE, An R, Maw AM, Glasgow RE, Brownson RC et al. Leveraging artificial intelligence to advance implementation science: potential opportunities and cautions. <em>Implement Sci.</em> 2024;19:17. — A debate paper that directly addresses the evidence-to-practice gap, arguing that AI offers specific, targeted opportunities to accelerate implementation science progress while also introducing new hazards that must be proactively managed.
+          </p>
+
+          <!-- Opportunities -->
+          <p style="font-size:11.5px;font-weight:700;color:var(--teal);margin:10px 0 6px 0;text-transform:uppercase;letter-spacing:.04em;">Opportunities — six implementation science challenges where AI can help</p>
+          <table style="width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:10px;">
+            <thead>
+              <tr style="background:rgba(14,107,107,0.15);">
+                <th style="padding:6px 10px;text-align:left;border-bottom:1px solid rgba(14,107,107,0.3);color:var(--teal);width:22%;font-size:11px;">Challenge</th>
+                <th style="padding:6px 10px;text-align:left;border-bottom:1px solid rgba(14,107,107,0.3);color:var(--teal);font-size:11px;">How AI helps</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid rgba(14,107,107,0.15);">
+                <td style="padding:6px 10px;font-weight:600;color:var(--ink2);vertical-align:top;">1. Speed</td>
+                <td style="padding:6px 10px;color:var(--ink2);">Automates evidence synthesis, framework selection, and fidelity monitoring — compressing timelines from years to weeks</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(14,107,107,0.15);background:rgba(255,255,255,0.4);">
+                <td style="padding:6px 10px;font-weight:600;color:var(--ink2);vertical-align:top;">2. Sustainability</td>
+                <td style="padding:6px 10px;color:var(--ink2);">Predicts which contexts are likely to maintain intervention effects over time, informing scale-up planning</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(14,107,107,0.15);">
+                <td style="padding:6px 10px;font-weight:600;color:var(--ink2);vertical-align:top;">3. Equity</td>
+                <td style="padding:6px 10px;color:var(--ink2);">Identifies disparities in reach and adoption across populations; can flag underserved groups for targeted implementation strategies</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(14,107,107,0.15);background:rgba(255,255,255,0.4);">
+                <td style="padding:6px 10px;font-weight:600;color:var(--ink2);vertical-align:top;">4. Generalisability</td>
+                <td style="padding:6px 10px;color:var(--ink2);">Enables rapid replication and adaptation across diverse health systems and settings by identifying contextual analogues</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(14,107,107,0.15);">
+                <td style="padding:6px 10px;font-weight:600;color:var(--ink2);vertical-align:top;">5. Context &amp; context-outcome relationships</td>
+                <td style="padding:6px 10px;color:var(--ink2);">Uses machine learning to unpack how setting, culture, and organisational factors shape implementation outcomes — addressing what CFIR alone cannot quantify</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 10px;font-weight:600;color:var(--ink2);vertical-align:top;">6. Causality &amp; mechanisms</td>
+                <td style="padding:6px 10px;color:var(--ink2);">Moves beyond association to understand <em>why</em> implementation succeeds or fails using causal inference methods and natural language processing of process data</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Cautions -->
+          <div style="background:rgba(180,100,0,0.10);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:8px 12px;margin-bottom:8px;">
+            <p style="font-size:11.5px;font-weight:700;color:var(--amber);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em;">Cautions — hazards the authors explicitly flag</p>
+            <ul style="margin:0;padding-left:1.1rem;font-size:11.5px;color:var(--ink2);line-height:1.75;">
+              <li><strong>Algorithmic bias</strong> — AI trained on non-representative data may amplify inequities in implementation rather than reduce them</li>
+              <li><strong>Opacity</strong> — "black box" AI decisions are difficult to explain to stakeholders, clinicians, or ethics boards, undermining trust</li>
+              <li><strong>Over-reliance</strong> — automated outputs can create false confidence; human judgement and domain expertise remain essential for interpretation</li>
+              <li><strong>Unintended consequences</strong> — AI applied without understanding implementation context may optimise the wrong outcomes or harm specific subgroups</li>
+              <li><strong>Transdisciplinary gap</strong> — effective use requires collaboration between implementation scientists and AI specialists; neither field alone has sufficient expertise</li>
+            </ul>
+          </div>
+
+          <!-- Recommendations note -->
+          <p style="font-size:11.5px;color:var(--ink2);line-height:1.65;margin-bottom:6px;">The paper concludes with practical recommendations for responsible integration, including starting with clearly defined implementation questions, choosing AI methods that match the research question, validating outputs with domain experts, and proactively monitoring for unintended consequences. Examples are drawn from global health systems, public health, and precision health settings.</p>
+
+          <p style="font-size:11px;color:var(--ink3);margin:0;"><a href="https://doi.org/10.1186/s13012-024-01346-y" target="_blank" style="color:var(--blue);">doi:10.1186/s13012-024-01346-y</a> · <em>Implement Sci.</em> 2024;19:17 · Open access · 44 citations · 13k accesses</p>
         </div>
       </div>
 
@@ -867,6 +982,150 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);f
 
 </section>
 
+
+<hr class="rule">
+
+<section class="section" id="clinical-trial-types">
+  <div style="max-width:960px;margin:0 auto;">
+    <p class="section-label">Study design</p>
+    <h2 class="section-title">Types of clinical trials</h2>
+    <p class="section-desc">Clinical trials span a wide spectrum of designs — from tightly controlled efficacy studies to adaptive, platform, and precision medicine frameworks. Understanding which trial type fits a given research question is foundational to proposal writing and protocol design. The table below maps 13 contemporary trial types to their best use cases, rationale, strengths, and limitations.</p>
+
+    <div class="about-card" style="border-top:3px solid var(--p2,#b07d00);padding:0;">
+
+      <div style="padding:1rem 1.5rem 0.5rem;">
+        <p style="font-size:12px;color:var(--ink2);line-height:1.7;margin-bottom:0.5rem;">Clinical trials are no longer a single design — they now constitute an ecosystem of specialised frameworks, each optimised for a different scientific question, patient population, or phase of evidence development. Hybrid trials bridge research and practice; adaptive trials respond to interim data; platform trials run indefinitely under a shared protocol. Familiarity with this landscape is essential for any researcher designing a study, reviewing a grant, or interpreting trial-based evidence.</p>
+        <p style="font-size:11px;color:var(--ink3);font-style:italic;">Source: Chew BH. <em>Understanding and Conducting Clinical Research — A Clinical Epidemiology Approach by a Clinician for Clinicians.</em> ISBN 978-967-960-449-8. UPM Serdang, Malaysia; 2019–2024.</p>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:11.5px;">
+          <thead>
+            <tr style="background:var(--ink);color:var(--cream);">
+              <th style="padding:9px 10px;text-align:left;width:3%;font-size:11px;">#</th>
+              <th style="padding:9px 10px;text-align:left;width:17%;font-size:11px;">Trial type</th>
+              <th style="padding:9px 10px;text-align:left;width:20%;font-size:11px;">Best use cases</th>
+              <th style="padding:9px 10px;text-align:left;width:20%;font-size:11px;">Rationale</th>
+              <th style="padding:9px 10px;text-align:left;width:20%;font-size:11px;">Strengths</th>
+              <th style="padding:9px 10px;text-align:left;width:20%;font-size:11px;">Limitations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--rule);">
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">1</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">Hybrid Effectiveness-Implementation Trials</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When both clinical effectiveness and real-world implementation are relevant</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Simultaneously assesses intervention efficacy and implementation strategies</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Bridges research and practice; accelerates translation into real-world care</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Requires extensive coordination; balancing both objectives can be complex</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);background:var(--cream);">
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">2</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">Adaptive Clinical Trials<br><a href="https://doi.org/10.1056/NEJMra1510061" target="_blank" style="font-size:10px;font-weight:400;color:var(--blue);">Bhatt &amp; Mehta · NEJM 2016</a></td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When evaluating treatments in rapidly evolving fields or when preliminary data suggests modifications</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Allows modifications to trial design based on interim results</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">More efficient; reduces exposure to ineffective treatments</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Complex statistical analysis; potential biases if adaptation rules not pre-specified</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);">
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">3</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">Pragmatic Clinical Trials<br><a href="https://doi.org/10.1016/j.jclinepi.2008.12.011" target="_blank" style="font-size:10px;font-weight:400;color:var(--blue);">Thorpe et al. · J Clin Epidemiol 2009</a></td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When assessing interventions in routine clinical settings</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Measures real-world effectiveness rather than controlled efficacy</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">High external validity; directly applicable to clinical practice</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Confounding factors due to less control over variables</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);background:var(--cream);">
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">4</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">Cluster Randomized Trials<br><a href="https://doi.org/10.1093/ije/19.4.795" target="_blank" style="font-size:10px;font-weight:400;color:var(--blue);">Donner, Brown &amp; Brasher · Int J Epidemiol 1990</a></td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When interventions are naturally administered at a group level</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Prevents contamination between intervention and control groups</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Suitable for public health interventions; reduces contamination</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Requires larger sample sizes; complex statistical analysis (intracluster correlation)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);">
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">5</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">Crossover Trials<br><a href="https://doi.org/10.1111/j.1365-2125.1979.tb05903.x" target="_blank" style="font-size:10px;font-weight:400;color:var(--blue);">Hills &amp; Armitage · Br J Clin Pharmacol 1979</a></td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When long-term treatment comparisons are needed in stable conditions</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Each participant serves as their own control, reducing inter-individual variability</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Increases statistical power; fewer participants required</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Not suitable for curable conditions; requires adequate washout periods; carry-over risk</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);background:var(--cream);">
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">6</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">N-of-1 Trials<br><a href="https://doi.org/10.1056/NEJM198604033141406" target="_blank" style="font-size:10px;font-weight:400;color:var(--blue);">Guyatt et al. · NEJM 1986</a></td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When individualised treatment evaluation is needed for a single patient</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Assesses effectiveness within a single patient, tailoring therapy to individual response</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Enables highly personalised treatment plans; directly informs clinical decisions</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Findings not generalisable; requires intensive monitoring and stable chronic conditions</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);">
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">7</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">Factorial Trials<br><a href="https://doi.org/10.1186/1471-2288-3-26" target="_blank" style="font-size:10px;font-weight:400;color:var(--blue);">Montgomery, Peters &amp; Little · BMC Med Res Methodol 2003</a></td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When evaluating multiple interventions simultaneously in the same population</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Maximises efficiency by testing combinations of treatments in one trial</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Assesses interaction effects; reduces number of separate trials needed</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Requires complex statistical interpretation; interaction effects can be difficult to explain</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);background:var(--cream);">
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">8</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">Multi-Arm Multi-Stage (MAMS) Trials<br><a href="https://doi.org/10.1002/sim.1430" target="_blank" style="font-size:10px;font-weight:400;color:var(--blue);">Royston, Parmar &amp; Qian · Stat Med 2003</a></td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When comparing multiple treatments against a shared control with interim decisions</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Allows dropping of ineffective treatments at interim stages while continuing promising ones</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Optimises resource allocation; speeds up treatment evaluation across arms</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Complex statistical planning; requires robust regulatory oversight and pre-specified stopping rules</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);">
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">9</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">Human Challenge Trials<br><a href="https://doi.org/10.1016/S1473-3099(20)30438-2" target="_blank" style="font-size:10px;font-weight:400;color:var(--blue);">Jamrozik &amp; Selgelid · Lancet Infect Dis 2020</a></td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When studying vaccine efficacy or controlled pathogen exposure in healthy volunteers</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Allows precise measurement of immune response under controlled conditions</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Speeds up vaccine development; requires fewer participants than field trials</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Significant ethical concerns; requires availability of rescue treatments and specialist infrastructure</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);background:var(--cream);">
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">10</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">Basket Trials<br><a href="https://doi.org/10.1200/JCO.2014.59.8433" target="_blank" style="font-size:10px;font-weight:400;color:var(--blue);">Redig &amp; Jänne · J Clin Oncol 2015</a></td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When targeting a genetic mutation or biomarker present across multiple diseases</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Tests a single drug across multiple conditions sharing a common biomarker</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Advances precision medicine; broadens drug applications across tumour types or conditions</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Regulatory and reimbursement complexities; small sample sizes per disease basket</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);">
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">11</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">Umbrella Trials<br><a href="https://doi.org/10.1056/NEJMra1510062" target="_blank" style="font-size:10px;font-weight:400;color:var(--blue);">Woodcock &amp; LaVange · NEJM 2017</a></td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When testing multiple targeted therapies for a single disease stratified by molecular subtype</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Allows multiple interventions to be tested under one overarching framework</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Efficient; supports personalised medicine strategies within a single disease</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Complex trial management; uneven recruitment across molecular subgroups</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--rule);background:var(--cream);">
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">12</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">Platform Trials<br><a href="https://doi.org/10.1056/NEJMra1510062" target="_blank" style="font-size:10px;font-weight:400;color:var(--blue);">Woodcock &amp; LaVange · NEJM 2017</a></td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When assessing multiple interventions under a shared, perpetual protocol</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Enhances efficiency by testing multiple treatments concurrently with arms entering and leaving</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Adaptive design reduces participant exposure to ineffective treatments; maximises shared control</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Requires advanced statistical expertise; significant regulatory and governance challenges</td>
+            </tr>
+            <tr>
+              <td style="padding:8px 10px;font-weight:700;color:var(--ink3);vertical-align:top;">13</td>
+              <td style="padding:8px 10px;font-weight:600;color:var(--ink);vertical-align:top;">Target Trials<br><a href="https://doi.org/10.1093/aje/kwv254" target="_blank" style="font-size:10px;font-weight:400;color:var(--blue);">Hernán &amp; Robins · Am J Epidemiol 2016</a></td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">When emulating randomized controlled trials using observational or real-world data</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Uses big data sources (registries, EHR, claims) to estimate causal treatment effects</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Cost-effective; leverages existing real-world evidence without requiring randomisation</td>
+              <td style="padding:8px 10px;color:var(--ink2);vertical-align:top;">Susceptible to residual confounding bias; requires rigorous statistical adjustments and assumptions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="padding:0.75rem 1.5rem 1rem;">
+        <p style="font-size:11px;color:var(--ink3);line-height:1.6;margin:0;"><strong>Navigation note:</strong> Hybrid Effectiveness-Implementation Trials (row 1) are covered in depth in the section above. Adaptive, Platform, MAMS, Basket, and Umbrella trials are increasingly required by oncology and precision medicine funders — familiarity with their design principles is relevant for grant reviewers and co-investigators even if not the primary trialist. Target Trials (row 13) are particularly relevant to researchers using national registries or electronic health records, as they provide a principled causal inference framework for observational data.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <hr class="rule">
 
@@ -1292,7 +1551,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);f
         <p style="font-size:10.5px;color:var(--ink3);margin-top:4px;">3rd World Conference on Research Integrity, Montréal, 2013 · <a href="https://www.wcrif.org/guidance/montreal-statement" target="_blank" style="color:var(--blue);">wcrif.org/montreal-statement</a> · Also available in Bahasa Malaysia</p>
       </div>
     
-<div style="background:var(--ink);border-radius:0 0 8px 8px;padding:8px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:0;"><span style="font-size:10.5px;font-weight:700;color:var(--green-m);text-transform:uppercase;letter-spacing:.06em;">See also:</span><span style="display:inline-block;padding:8px 18px;border-radius:6px;background:var(--cream2);color:var(--ink3);font-size:13px;font-weight:600;white-space:nowrap;">🔒 ↗ Academic Writing — Authorship (ICMJE)</span><span style="display:inline-block;padding:8px 18px;border-radius:6px;background:var(--cream2);color:var(--ink3);font-size:13px;font-weight:600;white-space:nowrap;">🔒 ↗ Publication — CRediT taxonomy</span><span style="display:inline-block;padding:8px 18px;border-radius:6px;background:var(--cream2);color:var(--ink3);font-size:13px;font-weight:600;white-space:nowrap;">🔒 ↗ Part 2A — AI disclosure</span></div>
+<div style="background:var(--ink);border-radius:0 0 8px 8px;padding:8px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:0;"><span style="font-size:10.5px;font-weight:700;color:var(--green-m);text-transform:uppercase;letter-spacing:.06em;">See also:</span><span style="display:inline-block;padding:4px 12px;border-radius:20px;background:var(--cream2);color:var(--ink3);font-size:11px;font-weight:600;white-space:nowrap;">🔒 ↗ Academic Writing — Authorship (ICMJE)</span><span style="display:inline-block;padding:4px 12px;border-radius:20px;background:var(--cream2);color:var(--ink3);font-size:11px;font-weight:600;white-space:nowrap;">🔒 ↗ Publication — CRediT taxonomy</span><span style="display:inline-block;padding:4px 12px;border-radius:20px;background:var(--cream2);color:var(--ink3);font-size:11px;font-weight:600;white-space:nowrap;">🔒 ↗ Part 2A — AI disclosure</span></div>
 </div>
 
     <!-- Card 4: UKRIO Code of Practice + NSF context -->
